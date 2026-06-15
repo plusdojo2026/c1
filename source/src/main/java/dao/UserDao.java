@@ -26,15 +26,16 @@ public class UserDao {
 						"root", "password");
 				
 				// SELECT文を準備する
-				String sql = "SELECT count(*) FROM User WHERE user_id=? AND password=?";
+				String sql = "SELECT count(*) FROM User WHERE user_id=? AND password=? AND authority_id=?";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 				pStmt.setString(1, user.getUserId());
 				pStmt.setString(3, user.getPassword());
+				pStmt.setString(5, user.getAuthorityId());
 				
 				// SELECT文を実行し、結果表を取得する
 				ResultSet rs = pStmt.executeQuery();
 
-				// ユーザーIDとパスワードが一致するユーザーがいれば結果をtrueにする
+				// ユーザーIDとパスワードと権限idが一致するユーザーがいれば結果をtrueにする
 				rs.next();
 				if (rs.getInt("count(*)") == 1) {
 					loginResult = true;
@@ -55,9 +56,8 @@ public class UserDao {
 						loginResult = false;
 					}
 				}
-				
-				// 結果を返す
-				return loginResult;
-				}
+			}
+			// 結果を返す
+			return loginResult;
 }
 }
