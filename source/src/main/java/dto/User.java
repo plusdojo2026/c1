@@ -40,6 +40,7 @@ public class User implements Serializable {
 		this.authority_id = authority_id;
 	}
 	
+	// 引数のあるコンストラクタ
 	public User(String user_id, String user_name, String password, String authority_id) {
 		this.user_id = user_id;
 		this.user_name = user_name;
@@ -48,6 +49,7 @@ public class User implements Serializable {
 		
 	}
 	
+	// 引数のないコンストラクタ
 	public User() {
 		user_id = "";
 		user_name = "";
