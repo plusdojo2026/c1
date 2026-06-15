@@ -36,12 +36,13 @@ public class User implements Serializable {
 		return authority_id;
 	}
 	
-	public void setAuthorityID(String authority_id) {
+	public void setAuthorityId(String authority_id) {
 		this.authority_id = authority_id;
 	}
 	
 	// 引数のあるコンストラクタ
 	public User(String user_id, String user_name, String password, String authority_id) {
+		super();
 		this.user_id = user_id;
 		this.user_name = user_name;
 		this.password = password;
@@ -51,6 +52,7 @@ public class User implements Serializable {
 	
 	// 引数のないコンストラクタ
 	public User() {
+		super();
 		user_id = "";
 		user_name = "";
 		password = "";
