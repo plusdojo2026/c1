@@ -2,7 +2,7 @@ package dto;
 
 import java.io.Serializable;
 
-//EmployeeテーブルのDTO（JavaBeans形式）
+//BooksテーブルのDTO（JavaBeans形式）
 public class Books implements Serializable {
 	private String id;	// id列
 	private String user_id;	// user_id列
