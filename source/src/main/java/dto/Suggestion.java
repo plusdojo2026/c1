@@ -16,7 +16,7 @@ public class Suggestion implements Serializable {
 			this.suggestion = "";
 		}
 		
-		public Suggestion(int id, String user_id, String date, String suggestion) {
+		public Suggestion(int id, String user_id, String suggestion) {
 			super();
 			this.id = id;
 			this.user_id = user_id;
