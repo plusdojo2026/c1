@@ -5,7 +5,7 @@ import java.util.List;
 import dao.Shift_e_Dao;
 import dto.Shift;
 
-public class ShiftDAOTest {
+public class Shift_e_DAOTest {
 
     // 取得データを表示するメソッド
     public static void showAllData(List<Shift> list) {
