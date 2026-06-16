@@ -107,7 +107,8 @@
 
                     <!-- 新規登録モーダル -->
                         <dialog id="realIn_modal">
-                            <form action="/c1/BooksServlet">
+                            <form method="POST"  action="/c1/BooksRegistServlet">
+                            	<input  type="hidden" name="id" readonly="readonly" style="background-color: lightgray" ><br>
                                 <input type="text" name="title" placeholder="タイトル"><br>
                                 <textarea name="maintaxt" placeholder="本文"></textarea><br>
                                     <div class="button">
@@ -149,7 +150,7 @@
 
                     <!-- 編集モーダル -->
                         <dialog id="realIn_modal2">
-                            <form action="/c1/BooksServlet">
+                            <form onsubmit="return checkdelete()" method="POST" action="/c1/BooksUpdateDeleteServlet">
                                 <input type="text" name="title" value="タイトル"><br>
                                 <textarea name="maintaxt">本文</textarea><br>
                                     <div class="button">
@@ -191,7 +192,7 @@
 
                     <!-- 編集モーダル -->
                         <dialog id="realIn_modal3">
-                            <form action="/c1/BooksServlet">
+                            <form onsubmit="return checkdelete()" method="POST" action="/c1/BooksUpdateDeleteServlet">
                                 <input type="text" name="title" value="タイトル"><br>
                                 <textarea name="maintaxt">本文</textarea><br>
                                     <div class="button">
@@ -209,7 +210,8 @@
 
                     <!-- 新規登録モーダル -->
                         <dialog id="realIn_modal4">
-                            <form action="/c1/BooksServlet">
+                            <form method="POST" action="/c1/BooksRegistServlet">
+                            	<input  type="hidden" name="id" readonly="readonly" style="background-color: lightgray" ><br>
                                 <input type="text" name="title" placeholder="タイトル"><br>
                                 <textarea name="maintaxt" placeholder="本文"></textarea><br>
                                     <div class="button">
@@ -248,7 +250,7 @@
 
                     <!-- 編集モーダル -->
                         <dialog id="realIn_modal5">
-                            <form action="/c1/BooksServlet">
+                            <form onsubmit="return checkdelete()" method="POST" action="/c1/BooksUpdateDeleteServlet">
                                 <input type="text" name="title" value="タイトル"><br>
                                 <textarea name="maintaxt">本文</textarea><br>
                                     <div class="button">
@@ -289,7 +291,7 @@
 
                     <!-- 編集モーダル -->
                         <dialog id="realIn_modal6">
-                            <form action="/c1/BooksServlet">
+                            <form onsubmit="return checkdelete()" method="POST" action="/c1/BooksUpdateDeleteServlet">
                                 <input type="text" name="title" value="タイトル"><br>
                                 <textarea name="maintaxt">本文</textarea><br>
                                     <div class="button">
@@ -309,7 +311,8 @@
 
                     <!-- 新規登録モーダル -->
                         <dialog id="realIn_modal7">
-                            <form action="/c1/BooksServlet">
+                            <form method="POST" action="/c1/BooksRegistServlet">
+                            	<input  type="hidden" name="id" readonly="readonly" style="background-color: lightgray" ><br>
                                 <input type="text" name="title" placeholder="タイトル"><br>
                                 <textarea name="maintaxt" placeholder="本文"></textarea><br>
                                     <div class="button">
@@ -348,7 +351,7 @@
 
                     <!-- 編集モーダル -->
                         <dialog id="realIn_modal8">
-                            <form action="/c1/BooksServlet">
+                            <form onsubmit="return checkdelete()" method="POST" action="/c1/BooksUpdateDeleteServlet">
                                 <input type="text" name="title" value="タイトル"><br>
                                 <textarea name="maintaxt">本文</textarea><br>
                                     <div class="button">
@@ -389,7 +392,7 @@
 
                     <!-- 編集モーダル -->
                         <dialog id="realIn_modal9">
-                            <form action="/c1/BooksServlet">
+                            <form onsubmit="return checkdelete()" method="POST" action="/c1/BooksUpdateDeleteServlet">
                                 <input type="text" name="title" value="タイトル"><br>
                                 <textarea name="maintaxt">本文</textarea><br>
                                     <div class="button">
