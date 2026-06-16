@@ -1,9 +1,20 @@
 package test;
 
+import java.util.List;
+
 import dao.UserDao;
 import dto.User;
-
+	
 public class UserDAOTest {
+	
+	public static void showAllData(List<User> cardList) {
+		for (User card : cardList) {
+			System.out.println("ID：" + card.getUserId());
+			System.out.println("PW：" + card.getPassword());
+			System.out.println();
+		}
+	}
+	
 	public static void main(String[] args) {
 		testIsLoginOK1(); // ユーザーが見つかる場合のテスト
 		testIsLoginOK2(); // ユーザーが見つからない場合のテスト

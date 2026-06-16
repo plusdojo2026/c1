@@ -75,7 +75,7 @@
                             </select>
                         </td>
                         <td>
-                            <input type="text" name="registrant" placeholder="登録者">
+                            <input type="text" name="teacher" placeholder="登録者">
                         </td>
                     </tr>
                     <tr>
@@ -85,7 +85,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <input type="text" name="title" placeholder="キーワード検索">
+                            <input type="text" name="manual" placeholder="キーワード検索">
                         </td>
                         <td>
                             <input type="submit" name="submit" value="実行">
@@ -105,9 +105,9 @@
                     <h2>　マニュアル <button type="button" class="gazo" onclick="document.getElementById('realIn_modal').showModal()"><span>＋</span></button><!-- 新規登録ボタン --></h2>
 
 
-                    <!-- 出勤確認モーダル -->
+                    <!-- 新規登録モーダル -->
                         <dialog id="realIn_modal">
-                            <form>
+                            <form action="/c1/BooksServlet">
                                 <input type="text" name="title" placeholder="タイトル"><br>
                                 <textarea name="maintaxt" placeholder="本文"></textarea><br>
                                     <div class="button">
@@ -149,7 +149,7 @@
 
                     <!-- 編集モーダル -->
                         <dialog id="realIn_modal2">
-                            <form>
+                            <form action="/c1/BooksServlet">
                                 <input type="text" name="title" value="タイトル"><br>
                                 <textarea name="maintaxt">本文</textarea><br>
                                     <div class="button">
@@ -191,7 +191,7 @@
 
                     <!-- 編集モーダル -->
                         <dialog id="realIn_modal3">
-                            <form>
+                            <form action="/c1/BooksServlet">
                                 <input type="text" name="title" value="タイトル"><br>
                                 <textarea name="maintaxt">本文</textarea><br>
                                     <div class="button">
@@ -207,9 +207,9 @@
         <div>
             <h2>　用語 <button type="button" class="gazo" onclick="document.getElementById('realIn_modal').showModal()"><span>＋</span></button><!-- 新規登録ボタン --></h2>
 
-                    <!-- 出勤確認モーダル -->
+                    <!-- 新規登録モーダル -->
                         <dialog id="realIn_modal4">
-                            <form>
+                            <form action="/c1/BooksServlet">
                                 <input type="text" name="title" placeholder="タイトル"><br>
                                 <textarea name="maintaxt" placeholder="本文"></textarea><br>
                                     <div class="button">
@@ -248,7 +248,7 @@
 
                     <!-- 編集モーダル -->
                         <dialog id="realIn_modal5">
-                            <form>
+                            <form action="/c1/BooksServlet">
                                 <input type="text" name="title" value="タイトル"><br>
                                 <textarea name="maintaxt">本文</textarea><br>
                                     <div class="button">
@@ -289,7 +289,7 @@
 
                     <!-- 編集モーダル -->
                         <dialog id="realIn_modal6">
-                            <form>
+                            <form action="/c1/BooksServlet">
                                 <input type="text" name="title" value="タイトル"><br>
                                 <textarea name="maintaxt">本文</textarea><br>
                                     <div class="button">
@@ -307,9 +307,9 @@
                 <button type="button" class="gazo" onclick="document.getElementById('realIn_modal').showModal()"><span>＋</span>
                 </button><!-- 新規登録ボタン --></h2>
 
-                    <!-- 出勤確認モーダル -->
+                    <!-- 新規登録モーダル -->
                         <dialog id="realIn_modal7">
-                            <form>
+                            <form action="/c1/BooksServlet">
                                 <input type="text" name="title" placeholder="タイトル"><br>
                                 <textarea name="maintaxt" placeholder="本文"></textarea><br>
                                     <div class="button">
@@ -348,7 +348,7 @@
 
                     <!-- 編集モーダル -->
                         <dialog id="realIn_modal8">
-                            <form>
+                            <form action="/c1/BooksServlet">
                                 <input type="text" name="title" value="タイトル"><br>
                                 <textarea name="maintaxt">本文</textarea><br>
                                     <div class="button">
@@ -389,7 +389,7 @@
 
                     <!-- 編集モーダル -->
                         <dialog id="realIn_modal9">
-                            <form>
+                            <form action="/c1/BooksServlet">
                                 <input type="text" name="title" value="タイトル"><br>
                                 <textarea name="maintaxt">本文</textarea><br>
                                     <div class="button">
