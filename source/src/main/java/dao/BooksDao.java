@@ -26,7 +26,7 @@ public class BooksDao {
 					"root", "Kensyuu8610");
 
 			// SQL文を準備する
-			String sql = "SELECT * FROM Bc "
+			String sql = "SELECT * FROM Books "
 					+ "WHERE "
 					+ "user_id LIKE ? AND "
 					+ "date LIKE ? AND "
@@ -127,7 +127,7 @@ public class BooksDao {
 					"root", "Kensyuu8610");
 
 			// SQL文を準備する
-			String sql = "INSERT INTO Bc VALUES (0, ?,?,?,?,?,?,?,?)";
+			String sql = "INSERT INTO Books VALUES (0, ?,?,?,?,?,?,?,?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
