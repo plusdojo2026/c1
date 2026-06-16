@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,33 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.BooksDao;
 import dto.Books;
+import dto.BooksResult;
 
 /**
- * Servlet implementation class BooksServlet
+ * Servlet implementation class RegistServlet
  */
-@WebServlet("/BooksServlet")
-public class BooksServlet extends HttpServlet {
+@WebServlet("/RegistServlet")
+public class BooksRegistServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-		/**
-		HttpSession session = request.getSession();
-		if (session.getAttribute("user_id") == null) {
-			response.sendRedirect("/c1/LoginServlet");
-			return;
-		}
-	*/
-
-		// 検索ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Books.jsp");
-		dispatcher.forward(request, response);
-	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
@@ -47,13 +27,11 @@ public class BooksServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-		/**
-		HttpSession session = request.getSession();
+		/*HttpSession session = request.getSession();
 		if (session.getAttribute("id") == null) {
-			response.sendRedirect("/c1/LoginServlet");
+			response.sendRedirect("/webapp/LoginServlet");
 			return;
-		}
-		*/
+		}*/
 
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
@@ -66,16 +44,18 @@ public class BooksServlet extends HttpServlet {
 		String update_name = request.getParameter("update_name");
 		String update_date = request.getParameter("update_date");
 
-		// 検索処理を行う
+
+		// 登録処理を行う
 		BooksDao bDao = new BooksDao();
-		List<Books> cardList = bDao.select(new Books(0, user_id,date,category_id,title,teacher,
-				manual,update_name,update_date));
-		
-		// 検索結果をリクエストスコープに格納する
-		request.setAttribute("cardList", cardList);
-		
+		if (bDao.insert(new Books(0, user_id,date,category_id,title,teacher,
+				manual,update_name,update_date))) { // 登録成功
+			request.setAttribute("result", new BooksResult("登録成功！", "レコードを登録しました。", "/c1/BooksServlet"));
+		} else { // 登録失敗
+			request.setAttribute("result", new BooksResult("登録失敗！", "レコードを登録できませんでした。", "/c1/BooksServlet"));
+		}
+
 		// 結果ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Books.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/BooksResult.jsp");
 		dispatcher.forward(request, response);
 	}
 }
