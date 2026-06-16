@@ -17,7 +17,7 @@
 <div class="container">
 		<img src = "images/title-logo.jpeg" alt="アプリのタイトルであるマモラルのロゴ画像" class="title-logo">
 
-	<form action="result.html" id="form">
+	<form method="POST" action="/c1/LoginServlet">
 		<div class="text-group">
 			<p>
 				<input type="text" name="id" placeholder = "ユーザーID" class="id_text">
