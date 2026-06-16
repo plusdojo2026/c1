@@ -9,7 +9,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import dao.BooksDao;
 import dto.Books;
@@ -28,11 +27,13 @@ public class BooksServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
+		/**
 		HttpSession session = request.getSession();
 		if (session.getAttribute("user_id") == null) {
 			response.sendRedirect("/c1/LoginServlet");
 			return;
 		}
+	*/
 
 		// 検索ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Books.jsp");
@@ -46,11 +47,13 @@ public class BooksServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
+		/**
 		HttpSession session = request.getSession();
 		if (session.getAttribute("id") == null) {
 			response.sendRedirect("/c1/LoginServlet");
 			return;
 		}
+		*/
 
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
