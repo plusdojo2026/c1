@@ -46,8 +46,7 @@ public class User implements Serializable {
 		this.user_id = user_id;
 		this.user_name = user_name;
 		this.password = password;
-		this.authority_id =authority_id;
-		
+		this.authority_id = authority_id;
 	}
 	
 	// 引数のないコンストラクタ
