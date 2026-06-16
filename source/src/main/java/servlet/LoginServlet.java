@@ -29,7 +29,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// ログインページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Login.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -41,15 +41,16 @@ public class LoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
-		String user_id = request.getParameter("user_id");
+		String user_id = request.getParameter("id");
 //		String user_name = request.getParameter("user_name");
-		String password = request.getParameter("password");
+		String password = request.getParameter("pw");
 //		int authority_id = request.getParameter("authority_id");
 		
 		
 		// ログイン処理を行う
 		UserDao iDao = new UserDao();
 		if (iDao.isLoginOK(new User(user_id, "", password, 0))) { // ログイン成功
+			
 			// セッションスコープにIDを格納する
 			HttpSession session = request.getSession();
 			session.setAttribute("user_id", new LoginUser(user_id));
@@ -58,7 +59,7 @@ public class LoginServlet extends HttpServlet {
 			response.sendRedirect("/c1/HomeServlet");
 		} else { // ログイン失敗
 			// 結果ページにフォワードする
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Login.jsp");
 			dispatcher.forward(request, response);
 		}
 	}
