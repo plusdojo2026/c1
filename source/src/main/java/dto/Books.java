@@ -20,7 +20,7 @@ public class Books implements Serializable {
 	}
 	
 	// idのセッタ
-	public void setId(String Id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -30,7 +30,7 @@ public class Books implements Serializable {
 	}
 
 	// user_idのセッタ
-	public void setUser_id(String User_id) {
+	public void setUser_id(String user_id) {
 		this.user_id = user_id;
 	}
 
@@ -60,7 +60,7 @@ public class Books implements Serializable {
 	}
 	
 	// titleのセッタ
-	public void setTitle(String Title) {
+	public void setTitle(String title) {
 		this.title = title;
 	}
 	
@@ -70,7 +70,7 @@ public class Books implements Serializable {
 	}
 	
 	// teacherのセッタ
-	public void setTeacher(String Teacher) {
+	public void setTeacher(String teacher) {
 		this.teacher = teacher;
 	}
 	
@@ -80,7 +80,7 @@ public class Books implements Serializable {
 	}
 	
 	// manualのセッタ
-	public void setManual(String Manual) {
+	public void setManual(String manual) {
 		this.manual = manual;
 	}
 	
@@ -90,7 +90,7 @@ public class Books implements Serializable {
 	}
 	
 	// update_nameのセッタ
-	public void setUpdate_name(String Update_name) {
+	public void setUpdate_name(String update_name) {
 		this.update_name = update_name;
 	}
 	
@@ -100,7 +100,7 @@ public class Books implements Serializable {
 	}
 	
 	// update_dateのセッタ
-	public void setUpdate_date(String Update_date) {
+	public void setUpdate_date(String update_date) {
 		this.update_date = update_date;
 	}
 
