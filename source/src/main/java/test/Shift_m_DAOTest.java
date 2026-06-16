@@ -27,7 +27,7 @@ public class Shift_m_DAOTest {
 
         // select() テスト1（名前で検索）
         System.out.println("---------- select() テスト1 ----------");
-        List<Shift> sel1 = dao.select(new Shift(0, "山田太郎", "", "", "", "", ""));
+        List<Shift> sel1 = dao.select(new Shift(0, "山田祐樹", "", "", "", "", ""));
         showAllData(sel1);
 
         // select() テスト2（全件取得 → 名前空文字で検索）
@@ -37,7 +37,7 @@ public class Shift_m_DAOTest {
 
         // update() テスト
         System.out.println("---------- update() テスト ----------");
-        List<Shift> upList = dao.select(new Shift(0, "山田太郎", "", "", "", "", ""));
+        List<Shift> upList = dao.select(new Shift(0, "山田祐樹", "", "", "", "", ""));
         if (!upList.isEmpty()) {
             Shift up = upList.get(0);
             up.setClock_in("08:55");  // 出勤時間を変更
@@ -47,7 +47,7 @@ public class Shift_m_DAOTest {
 
             if (dao.update(up)) {
                 System.out.println("更新成功！");
-                List<Shift> afterUp = dao.select(new Shift(0, "山田太郎", "", "", "", "", ""));
+                List<Shift> afterUp = dao.select(new Shift(0, "山田祐樹", "", "", "", "", ""));
                 showAllData(afterUp);
             } else {
                 System.out.println("更新失敗！");
@@ -58,7 +58,7 @@ public class Shift_m_DAOTest {
 
         // delete() テスト
         System.out.println("---------- delete() テスト ----------");
-        List<Shift> delList = dao.select(new Shift(0, "山田太郎", "", "", "", "", ""));
+        List<Shift> delList = dao.select(new Shift(0, "山田祐樹", "", "", "", "", ""));
         if (!delList.isEmpty()) {
             Shift del = delList.get(0);
             if (dao.delete(del)) {
