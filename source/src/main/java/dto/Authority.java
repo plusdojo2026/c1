@@ -4,36 +4,38 @@ import java.io.Serializable;
 
 //authorityテーブルのDTO（JavaBeans形式）
 public class Authority implements Serializable {
-	private String authority_id;	// authority_id列
+	private int authority_id;	// authority_id列
 	private String authority;	// authority列
 	
-	// idのゲッタ
-	public String getId() {
+	// authority_idのゲッタ
+	public int getAuthority_id() {
 		return authority_id;
 	}
 	
-	// idのセッタ
-	public void setAuthority_id(String Authority_id) {
+	// authority_idのセッタ
+	public void setAuthority_id(int authority_id) {
 		this.authority_id = authority_id;
 	}
 
-	// user_idのゲッタ
+	// authorityのゲッタ
 	public String getAuthority() {
 		return authority;
 	}
 
-	// user_idのセッタ
-	public void setAuthority(String Authority) {
+	// authorityのセッタ
+	public void setAuthority(String authority) {
 		this.authority = authority;
 	}
 
 	// 引数がないコンストラクタ
 	public Authority() {
-		this("","");
+		super();
+		this.authority_id = 0;
+		this.authority = "";
 	}
 
 	// 引数があるコンストラクタ
-	public Authority(String authority_id, String authority) {
+	public Authority(int authority_id, String authority) {
 		this.authority_id = authority_id;
 		this.authority = authority;
 	}

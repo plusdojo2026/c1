@@ -4,23 +4,23 @@ import java.io.Serializable;
 
 //BooksテーブルのDTO（JavaBeans形式）
 public class Books implements Serializable {
-	private String id;	// id列
-	private String user_id;	// user_id列
-	private String date;	// date列
-	private String category_id; // category_id列
-	private String title;  // title列
-	private String teacher;  // teacher列
-	private String manual;  // manual列
+	private int id;				// id列
+	private String user_id;		// user_id列
+	private String date;		// date列
+	private int category_id; 	// category_id列
+	private String title;  		// title列
+	private String teacher;  	// teacher列
+	private String manual;  	// manual列
 	private String update_name;  // update_name列
 	private String update_date;  // update_Date列
 	
 	// idのゲッタ
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 	
 	// idのセッタ
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -45,12 +45,12 @@ public class Books implements Serializable {
 	}
 	
 	// category_idのゲッタ
-	public String getCategory_id() {
+	public int getCategory_id() {
 		return category_id;
 	}
 	
 	// category_idのセッタ
-	public void setCategory_id(String category_id) {
+	public void setCategory_id(int category_id) {
 		this.category_id = category_id;
 	}
 	
@@ -106,11 +106,20 @@ public class Books implements Serializable {
 
 	// 引数がないコンストラクタ
 	public Books() {
-		this("","","","","","","","","");
+		super();
+		this.id = 0;
+		this.user_id = "";
+		this.date = "";
+		this.category_id = 0;
+		this.title = "";
+		this.teacher = "";
+		this.manual = "";
+		this.update_name = "";
+		this.update_date = "";
 	}
-
+	
 	// 引数があるコンストラクタ
-	public Books(String id, String user_id, String date, String category_id, String title
+	public Books(int id, String user_id, String date, int category_id, String title
 			, String teacher, String manual, String update_name, String update_date) {
 		this.id = id;
 		this.user_id = user_id;
