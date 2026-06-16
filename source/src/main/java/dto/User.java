@@ -3,16 +3,16 @@ package dto;
 import java.io.Serializable;
 
 public class User implements Serializable {
-	private int user_id;		// ユーザーID
+	private String user_id;		// ユーザーID
 	private String user_name;	// ユーザーネーム
 	private String password;	// パスワード
-	private String authority_id; // 権限id
+	private int authority_id; // 権限id
 
-	public int getUserId() {
+	public String getUserId() {
 		return user_id;
 	}
 
-	public void setUserId(int user_id) {
+	public void setUserId(String user_id) {
 		this.user_id = user_id;
 	}
 
@@ -32,16 +32,16 @@ public class User implements Serializable {
 		this.password = password;
 	}
 	
-	public String getAuthorityId() {
+	public int getAuthorityId() {
 		return authority_id;
 	}
 	
-	public void setAuthorityId(String authority_id) {
+	public void setAuthorityId(int authority_id) {
 		this.authority_id = authority_id;
 	}
 	
 	// 引数のあるコンストラクタ
-	public User(int user_id, String user_name, String password, String authority_id) {
+	public User(String user_id, String user_name, String password, int authority_id) {
 		super();
 		this.user_id = user_id;
 		this.user_name = user_name;
@@ -53,10 +53,10 @@ public class User implements Serializable {
 	// 引数のないコンストラクタ
 	public User() {
 		super();
-		user_id = 0;
+		user_id = "";
 		user_name = "";
 		password = "";
-		authority_id = "";
+		authority_id = 0;
 	}
 }
 	
