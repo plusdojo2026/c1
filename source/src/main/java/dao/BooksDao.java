@@ -21,9 +21,9 @@ public class BooksDao {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/webapp1?"
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mamoral?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"root", "Kensyuu8610");
+					"root", "password");
 
 			// SQL文を準備する
 			String sql = "SELECT * FROM Books "
@@ -122,9 +122,9 @@ public class BooksDao {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/webapp1?"
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mamoral?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"root", "Kensyuu8610");
+					"root", "password");
 
 			// SQL文を準備する
 			String sql = "INSERT INTO Books VALUES (0, ?,?,?,?,?,?,?,?)";
@@ -207,9 +207,9 @@ public class BooksDao {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/webapp1?"
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mamoral?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"root", "Kensyuu8610");
+					"root", "password");
 
 			// SQL文を準備する
 			String sql = "UPDATE Books SET user_id =?, date =?, category_id =?, title =?, teacher =?, manual =?, update_name =?, update_Date =? WHERE id=?";
@@ -293,9 +293,9 @@ public class BooksDao {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/webapp1?"
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mamoral?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"root", "Kensyuu8610");
+					"root", "password");
 
 			// SQL文を準備する
 			String sql = "DELETE FROM Books WHERE int=?";
