@@ -50,10 +50,10 @@ public class BooksDao {
 			} else {
 				pStmt.setString(2, "%");
 			}
-			if (card.getCategory_id() != null) {
-				pStmt.setString(3, "%" + card.getCategory_id() + "%");
+			if (card.getCategory_id() != 0) {
+				pStmt.setInt(3, 0 + card.getCategory_id() + 0);
 			} else {
-				pStmt.setString(3, "%");
+				pStmt.setInt(3, 0);
 			}
 			if (card.getTitle() != null) {
 				pStmt.setString(4, "%" + card.getTitle() + "%");
@@ -86,7 +86,7 @@ public class BooksDao {
 
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
-				Books books = new Books(rs.getInt("id"),rs.getString("user_id"), rs.getString("date"),  rs.getString("category_id"), rs.getString("title"),rs.getString("teacher"),
+				Books books = new Books(rs.getInt("id"),rs.getString("user_id"), rs.getString("date"),  rs.getInt("category_id"), rs.getString("title"),rs.getString("teacher"),
 						rs.getString("manual"),rs.getString("update_name"),rs.getString("update_date") );
 				cardList.add(books);
 			}
@@ -141,10 +141,10 @@ public class BooksDao {
 			} else {
 				pStmt.setString(2, "");
 			}
-			if (card.getCategory_id() != null) {
-				pStmt.setString(3, card.getCategory_id());
+			if (card.getCategory_id() != 0) {
+				pStmt.setInt(3, card.getCategory_id());
 			} else {
-				pStmt.setString(3, "");
+				pStmt.setInt(3, 0);
 			}
 			if (card.getTitle() != null) {
 				pStmt.setString(4, card.getTitle());
@@ -227,10 +227,10 @@ public class BooksDao {
 			} else {
 				pStmt.setString(2, "");
 			}
-			if (card.getCategory_id() != null) {
-				pStmt.setString(3, card.getCategory_id());
+			if (card.getCategory_id() != 0) {
+				pStmt.setInt(3, card.getCategory_id());
 			} else {
-				pStmt.setString(3, "");
+				pStmt.setInt(3, 0);
 			}
 			if (card.getTitle() != null) {
 				pStmt.setString(4, card.getTitle());
