@@ -47,6 +47,7 @@ public class LoginServlet extends HttpServlet {
 //		int authority_id = request.getParameter("authority_id");
 		
 		
+		
 		// ログイン処理を行う
 		UserDao iDao = new UserDao();
 		if (iDao.isLoginOK(new User(user_id, "", password, 0))) { // ログイン成功
