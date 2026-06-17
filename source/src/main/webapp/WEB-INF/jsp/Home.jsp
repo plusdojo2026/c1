@@ -80,21 +80,22 @@
         <!-- バイトテロTips -->
         <h2 class="terrorTips">
             <p class="terrorLogo">バイトテロTips</p>
-                <p class="terrorC">バイトテロの内容</p>
-                <p class="terrorC">バイトテロの内容</p>
-                <p class="terrorC">バイトテロの内容</p>
+            <div id="changeTerrorArea">
+                <p class="terrorC" id="terrorArea"></p>
                 <div class="update">
-                    <input type="submit" value="更新">
+                    <!-- <input type="submit" value="更新"> -->
+                    <button id="changeBtn">更新</button>
                 </div>
+            </div>
         </h2>
         <!-- 用語マナーTips -->
         <h3 class="termTips">
             <p class="termLogo">用語マナーTips</p>
-                <p class="termC">用語マナーの内容</p>
-                <p class="termC">用語マナーの内容</p>
-                <p class="termC">用語マナーの内容</p>
+            <div id="changeTermArea">
+                <p class="terrorC" id="termArea"></p>
                 <div class="update">
-                    <input type="submit" value="更新">
+                    <!-- <input type="submit" value="更新"> -->
+                    <button id="changeTermBtn">更新</button>
                 </div>
         </h3>
         <!-- 出勤確認モーダル -->
@@ -171,23 +172,41 @@
             }
         }
     </script>
-    <!-- <script>
-        'use strict'
-        function boxCheck() {
-            var flag = false;
+    <script>
+        // バイトテロTipsの表示を変更する
+        const area = ['内容1', '内容2', '内容3',]
 
-            // elementsにはボタンの要素も含まれてしまうため-1にする
-            for (var i = 0; i < document.check.elements.length -1; i++)
-                if (document.check.elements[i].checked) {
-                    flag = true;
-                    alert(document.check.elements[i].value + "が選択されました。");
-                }
+        // querySelectorで
+        const terrorArea = document.querySelector('#terrorArea')
+        const changeBtn = document.querySelector('#changeBtn')
 
-                if (!flag) {
-                    alert("項目が選択されていません。");
-                }
-        }
-    </script> -->
+        let terrorIndex = 0;
+        terrorArea.textContent = area[terrorIndex];
+
+        changeBtn.addEventListener('click', () => {
+            terrorIndex = (terrorIndex + 1) % area.length;
+            terrorArea.textContent = area[terrorIndex];
+
+        });
+    </script>
+    <script>
+        // 用語マナーTipsの表示を変更する
+        const areaTerm = ['内容1', '内容2', '内容3',]
+
+        // querySelectorで
+        const termArea = document.querySelector('#termArea')
+        const changeTermBtn = document.querySelector('#changeTermBtn')
+
+        let termIndex = 0;
+        termArea.textContent = areaTerm[termIndex];
+
+        changeTermBtn.addEventListener('click', () => {
+            termIndex = (termIndex + 1) % areaTerm.length;
+            termArea.textContent = areaTerm[termIndex];
+
+        });
+    </script>
+   
 </body>
 
 </html>
