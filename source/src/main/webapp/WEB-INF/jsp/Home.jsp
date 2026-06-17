@@ -154,7 +154,13 @@
         const s = String(now.getSeconds()).padStart(2, '0');
 
         document.getElementById("clock").textContent =
-            `${month}月${date}日(${day}) ${h}:${m}:${s}`;
+            <!-- `${month}月${date}日(${day}) ${h}:${m}:${s}`; -->
+            month + "月" +
+            date + "日(" +
+            day + ") " +
+            h + ":" +
+            m + ":" +
+            s;
         }
 
         setInterval(updateClock, 1000);
