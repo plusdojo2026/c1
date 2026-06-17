@@ -18,25 +18,22 @@ public class ShiftServlet extends HttpServlet {
 
         HttpSession session = request.getSession(false);
 
-        // ① ログインしていない場合
+        // ログインしていない場合
         if (session == null || session.getAttribute("user_id") == null) {
             response.sendRedirect("/c1/LoginServlet");
             return;
         }
 
-        // ② 権限を取得
+        
         int authority = (int) session.getAttribute("authority");
 
-        // ③ 権限で JSP を振り分け（RequestDispatcher）
+       
         if (authority == 1) {
-            // 管理者
+            // 店長
             request.getRequestDispatcher("Shift_m.jsp").forward(request, response);
         } else if (authority == 2) {
-            // 一般ユーザー
+            // 従業員
             request.getRequestDispatcher("Shift_e.jsp").forward(request, response);
-        } else {
-            // 不正な権限
-            request.getRequestDispatcher("error.jsp").forward(request, response);
-        }
+        } 
     }
 }
