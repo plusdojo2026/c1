@@ -1,0 +1,163 @@
+@charset "UTF-8";
+/* 全体 */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+
+}
+
+/* ヘッダーのボーダーボトム */
+header{
+    border-bottom:solid 8px #28a6a5;
+}
+
+/* h1{ 
+    background-color: #dcd3b2;
+}*/
+h1.hero {
+    text-align: center;
+}
+main {
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+/*  
+.background{
+    background-image: url("../img/umi2.png");
+    background-repeat: repeat;
+    background-size: auto;
+    min-height: 100vh;
+    
+}
+    */
+/* シフト登録 */
+.shift-add-box,
+.salary{
+    background-color: rgb(255, 255, 255);
+    border: 3px solid #28A6A5;
+    border-radius: 10px;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+/*検索フォーム */
+form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.searchWord,
+.selectYear,
+.selectMonth,
+.selectDay {
+    padding: 6px 10px;
+    border-radius: 4px;
+}
+
+.searchWord{
+    width: 250px;
+}
+
+.shiftSearch {
+    padding: 6px 15px;
+    border-radius: 10px;
+}
+
+/*シフトカード*/
+.shiftName {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.date {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* カード全体を囲む */
+.shift-card {
+    border: 3px solid #28A6A5;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: rgb(255, 255, 255);
+}
+
+/* 左右を横並びにする */
+.shift-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: #fff;
+    border:1px solid #28A6A5;
+}
+
+/* 左側（名前＋日付） */
+.shift-left {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* 右側（シフト情報） */
+.shift-right {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-align: right; 
+    min-width: 250px; 
+    text-align: left; 
+    
+}
+
+/* シフト予定（in/out） */
+.inandOut {
+    margin-bottom: 10px;
+}
+
+.inandOut input {
+    width: 70px;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+/* 出退勤 */
+.shiftIn,
+.shiftOut {
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.shiftIn {
+    color: #ef845c;
+}
+
+.shiftOut {
+    color: #6c9bd2;
+}
+
+/* 更新・削除ボタン */
+.shift-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 60px;
+    margin-right: 50px;
+}
+
+.update,
+.delete {
+    padding: 6px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+footer {
+    text-align: center;
+    color: aliceblue;
+    background-color: #28A6A5;
+    padding: 60px;
+}

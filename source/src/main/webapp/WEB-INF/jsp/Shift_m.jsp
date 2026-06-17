@@ -1,12 +1,134 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>シフト管理</title>
+<link rel="stylesheet" href="css/shift.css">
+<link rel="stylesheet" href="css/header.css">
 </head>
 <body>
+<header>
+    <!-- ヘッダーはあとで統一 -->
+     <!-- ロゴ -->
+    <div class="logo">
+            <img src="img/mamorallogo.png" alt="名刺管理JOYFULL">
+    </div>
+    <!-- 時計 -->
+    <div id="clock"  ></div>
+    <!-- メニューバーの設置 -->
+        <div class="menu-wrapper">
+            <input type="checkbox" id="menu-toggle" hidden>
 
+                <label class="menu-icon" for="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
+            <div class="overlay"></div>
+
+            <nav class="menu">
+                <ul>
+                    <li><a href="#">ホーム</a></li>
+                    <li><a href="#">お知らせ</a></li>
+                    <li><a href="#">シフト・出退勤管理</a></li>
+                    <li><a href="#">用語本棚一覧</a></li>
+                    <li><a href="#">マイページ</a></li>
+                    <li><a href="#">ログアウト</a></li>
+                </ul>
+            </nav>
+        </div>
+
+</header>
+<div class="background"><!-- 背景を表示する範囲の div -->
+<h1 class="hero">シフト・出退勤管理一覧(店長)</h1>
+<main>
+    <!-- 出退勤、シフト一覧 -->
+        <div class="shift-card">
+            <!-- 検索 -->
+            <form action="ShiftServlet" method="get">
+                <input type="text" name="word" placeholder="名前・社員IDであいまい検索" class="searchWord">
+                <select name="year" class="selectYear">
+
+                </select>
+                <select name="month" class="selectMonth">
+
+                </select>
+                <select name="day" class="selectDay">
+
+                </select>
+                <button type="submit" class="shiftSearch">検索</button>
+            </form>
+
+            <!--    シフトデータ -->
+            <div class="shift-row">
+                <div class="shift-left">
+                    <!-- 従業員名 -->
+                        <div class="shiftName">${user.user_name}</div>
+
+                    <!-- 日付 -->
+                        <div class="date">${shift.date}</div>
+                </div>
+
+                <div class="shift-right">
+                    <!-- シフト予定 -->
+                    <div class="inandOut">
+                    シフト<input type="text" name="in" value="${shift.in}"> 〜
+                        <input type="text" name="out" value="${shift.out}">
+                    </div>
+
+                    <!-- 出退勤 -->
+                    <div>
+                        <div class="shiftIn">出勤<input type="text" name="realIn" value="${shift.real_in}" ></div>
+                        <div class="shiftOut">退勤<input type="text" name="realOut" value="${shift.real_out}"></div>
+                    </div>
+                </div>
+
+                <!-- 更新・削除ボタン -->
+                <div class="shift-buttons">
+                    <form action="ShiftUpdate" method="post" onsubmit="return confirm('更新してよろしいですか？');">
+                    <input type="hidden" name="id" value="${shift.id}">
+                    <button type="submit" name="update" class="update">更新</button>
+                    </form>
+
+                    <form action="ShiftDelete" method="post"  onsubmit="return confirm('削除してもよろしいですか？');">
+                    <input type="hidden" name="id" value="${shift.id}">
+                    <button type="submit" name="delete" class="delete">削除</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+</main>
+</div>
 </body>
+
+<script>
+    'use strict'
+function updateClock() {
+    const now = new Date();
+
+    const year = now.getFullYear();
+    const month = now.getMonth() + 1; // 0始まりなので+1
+    const date = now.getDate();
+
+    const week = ["日", "月", "火", "水", "木", "金", "土"];
+    const day = week[now.getDay()];
+
+    const h = String(now.getHours()).padStart(2, '0');
+    const m = String(now.getMinutes()).padStart(2, '0');
+    const s = String(now.getSeconds()).padStart(2, '0');
+
+    document.getElementById("clock").textContent =
+        `${month}月${date}日(${day}) ${h}:${m}:${s}`;
+}
+
+setInterval(updateClock, 1000);
+updateClock();
+</script>
+
+<footer>
+    <p class="copylight">Copyright 2026 &copy; クエン酸. all rights reserved.</p>
+</footer>
 </html>
