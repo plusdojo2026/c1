@@ -267,6 +267,12 @@ footer {
     text-align: center;
 }
 
+#termArea {
+    font-size: 20px;
+    color: #417ab1;
+    text-align: center;
+}
+
 /* モーダル表示 */
 
 /* 出退勤の確認ボタン */
