@@ -125,7 +125,7 @@
                 <summary><!--折り畳み状態タイトル-->
                     <tr>
                         <td>
-                            タイトル1
+                            <c:out value="${cardList.title}" />
                         </td>
                         <td>
                             日付
@@ -134,7 +134,6 @@
                             登録者名
                         </td>
                     </tr>
-                    </table> 
                 </summary>
                 <p>本文1</p>
                     <tr>
@@ -404,6 +403,7 @@
                         </dialog>
             </details>
         </div>
+        
 
     </main>
     <!-- メインここまで -->
@@ -499,7 +499,12 @@ function updateClock() {
     const s = String(now.getSeconds()).padStart(2, '0');
 
     document.getElementById("clock").textContent =
-        `${month}月${date}日(${day}) ${h}:${m}:${s}`;
+    	month + "月" +
+    	date + "日(" +
+    	day + ") " +
+    	h + ":" +
+    	m + ":" +
+    	s;
 }
 
 setInterval(updateClock, 1000);
