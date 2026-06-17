@@ -8,6 +8,8 @@ header {
     background-color: #DCD3B2;
     border-bottom: solid 8px #28A6A5;
     color: #FFFFFF;
+    position: sticky;
+    top: 0;
 }
 
 /* ロゴ */

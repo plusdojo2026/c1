@@ -5,7 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Mamoral</title>
-	<link rel="stylesheet" href="css/test.css">
+	<link rel="stylesheet" href="css/Home.css">
 </head>
 <body>
 	<!-- ヘッダー -->
@@ -28,12 +28,12 @@
 
             <nav class="menu">
                 <ul>
-                    <li><a href="#">ホーム</a></li>
-                    <li><a href="#">お知らせ</a></li>
-                    <li><a href="#">シフト・出退勤管理</a></li>
-                    <li><a href="#">用語本棚一覧</a></li>
-                    <li><a href="#">マイページ</a></li>
-                    <li><a href="#">ログアウト</a></li>
+                    <li><a href="/c1/HomeServlet">ホーム</a></li>
+                    <li><a href="/c1/NoticeServlet">お知らせ</a></li>
+                    <li><a href="/c1/BooksServlet">シフト・出退勤管理</a></li>
+                    <li><a href="/c1/BooksServlet">用語本棚一覧</a></li>
+                    <li><a href="/c1/MypageServlet">マイページ</a></li>
+                    <li><a href="/c1/LoginServlet">ログアウト</a></li>
                 </ul>
             </nav>
         </div>
