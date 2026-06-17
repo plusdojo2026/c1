@@ -44,7 +44,6 @@ public class BooksRegistServlet extends HttpServlet {
 		String update_name = request.getParameter("update_name");
 		String update_date = request.getParameter("update_date");
 
-
 		// 登録処理を行う
 		BooksDao bDao = new BooksDao();
 		if (bDao.insert(new Books(0, user_id,date,category_id,title,teacher,
