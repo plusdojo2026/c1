@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class MenuServlet
+ * Servlet implementation class HomeServlet
  */
 @WebServlet("/HomeServlet")
 public class HomeServlet extends HttpServlet {
