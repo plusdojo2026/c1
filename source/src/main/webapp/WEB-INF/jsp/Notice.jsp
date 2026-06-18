@@ -68,8 +68,6 @@
 <p>状態: <span id="status">未確認</span></p>
 <button id="checkBtn">確認</button>
 
-
-
 <label for="member">確認者リスト:</label>
  	<select id="member" name="member">
     <option value=""> -- 選択してください -- </option>
@@ -101,15 +99,6 @@ const formattedDate = `${yyyy}-${mm}-${dd}`;
 document.getElementById("datepicker").value = formattedDate;
 };
 </script>
-  <label for="member">確認者リスト:</label>
-  <select id="member" name="member">
-    <option value=""> -- 選択してください -- </option>
-    <option value="001">山田 太郎</option>
-    <option value="002">佐藤 花子</option>
-    <option value="003">鈴木 一郎</option>
-    <option value="004">田中 美咲</option>
-  </select>
-
 
  <script>
 document.getElementById("checkBtn").addEventListener("click", function() {
