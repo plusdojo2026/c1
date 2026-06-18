@@ -29,13 +29,9 @@ public class NoticeDao {
 			String sql = "SELECT * FROM Bc "
 					+ "WHERE "
 					+ "user_id LIKE ? AND "
+					+ "registTitle LIKE ? AND "
 					+ "date LIKE ? AND "
-					+ "category_id LIKE ? AND "
-					+ "title LIKE ? AND "
-					+ "teacher LIKE ? AND "
-					+ "manual LIKE ? AND "
-					+ "update_name LIKE ? AND "
-					+ "update_date LIKE ? "
+					+ "registText LIKE ? AND "
 					+ "ORDER BY id";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
@@ -173,18 +169,18 @@ public class NoticeDao {
 			} else {
 				pStmt.setString(1, "");
 			}
-			if (card.getDate() != null) {
-				pStmt.setString(2, card.getDate());
+			if (card.getregistTitle() != null) {
+				pStmt.setString(2, card.getregistTitle());
 			} else {
 				pStmt.setString(2, "");
 			}
-			if (card.getCategory_id() != null) {
-				pStmt.setString(3, card.getCategory_id());
+			if (card.getdate() != null) {
+				pStmt.setString(3, card.getdate());
 			} else {
 				pStmt.setString(3, "");
 			}
-			if (card.getTitle() != null) {
-				pStmt.setString(4, card.getTitle());
+			if (card.getregistText() != null) {
+				pStmt.setString(4, card.getregistText());
 			} else {
 				pStmt.setString(4, "");
 			}
