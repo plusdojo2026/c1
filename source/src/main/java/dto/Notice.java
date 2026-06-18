@@ -20,8 +20,7 @@ public class Notice implements Serializable {
 			this.date = "";
 			this.title = "";
 			this.notice = "";
-			this.update_name = "";
-			this.update_date = "";
+
 		}
 		
 		public Notice(int id, String user_id, String date, String title, String notice, String update_name,
