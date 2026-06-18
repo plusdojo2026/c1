@@ -1,1 +1,52 @@
 @charset "UTF-8";
+
+/* bodyタグ全体を変更 */
+body {
+    margin: 0;                  /* min-heightでスクロールせずに真ん中に配置するため０にする */
+}
+
+html {
+    background-color: #f2bd61;
+}
+
+/* タイトルロゴの大きさ設定 */
+.title-logo {
+    max-width: 30%;             /* サイズ調整 */
+    height: auto;               /*高さを自動調整、アスペクト比維持 */
+    background-color: #F39800;
+    border: 8px double #FFFFFF;    /* 枠線 */
+}
+
+/* タイトルロゴ、ログイングループの並び */
+.container {
+    display: flex;              /* 横並びにする */
+    gap: 300px;                 /* 各要素の間の空ける間隔 */
+    justify-content: center;    /* 中央寄せ */
+    align-items: center;        /* ログイングループを画像の中央に配置 */
+    min-height: 100vh;          /* 上下中央配置 */
+}
+
+/* ユーザーID、パスワード、ログインボタンの配置 */
+.text-group {
+    display: flex;              /* 要素の間隔や縦並びを整えるために入れる */
+    flex-direction: column;     /* 要素を立て並びにする */
+    gap: 30px;                  /* 各要素の間を空ける間隔 */
+    align-items: center;        /* ログインボタンをテキストの中央に配置 */  
+    border: 5px double #F39800;    /* 枠線 */
+    padding: 40px;
+    background-color: #fefefe;
+}
+
+.id_text, .password_text {
+    border-radius: 10px;
+}
+
+/* 送信ボタンのデザイン */
+.button {
+    background-color: #EF845C;    /* 背景色 */
+    color: #ffffff;               /* 文字色 */
+    cursor: pointer;                /* カーソルを変化させる */
+    border-radius: 10px;            /* 角を丸くする */
+    height:30px;
+    width:100px;
+}

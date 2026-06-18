@@ -1,1 +1,65 @@
 @charset "UTF-8";
+
+/* 全てに適用される設定 */
+* {
+    box-sizing: border-box;
+}
+
+header {
+    background-color: #DCD3B2;
+    border-bottom: solid 8px #28A6A5; 
+    position: sticky;
+    top: 0;   
+}
+
+/* 全てのテーブルに適用される設定 */
+table {
+    border-collapse: collapse;      /* 枠線を重ねる */
+    margin: 0 auto;                 /* 上下0、左右autoで中央寄せ */
+    line-height: 3.0;               /* 行間を3.0倍に設定 */
+}
+
+/* 全てのテーブルの見出しと内容の設定 */
+th,td {
+    text-align: left;               /* 左揃え */
+    padding: 0 10px;                /* 横に間隔を作る */
+}
+
+/* 全てのテキストボックスの設定 */
+.text-box {
+    border-radius: 10px;            /* 角を丸くする */
+}
+
+/* パスワード変更のタイトルの設定  */
+h2 {
+    border-bottom: double 5px #F39800;  /* 二重下線 */
+}
+
+/* パスワード変更のまとまりの設定 */
+.change-group {
+    text-align: center;             /* タイトルとボタンを中央に配置 */
+    border: 3px solid #28A6A5;    /* 枠線 */
+    padding: 15px 40px 15px 40px;   /* コンテンツと枠線までの間隔 */
+    max-width: 800px;               /* 横幅の最大値設定 */
+    margin: 0 auto;                 /* 中央配置 */
+    border-radius: 10px;            /* 角を丸くする */
+}
+
+/* パスワード変更ボタンの設定 */
+.change-button {
+    background-color: #6C9BD2;    /* 背景色 */
+    color: #ffffff;               /* 文字色 */
+    cursor: pointer;                /* カーソルを変化させる */
+    border-radius: 10px;            /* 角を丸くする */
+    height:40px;                    /* 高さを設定 */
+    width:100px;                    /* 幅を設定 */
+}
+
+/* フッターの設定 */
+footer {
+    text-align: center;             /* テキストを中央配置 */
+    color: aliceblue;             	/* 文字色 */
+    background-color: #28A6A5;    	/* 背景色 */
+    padding: 48px;                  /* 内側の間隔 */
+    margin-top: 60px;               /* 外側（上部）の間隔 */
+}

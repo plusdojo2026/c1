@@ -1,1 +1,112 @@
 @charset "UTF-8";
+
+* {
+    box-sizing: border-box;
+}
+
+/* ヘッダーの設定 */
+header {
+    background-color: #DCD3B2;          /* 背景色 */
+    border-bottom: solid 8px #28A6A5;   /* 下線の設定 */
+    position: sticky;
+    top: 0;   
+}
+
+/* 全てのテーブルに適用 */
+table {
+    border-collapse: collapse;      /* 枠線を重ねる */
+    margin: 0 auto;                 /* 上下0、左右autoで中央寄せ */
+    line-height: 3.0;               /* 行間を3.0倍に設定 */
+}
+
+/* 全てのテーブルの見出しと内容の設定 */
+th,td {
+    text-align: left;
+    padding: 0 10px;
+}
+
+/* パスワード変更・新規従業員登録のタイトルの設定  */
+h2 {
+    border-bottom: double 5px #F39800;  /* 二重下線 */
+}
+
+/* パスワード変更・新規従業員追加のまとまりの設定 */
+.change-group,.add-group {
+    text-align: center;             /* タイトルとボタンを中央に配置 */
+    border: 3px solid #28A6A5;    /* 枠線 */
+    padding: 15px 40px 15px 40px;   /* コンテンツと枠線までの間隔 */
+    max-width: 800px;               /* 横幅の最大値設定 */
+    margin: 0 auto;                 /* 中央配置 */
+    border-radius: 10px;            /* 角を丸くする */
+}
+
+/* パスワード変更ボタンの設定 */
+.change-button {
+    background-color: #6C9BD2;    /* 背景色 */
+    color: #ffffff;               /* 文字色 */
+    cursor: pointer;                /* カーソルを変化させる */
+    border-radius: 10px;            /* 角を丸くする */
+    height:40px;                    /* 高さを設定 */
+    width:100px;                    /* 幅を設定 */
+}
+
+/* 新規従業員追加ボタンを設定 */
+.add-button {
+    background-color: #EF845C;    /* 背景色 */
+    color: #ffffff;               /* 文字色 */
+    cursor: pointer;                /* カーソルを変化させる */
+    border-radius: 10px;            /* 角を丸くする */
+    height:40px;                    /* 高さを設定 */
+    width:100px;                    /* 幅を設定 */
+}
+
+/* 全てのテキストボックスの設定 */
+.text-box {
+    border-radius: 10px;            /* 角を丸くする */
+}
+
+/* 全てのテキストエリアの設定 */
+textarea {
+    width: 300px;                   /* 横幅 */
+    height: 200px;                  /* 高さ */
+    resize: vertical;               /* 縦方向のみ広げられる */
+}
+
+/* ご意見箱全体の設定 */
+.suggestion-area {
+    width: fit-content;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(3, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+/* ご意見一つ一つのまとまりの設定 */
+.box {
+    padding: 20px;                  /* 内側の間隔 */
+    text-align: center;             /* 中央配置 */
+    border-radius: 10px;            /* 角を丸くする */
+    border: 3px solid #3F9877;    /* 枠線 */
+}
+
+/* ご意見箱の名前・内容のタイトルの設定 */
+.text-title {
+    text-align: left;               /* 文字を左寄せ */
+}
+
+/* ご意見箱の名前のテキストボックスの設定 */
+.name-box {
+    border-radius: 10px;            /* 角を丸くする */
+    display: block;                 /* ブロック要素化 */
+    margin-left: 0;                 /* 左端に寄せる */
+}
+
+/* フッターの設定 */
+footer {
+    text-align: center;             /* テキストを中央配置 */
+    color: aliceblue;             /* 文字色 */
+    background-color: #28A6A5;    /* 背景色 */
+    padding: 60px;                  /* 内側の間隔 */
+    margin-top: 60px;               /* 外側（上部）の間隔 */
+}
