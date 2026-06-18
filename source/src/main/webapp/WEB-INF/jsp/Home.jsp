@@ -30,7 +30,7 @@
                 <ul>
                     <li><a href="/c1/HomeServlet">ホーム</a></li>
                     <li><a href="/c1/NoticeServlet">お知らせ</a></li>
-                    <li><a href="/c1/BooksServlet">シフト・出退勤管理</a></li>
+                    <li><a href="/c1/ShiftServlet">シフト・出退勤管理</a></li>
                     <li><a href="/c1/BooksServlet">用語本棚一覧</a></li>
                     <li><a href="/c1/MypageServlet">マイページ</a></li>
                     <li><a href="/c1/LoginServlet">ログアウト</a></li>
