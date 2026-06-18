@@ -2,10 +2,22 @@
 
 /* ヘッダー */
 header {
+	position: sticky;
+	top: 0;
+	background-color: #DCD3B2;
+    border-bottom: solid 8px #28A6A5;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
+}
+
+/* フッター */
+footer {
+    text-align: center;
+    color: aliceblue;
+    background-color: #28A6A5;
+    padding: 60px;
 }
 
 /* ロゴ */
@@ -101,10 +113,10 @@ header {
 }
 
 .menu a {
-    text-decoration: none;
-    color: #333;
-    font-size: 1.2rem;
-    transition: color 0.3s;
+	text-decoration: none;
+	color: #fff;
+		font-size: 1.2rem;
+	transition: color 0.3s;
 }
 
 menu a:hover {
