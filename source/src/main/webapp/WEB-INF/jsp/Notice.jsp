@@ -10,7 +10,7 @@
 </head>
 
 <body>
-<header>
+<header class="header">
 <!--ここからJavascript-->
 <script>
     'use strict'
@@ -42,8 +42,8 @@ updateClock();
 </script>
     
     <!-- ロゴ -->
-    <div class="logo">
-            <img src="../img/mamorallogo.png" alt="名刺管理JOYFULL">
+    <img src="images/mamorallogo.png" alt="Mamoral" class="logo">
+
     </div>
     <!-- 時計 -->
     <div id="clock"  ></div>

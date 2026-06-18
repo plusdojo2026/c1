@@ -5,7 +5,7 @@ header {
 	position: sticky;
 	top: 0;
 	background-color: #DCD3B2;
-    border-bottom: solid 8px #28A6A5;
+	border-bottom: solid 8px #28A6A5;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -14,10 +14,10 @@ header {
 
 /* フッター */
 footer {
-    text-align: center;
-    color: aliceblue;
-    background-color: #28A6A5;
-    padding: 60px;
+	text-align: center;
+	color: aliceblue;
+	background-color: #28A6A5;
+	padding: 60px;
 }
 
 /* ロゴ */
