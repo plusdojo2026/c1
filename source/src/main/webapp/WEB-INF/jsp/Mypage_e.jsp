@@ -6,7 +6,6 @@
 		<meta charset="UTF-8">
 		<title>マイページ-従業員画面</title>
 		<link rel = "stylesheet" href = "css/Mypage_e.css">
-		<link rel = "stylesheet" href = "css/header.css">
 	</head>
 	<body>
 
@@ -14,7 +13,7 @@
 		<!-- ヘッダーはあとで統一 -->
 		<!-- ロゴ -->
 		<div class="logo">
-			<img src="images/mamorallogo.png" alt="名刺管理JOYFULL">
+			<img src="images/mamorallogo.png" alt="Mamoral" class="logo">
 		</div>
 
 		<!-- 時計 -->
@@ -34,16 +33,17 @@
 
 			<nav class="menu">
 				<ul>
-					<li><a href="#">ホーム</a></li>
-					<li><a href="#">お知らせ</a></li>
-					<li><a href="#">シフト・出退勤管理</a></li>
-					<li><a href="#">用語本棚一覧</a></li>
-					<li><a href="#">マイページ</a></li>
-					<li><a href="#">ログアウト</a></li>
+					<li><a href="/c1/HomeServlet">ホーム</a></li>
+					<li><a href="/c1/NoticeServlet">お知らせ</a></li>
+					<li><a href="/c1/ShiftServlet">シフト・出退勤管理</a></li>
+					<li><a href="/c1/BooksServlet">用語本棚一覧</a></li>
+					<li><a href="/c1/MypageServlet">マイページ</a></li>
+					<li><a href="/c1/LoginServlet">ログアウト</a></li>
 				</ul>
 			</nav>
 		</div>
 	</header>
+
 
 	<main>
 		<h1>マイページ</h1>

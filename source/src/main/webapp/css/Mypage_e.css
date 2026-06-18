@@ -1,16 +1,130 @@
 @charset "UTF-8";
 
+
+
 /* 全てに適用される設定 */
 * {
     box-sizing: border-box;
 }
 
-header {
+/* 全てのページに適用 -ヘッダー- */
+ header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
     background-color: #DCD3B2;
-    border-bottom: solid 8px #28A6A5; 
+    border-bottom: solid 8px #28A6A5;
+    color: #FFFFFF;
     position: sticky;
-    top: 0;   
+    top: 0;
 }
+
+/* ロゴ */
+.logo {
+    height: 100px;
+    width: auto;
+}
+/* 時計 */
+#clock{
+    font-size: 24px; 
+    font-weight: bold;
+}
+/* 時計終わり */
+
+/* 全てのページに適用 -メニューバー始まり- */
+.menu-wrapper {
+    position: relative;
+}
+
+.menu-icon {
+    width: 40px;
+    height: 30px;
+    position: fixed; /*←fixedにして常に右上固定 */
+    top: 50px;/* デフォルトは20px */
+    right: 20px;
+    cursor: pointer;
+    z-index: 3;
+    display: inline-blck;
+
+}
+
+.menu-icon span {
+    display: block;
+    height: 4px;
+    margin: 6px 0;
+    background: #fff;
+    border-radius: 2px;
+    transition: 0.4s;
+
+}
+
+/* ハンバーガーがXが変形 */
+#menu-tggle:checked + .menu-icon span:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+}
+#menu-toggle:checked + menu-icon span:nth-child(2) {
+    opacity: 0;
+}
+#menu-toggle:checked + menu-icon span:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+}
+
+/* オーバーレイ背景 */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.4s;
+    z-index: 1;
+}
+
+#menu-toggle:checked ~ .overlay {
+    opacity: 1;
+    pointer-events: auto;
+
+}
+/* メニュー本体 （右から出す） */
+.menu {
+    position: fixed;
+    top: 0;
+    right: -250px;
+    width: 250px;
+    height: 100%;
+    background: #DCD3B2;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.2);
+    transition: left 0.4s ease;
+    z-index: 2;
+
+}
+
+#menu-toggle:checked ~ .menu {
+    right: 0; /* 開いたときは右へ */
+}
+
+.menu ul {
+    list-style: none;
+    padding: 60px 20px;
+}
+
+.menu li {
+    margin: 20px 0;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+
+menu a:hover {
+    color: #007bff;
+}
+
+/* メニューバー終わり */
 
 /* 全てのテーブルに適用される設定 */
 table {
