@@ -5,7 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>ログイン画面</title>
-	<link rel = "stylesheet" href = "css/Login-test.css">
+	<link rel = "stylesheet" href = "css/Login.css">
 </head>
 
 <body>
@@ -15,7 +15,7 @@
 
 <main>
 <div class="container">
-		<img src = "images/title-logo.jpeg" alt="アプリのタイトルであるマモラルのロゴ画像" class="title-logo">
+		<img src = "images/mamorallogo.png" alt="アプリのタイトルであるマモラルのロゴ画像" class="title-logo">
 
 	<form method="POST" action="/c1/LoginServlet">
 		<div class="text-group">
