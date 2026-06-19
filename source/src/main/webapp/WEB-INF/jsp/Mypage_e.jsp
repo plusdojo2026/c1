@@ -38,7 +38,7 @@
 					<li><a href="/c1/ShiftServlet">シフト・出退勤管理</a></li>
 					<li><a href="/c1/BooksServlet">用語本棚一覧</a></li>
 					<li><a href="/c1/MypageServlet">マイページ</a></li>
-					<li><a href="/c1/LoginServlet">ログアウト</a></li>
+					<li><a href="/c1/LogoutServlet">ログアウト</a></li>
 				</ul>
 			</nav>
 		</div>
