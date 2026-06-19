@@ -60,4 +60,42 @@ public class UserDao {
 			// 結果を返す
 			return loginResult;
 		}
+		public User findByLogin(String userId, String password) { 
+		    Connection conn = null;
+		    User user = null;
+
+		    try {
+		        Class.forName("com.mysql.cj.jdbc.Driver");
+
+		        conn = DriverManager.getConnection(
+		            "jdbc:mysql://localhost:3306/mamoral?"
+		            + "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9",
+		            "root", "password");
+
+		        String sql = "SELECT user_id, user_name, authority FROM user WHERE user_id=? AND password=?";
+		        PreparedStatement pStmt = conn.prepareStatement(sql);
+		        pStmt.setString(1, userId);
+		        pStmt.setString(2, password);
+
+		        ResultSet rs = pStmt.executeQuery();
+		        
+		        if (rs.next()) {
+		            user = new User(
+		                rs.getString("user_id"),
+		                rs.getString("user_name"),
+		                null,         
+		                rs.getInt("authority")  
+		            );
+		        }
+		     // データベースを切断
+		    } catch (Exception e) {
+		        e.printStackTrace();
+		    } finally {
+		        try { if (conn != null)
+		        	conn.close(); } 
+		        catch (SQLException e) {}
+		    }
+		 // 結果を返す
+		    return user;
+		}   
 }
