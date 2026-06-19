@@ -5,7 +5,8 @@ import java.io.Serializable;
 public class Suggestion implements Serializable {
 		/*フィールド*/
 		private int id; 
-		private String user_id;		
+		private String user_id;	
+		private String suggestion_date;
 		private String suggestion;		
 		
 		/*コンストラクタ*/
@@ -13,13 +14,15 @@ public class Suggestion implements Serializable {
 			super();
 			this.id = 0;
 			this.user_id = "";
+			this.suggestion_date = "";
 			this.suggestion = "";
 		}
 		
-		public Suggestion(int id, String user_id, String suggestion) {
+		public Suggestion(int id, String user_id, String suggestion_date, String suggestion) {
 			super();
 			this.id = id;
 			this.user_id = user_id;
+			this.suggestion_date = suggestion_date;
 			this.suggestion = suggestion;
 		}
 
@@ -38,7 +41,15 @@ public class Suggestion implements Serializable {
 		public void setUser_id(String user_id) {
 			this.user_id = user_id;
 		}
+		
+		public String getSuggestion_date() {
+			return suggestion_date;
+		}
 
+		public void setSuddestion_date(String suggestion_date) {
+			this.suggestion_date = suggestion_date;
+		}
+		
 		public String getSuggestion() {
 			return suggestion;
 		}
