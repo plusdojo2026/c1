@@ -35,8 +35,8 @@ public class NoticeServlet extends HttpServlet {
 		}
 	*/
 
-		// 検索ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Notice.jsp");
+		// 登録ページにフォワードする
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/NoticeRegist.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -58,13 +58,13 @@ public class NoticeServlet extends HttpServlet {
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 		String user_id  = request.getParameter("user_id");
-		String RegistTitle = request.getParameter("registTitle");
+		String registTitle = request.getParameter("registTitle");
 		String date = request.getParameter("date");
 		String registText = request.getParameter("registText");
 
 		// 検索処理を行う
 		NoticeDao bDao = new NoticeDao();
-		List<Notice> cardList = bDao.select(new Notice(0, user_id,registTitle,date,registText);
+		List<Notice> cardList = bDao.select(new Notice(0, user_id,registTitle,date,registText));
 
 		// 検索結果をリクエストスコープに格納する
 		request.setAttribute("cardList", cardList);

@@ -2,7 +2,6 @@ package servlet;
 
 import java.io.IOException;
 
-import javax.naming.spi.DirStateFactory.Result;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,47 +27,47 @@ public class NoticeRegistServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-		HttpSession session = request.getSession();
+		/*HttpSession session = request.getSession();
 		if (session.getAttribute("id") == null) {
 			response.sendRedirect("/webapp/NoticeServlet");
 			return;
-		}
+		}*/
 
 		// 登録ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Noticeegist.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/NoticeRegist.jsp");
 		dispatcher.forward(request, response);
 	}
-
+	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
 		if (session.getAttribute("id") == null) {
-			response.sendRedirect("/webapp/LoginServlet");
+			response.sendRedirect("/java/LoginServlet");
 			return;
 		}
-
 		// リクエストパラメータを取得する
-		request.setCharacterEncoding("UTF-8");
-		String user_id  = request.getParameter("user_id");
-		String text = request.getParameter("registTitle");
-		String date = request.getParameter("date");
-		String registText = request.getParameter("registText");
+				request.setCharacterEncoding("UTF-8");
+				String user_id  = request.getParameter("user_id");
+				String registTitle = request.getParameter("registTitle");
+				String date = request.getParameter("date");
+				String registText = request.getParameter("registText");
+		
+				// 登録処理を行う
+				NoticeDao bDao = new NoticeDao();
+				if (bDao.insert(new Notice(0, user_id,registTitle,date,registText))) { // 登録成功
+					request.setAttribute("result", new Notice("登録成功！", "レコードを登録しました。", "/c1/NoticeServlet"));
+				} else { // 登録失敗
+					request.setAttribute("result", new Notice("登録失敗！", "レコードを登録できませんでした。", "/c1/NoticeServlet"));
+				}
 
-		// 登録処理を行う
-		NoticeDao bDao = new NoticeDao();
-		if (bDao.insert(new Notice(user_id,registTitle,date,registText))) { // 登録成功
-			request.setAttribute("result", new Result("登録成功！", "レコードを登録しました。", "/c1/NoticeServlet"));
-		} else { // 登録失敗
-			request.setAttribute("result", new Result("登録失敗！", "レコードを登録できませんでした。", "/c1/NoticeServlet"));
+				// 結果ページにフォワードする
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/NoticeRegist.jsp");
+				dispatcher.forward(request, response);
+			}
 		}
-
-		// 結果ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
-		dispatcher.forward(request, response);
-	}
-}
