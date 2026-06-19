@@ -38,7 +38,7 @@
 					<li><a href="/c1/ShiftServlet">シフト・出退勤管理</a></li>
 					<li><a href="/c1/BooksServlet">用語本棚一覧</a></li>
 					<li><a href="/c1/MypageServlet">マイページ</a></li>
-					<li><a href="/c1/LoginServlet">ログアウト</a></li>
+					<li><a href="/c1/LogoutServlet">ログアウト</a></li>
 				</ul>
 			</nav>
 		</div>
@@ -65,7 +65,6 @@
 		</form>
 
 		<p>
-			<c:forEach var="e" items="${cardList}" >
 			<form method="POST" action="/c1/Mypage_m.Servlet" onsubmit="confirmSubmit(event)">
 				<div class="add-group">
 					<h2>新規従業員登録</h2>
@@ -86,7 +85,6 @@
 					<p><input type="submit" name="add" value="追加する" class="add-button"></p>
 				</div>
 			</form>
-			</c:forEach>
 		</p>
 
 		<h1>ご意見箱一覧</h1>
@@ -95,7 +93,7 @@
 				<div class="text-title">名前</div>
 				<input type="text" name="name" value = "${e.name}" class = "name-box" ><br>
 				<div class="text-title">内容</div>
-				<textarea name="suggestion" value = "${e.suggestion}" class = "text-box" ></textarea><br>
+				<textarea name="suggestion" class = "text-box" > ${e.suggestion}</textarea><br>
 			</div>
 		</div>	
 	</main>
