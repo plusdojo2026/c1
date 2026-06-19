@@ -72,7 +72,7 @@ public class UserDao {
 		            + "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9",
 		            "root", "password");
 
-		        String sql = "SELECT user_id, user_name, authority FROM user WHERE user_id=? AND password=?";
+		        String sql = "SELECT user_id, user_name, authority_id FROM user WHERE user_id=? AND password=?";
 		        PreparedStatement pStmt = conn.prepareStatement(sql);
 		        pStmt.setString(1, userId);
 		        pStmt.setString(2, password);
@@ -84,7 +84,7 @@ public class UserDao {
 		                rs.getString("user_id"),
 		                rs.getString("user_name"),
 		                null,         
-		                rs.getInt("authority")  
+		                rs.getInt("authority_id")  
 		            );
 		        }
 		     // データベースを切断

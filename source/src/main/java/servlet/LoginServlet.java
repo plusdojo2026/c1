@@ -51,11 +51,12 @@ public class LoginServlet extends HttpServlet {
 		// ログイン処理を行う
 		UserDao iDao = new UserDao();
 		if (iDao.isLoginOK(new User(user_id, "", password, 0))) { // ログイン成功
-			
+			User user = iDao.findByLogin(user_id, password);
 			// セッションスコープにIDを格納する
 			HttpSession session = request.getSession();
 			session.setAttribute("user_id", new LoginUser(user_id));
-
+			session.setAttribute("user_name", user.getUserName());
+		    session.setAttribute("authority_id", user.getAuthorityId());
 			// ホームサーブレットにリダイレクトする
 			response.sendRedirect("/c1/HomeServlet");
 		} else { // ログイン失敗

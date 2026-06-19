@@ -25,15 +25,15 @@ public class ShiftServlet extends HttpServlet {
         }
 
         
-        int authority = (int) session.getAttribute("authority");
+        int authority = (int) session.getAttribute("authority_id");
 
        
         if (authority == 1) {
             // 店長
-            request.getRequestDispatcher("Shift_m.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/jsp/Shift_m.jsp").forward(request, response);
         } else if (authority == 2) {
             // 従業員
-            request.getRequestDispatcher("Shift_e.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/jsp/Shift_e.jsp").forward(request, response);
         } 
     }
 }
