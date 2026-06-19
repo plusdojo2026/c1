@@ -1,13 +1,17 @@
-/* ヘッダー */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
+    background-color: #DCD3B2;
+    border-bottom: solid 8px #28A6A5;
+    color: #FFFFFF;
+    position: sticky;
+    top: 0;
 }
 
 /* ロゴ */
-.logo img {
+.logo {
     height: 100px;
     width: auto;
 }
@@ -17,16 +21,17 @@ header {
     font-weight: bold;
 }
 /* 時計終わり */
+
 /* 全てのページに適用 -メニューバー始まり- */
 .menu-wrapper {
     position: relative;
 }
 
 .menu-icon {
-    width: 50px;
-    height: 60px;
-    position: fixed; /* ←fixedにして常に左上固定 */
-    top: 20px;
+    width: 40px;
+    height: 30px;
+    position: fixed; /*←fixedにして常に右上固定 */
+    top: 50px;/* デフォルトは20px */
     right: 20px;
     cursor: pointer;
     z-index: 3;
@@ -38,7 +43,7 @@ header {
     display: block;
     height: 4px;
     margin: 6px 0;
-    background: #333;
+    background: #fff;
     border-radius: 2px;
     transition: 0.4s;
 
@@ -71,14 +76,14 @@ header {
     pointer-events: auto;
 
 }
-/* メニュー本体 （左から出す） */
+/* メニュー本体 （右から出す） */
 .menu {
     position: fixed;
     top: 0;
     right: -250px;
     width: 250px;
     height: 100%;
-    background: #fff;
+    background: #DCD3B2;
     box-shadow: 2px 0 8px rgba(0,0,0,0.2);
     transition: left 0.4s ease;
     z-index: 2;
@@ -99,14 +104,14 @@ header {
 }
 
 .menu a {
-    text-decoration: none;
-    color: #fff;
-    font-size: 1.2rem;
-    transition: color 0.3s;
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.2rem;
+    transition: color 0.3s;
 }
 
 menu a:hover {
-    color: #007BFF;
+    color: #007bff;
 }
 
 /* メニューバー終わり */

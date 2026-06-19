@@ -32,6 +32,7 @@ public class NoticeDao {
 					+ "registTitle LIKE ? AND "
 					+ "date LIKE ? AND "
 					+ "registText LIKE ? AND "
+					+ "datepicker LIKE ? AND "
 					+ "ORDER BY id";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
@@ -88,7 +89,7 @@ public class NoticeDao {
 					"root", "Kensyuu8610");
 
 			// SQL文を準備する
-			String sql = "INSERT INTO Bc VALUES (0, ?,?,?,?,?,?,?,?)";
+			String sql = "INSERT INTO Bc VALUES (0, ?,?,?,?,?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -102,13 +103,13 @@ public class NoticeDao {
 			} else {
 				pStmt.setString(2, "");
 			}
-			if (card.getregistTitle() != null) {
-				pStmt.setString(3, card.getregistTitle());
+			if (card.getRegistTitle() != null) {
+				pStmt.setString(3, card.getRegistTitle());
 			} else {
 				pStmt.setString(3, "");
 			}
-			if (card.getdate() != null) {
-				pStmt.setString(4, card.getdate());
+			if (card.getDate() != null) {
+				pStmt.setString(4, card.getDate());
 			} else {
 				pStmt.setString(4, "");
 			}
@@ -169,13 +170,13 @@ public class NoticeDao {
 			} else {
 				pStmt.setString(1, "");
 			}
-			if (card.getregistTitle() != null) {
-				pStmt.setString(2, card.getregistTitle());
+			if (card.getRegistTitle() != null) {
+				pStmt.setString(2, card.getRegistTitle());
 			} else {
 				pStmt.setString(2, "");
 			}
-			if (card.getdate() != null) {
-				pStmt.setString(3, card.getdate());
+			if (card.getDate() != null) {
+				pStmt.setString(3, card.getDate());
 			} else {
 				pStmt.setString(3, "");
 			}

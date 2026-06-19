@@ -53,7 +53,7 @@
 				<table class="change-table">
 					<tr>
 						<th>現在使用しているパスワード</th>
-						<td><input type="text" name="nowPassword" class="text-box"></td>
+						<td><input type="text" name="password" class="text-box"></td>
 					</tr>
 					<tr>
 						<th>新たに変更するパスワード</th>

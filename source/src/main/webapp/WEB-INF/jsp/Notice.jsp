@@ -90,15 +90,34 @@
 </footer>
 
 <script>
-window.onload = function() {
-const today = new Date();
-const yyyy = today.getFullYear();
-const mm = String(today.getMonth() + 1).padStart(2, '0');
-const dd = String(today.getDate()).padStart(2, '0');
-const formattedDate = `${yyyy}-${mm}-${dd}`;
-document.getElementById("datepicker").value = formattedDate;
-};
-</script>
+        'use strict'
+        function updateClock() {
+        const now = new Date();
+
+        const year = now.getFullYear();
+        const month = now.getMonth() + 1; // 0始まりなので+1
+        const date = now.getDate();
+
+        const week = ["日", "月", "火", "水", "木", "金", "土"];
+        const day = week[now.getDay()];
+
+        const h = String(now.getHours()).padStart(2, '0');
+        const m = String(now.getMinutes()).padStart(2, '0');
+        const s = String(now.getSeconds()).padStart(2, '0');
+
+        document.getElementById("clock").textContent =
+            <!-- `${month}月${date}日(${day}) ${h}:${m}:${s}`; -->
+            month + "月" +
+            date + "日(" +
+            day + ") " +
+            h + ":" +
+            m + ":" +
+            s;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
 
  <script>
 document.getElementById("checkBtn").addEventListener("click", function() {

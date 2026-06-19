@@ -5,23 +5,21 @@
 <head>
 <meta charset="UTF-8">
 <title>シフト管理</title>
-<link rel="stylesheet" href="css/shift.css">
+<link rel="stylesheet" href="css/Shift.css">
 <link rel="stylesheet" href="css/header.css">
 </head>
 <body>
-<header>
-    <!-- ヘッダーはあとで統一 -->
-     <!-- ロゴ -->
-    <div class="logo">
-            <img src="img/mamorallogo.png" alt="名刺管理JOYFULL">
-    </div>
-    <!-- 時計 -->
-    <div id="clock"  ></div>
-    <!-- メニューバーの設置 -->
+   <!-- ヘッダー -->
+    <header class="header">
+        <!-- ロゴ -->
+        <img src="images/mamorallogo.png" alt="Mamoral" class="logo">
+        <!-- 時計 -->
+        <div id="clock"  ></div>
+        <!-- メニューバーの設置 -->
         <div class="menu-wrapper">
-            <input type="checkbox" id="menu-toggle" hidden>
+                <input type="checkbox" id="menu-toggle" hidden>
 
-                <label class="menu-icon" for="menu-toggle">
+            <label class="menu-icon" for="menu-toggle">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -31,17 +29,18 @@
 
             <nav class="menu">
                 <ul>
-                    <li><a href="#">ホーム</a></li>
-                    <li><a href="#">お知らせ</a></li>
-                    <li><a href="#">シフト・出退勤管理</a></li>
-                    <li><a href="#">用語本棚一覧</a></li>
-                    <li><a href="#">マイページ</a></li>
-                    <li><a href="#">ログアウト</a></li>
+                    <li><a href="/c1/HomeServlet">ホーム</a></li>
+                    <li><a href="/c1/NoticeServlet">お知らせ</a></li>
+                    <li><a href="/c1/ShiftServlet">シフト・出退勤管理</a></li>
+                    <li><a href="/c1/BooksServlet">用語本棚一覧</a></li>
+                    <li><a href="/c1/MypageServlet">マイページ</a></li>
+                    <li><a href="/c1/LogoutServlet">ログアウト</a></li>
                 </ul>
             </nav>
         </div>
+    </header>
+    <!-- ヘッダーここまで -->
 
-</header>
 <div class="background"><!-- 背景を表示する範囲の div -->
 <h1 class="hero">シフト・出退勤管理一覧(店長)</h1>
 <main>
@@ -121,7 +120,13 @@ function updateClock() {
     const s = String(now.getSeconds()).padStart(2, '0');
 
     document.getElementById("clock").textContent =
-        `${month}月${date}日(${day}) ${h}:${m}:${s}`;
+    	<!-- `${month}月${date}日(${day}) ${h}:${m}:${s}`; -->
+        month + "月" +
+        date + "日(" +
+        day + ") " +
+        h + ":" +
+        m + ":" +
+        s;
 }
 
 setInterval(updateClock, 1000);
