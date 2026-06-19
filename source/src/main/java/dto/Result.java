@@ -2,7 +2,7 @@ package dto;
 
 import java.io.Serializable;
 
-public class BooksResult implements Serializable {
+public class Result implements Serializable {
 	private String title; // タイトル
 	private String message; // メッセージ
 	private String backTo; // 戻り先
@@ -31,11 +31,11 @@ public class BooksResult implements Serializable {
 		this.backTo = backTo;
 	}
 
-	public BooksResult() {
+	public Result() {
 		this(null, null, null);
 	}
 
-	public BooksResult(String title, String message, String backTo) {
+	public Result(String title, String message, String backTo) {
 		this.title = title;
 		this.message = message;
 		this.backTo = backTo;

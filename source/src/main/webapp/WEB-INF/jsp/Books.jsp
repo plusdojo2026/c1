@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,7 +32,7 @@
                 <ul>
                     <li><a href="/c1/HomeServlet">ホーム</a></li>
                     <li><a href="/c1/NoticeServlet">お知らせ</a></li>
-                    <li><a href="/c1/BooksServlet">シフト・出退勤管理</a></li>
+                    <li><a href="/c1/ShiftServlet">シフト・出退勤管理</a></li>
                     <li><a href="/c1/BooksServlet">用語本棚一覧</a></li>
                     <li><a href="/c1/MypageServlet">マイページ</a></li>
                     <li><a href="/c1/LoginServlet">ログアウト</a></li>
@@ -42,14 +43,13 @@
     <!-- ヘッダーここまで -->
     <h1 class="heading-6">用語本棚</h1>
     <!-- メイン -->
-    <main>
-        <!-- 絞り込み検索 -->
+        <main>
         <details class="accordion-008"><!--折り畳み機能-->
             <summary>絞り込み検索/並び替え</summary><!--折り畳み状態タイトル-->
-            <form action="/c1/BooksServlet"><!--検索ボックス-->
-                <table>
-                    <tr>
-                        <td>
+<form method="POST" action="/c1/BooksServlet"  id="searchform">
+       <table>
+            <tr>
+                                    <td>
                             <!--カテゴリープルダウン選択-->
                             <select name="category">
                                 <option hidden>カテゴリー選択</option>
@@ -74,339 +74,145 @@
                                 <option value="dateDown">日付降順</option>
                             </select>
                         </td>
-                        <td>
-                            <input type="text" name="teacher" placeholder="登録者">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="text" name="title" placeholder="タイトル検索">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="text" name="manual" placeholder="キーワード検索">
-                        </td>
-                        <td>
-                            <input type="submit" name="submit" value="実行">
-                        </td>
-                    </tr>
-                </table>
-            </form>
-        </details>
-
-        <input type="submit" name="submit" value="デフォルト表示の並び替え">
-
-        <!--用語一覧-->
-        <div>
-            <form>
+                <td>
+                     <input type="text" name="company"  placeholder="会社">
+                </td>
+                <td>
+                     <input type="text" name="address"  placeholder="住所">
+                </td>
+            </tr>
             <tr>
                 <td>
-                    <h2>　マニュアル <button type="button" class="gazo" onclick="document.getElementById('realIn_modal').showModal()"><span>＋</span></button><!-- 新規登録ボタン --></h2>
-
-
+                     <input type="text" name="remarks"  placeholder="備考"></p>
+                </td>
+            <tr>
+                <td>
+                 <input type="submit" id="search" name="submit" value="実行">
+                </td>
+            </tr>
+        </table>
+</form>
+        </details>
+        
+        <div>
+          <h2>　用語 <button type="button" class="gazo" onclick="document.getElementById('realIn_modal').showModal()"><span>＋</span></button><!-- 新規登録ボタン --></h2>
+                    
                     <!-- 新規登録モーダル -->
-                        <dialog id="realIn_modal">
-                            <form method="POST"  action="/c1/BooksRegistServlet">
-                            	<input  type="hidden" name="id" readonly="readonly" style="background-color: lightgray" ><br>
-                                <input type="text" name="title" placeholder="タイトル"><br>
-                                <textarea name="maintaxt" placeholder="本文"></textarea><br>
-                                    <div class="button">
-                            <!-- close()でモーダルを閉じる -->
-                                <button type="button" onclick="document.getElementById('realIn_modal').close()">キャンセル</button>
-                                <input id="add1" type="submit" name="submit" value="登録" >
-                            </form>
-                        </div>
-                        </dialog>
+                            <dialog id="realIn_modal">
+                    <form onsubmit="return checkregist()" method="POST" action="/c1/BooksRegistServlet" id="registform">
+<table>
+<tr>
+<td>
+<input  type="hidden" name="id" readonly="readonly" style="background-color: lightgray" ><br>
+</td>
+</tr>
+<tr>
+<td>
+                     <input  type="text" name="company" placeholder="会社" >
+</td>
+</tr>
+<tr>
+<td>
+                     <textarea name="remarks" placeholder="備考"></textarea>
+</td>
+</tr>
+<tr>
+<td>
+                     <div class="button">
+                     <!-- close()でモーダルを閉じる -->
+						<button type="button" onclick="document.getElementById('realIn_modal').close()">キャンセル</button>
+                 		<input  type="submit"name="submit" value="登録">
+</td>
+</tr>
+                 		</table>
+                 		</form>
+                 		</dialog></div>
+
+<c:forEach var="e" items="${cardList}">
+<form>
                 <div class="container">
                     <div id="dropzone1" class="dropzone">
                         <div id="item1" class="draggable" draggable="true">
+<form>
             <details class="accordion-005"><!--折り畳み機能-->
                 <summary><!--折り畳み状態タイトル-->
-                    <tr>
-                        <td>
-                            <c:out value="${cardList.title}" />
-                        </td>
-                        <td>
-                            日付
-                        </td>
-                        <td>
-                            登録者名
-                        </td>
-                    </tr>
-                </summary>
-                <p>本文1</p>
-                    <tr>
-                        <td>
-                            最終更新日
-                        </td>
-                        <td>
-                            最終更新者
-                        </td>
-                    </tr>
-                        <button type="button" class="buttonIn" onclick="document.getElementById('realIn_modal2').showModal()">編集</button><!-- 編集ボタン -->
-	                    <input id="delete1" type="submit" name="delete" value="削除">
+	<form>
+	<form>
+<tr>
+  <td>
+	${e.title} 
+</td>
+<td>
+	/ 登録日：${e.date} 
+</td>
+<td>
+	/ 登録者：${e.teacher}
+</td>
+</tr>
+	</form>
+</summary>
+	<form onsubmit="return checkdelete()" id="resultform" class="search_result" method="POST" action="/c1/BooksUpdateDeleteServlet">
+<tr>
+<td>
+${e.manual}<br><br>
+                        <input type="hidden" name="id" value="${e.id}">
+                        <input type="hidden" name="user_id" value="${e.user_id}">
+                        <input type="hidden" name="date" value="${e.date}">
+						<input type="hidden" name="category_id" value="${e.category_id}">
+						<input type="hidden" name="title" value="${e.title}">
+						<input type="hidden" name="teacher" value="${e.teacher}">
+						<input type="hidden" name="manual" value="${e.manual}">
+						<input type="hidden" name="update_name" value="${e.update_name}">
+						<input type="hidden" name="update_date" value="${e.update_Date}">
+</td>
+</tr>
+<tr>
+<td>
+	最終更新日：${e.update_date}<br>
+</td>
+</tr>
+<tr>
+<td>
+	最終更新者：${e.update_name}<br>
+</td>
+</tr>
+<tr>
+<td>
+	<button type="button" class="buttonIn" onclick="document.getElementById('realIn_modal2${e.id}').showModal()">編集</button><!-- 編集ボタン -->
+	<input class="delete1" type="submit" name="submit" value="削除">
+</td>
+</tr>
+</form>
 
                     <!-- 編集モーダル -->
-                        <dialog id="realIn_modal2">
-                            <form onsubmit="return checkdelete()" method="POST" action="/c1/BooksUpdateDeleteServlet">
-                                <input type="text" name="title" value="タイトル"><br>
-                                <textarea name="maintaxt">本文</textarea><br>
-                                    <div class="button">
-                            <!-- close()でモーダルを閉じる -->
-                                <button type="button" onclick="document.getElementById('realIn_modal2').close()">キャンセル</button>
-                                <input id="update1" type="submit" name="submit" value="更新" >
-                            </form>
+                        <dialog id="realIn_modal2${e.id}">
+                        <form  onsubmit="return checkupdate()" id="resultform" class="search_result" method="POST" action="/c1/BooksUpdateDeleteServlet">
+                        <input type="text" name="title" value="${e.title}"><br>
+                        
+						<input type="hidden" name="id" value="${e.id}">
+                        <input type="hidden" name="user_id" value="${e.user_id}">
+                        <input type="hidden" name="date" value="${e.date}">
+						<input type="hidden" name="category_id" value="${e.category_id}">
+						<input type="hidden" name="teacher" value="${e.teacher}">
+						<input type="hidden" name="update_name" value="${e.update_name}">
+						<input type="hidden" name="update_date" value="${e.update_Date}">
+						
+                        <textarea name="manual">${e.manual}</textarea><br>
+                        <div class="button">
+                        <!-- close()でモーダルを閉じる -->
+                        <button type="button" onclick="document.getElementById('realIn_modal2${e.id}').close()">キャンセル</button>
+                        <input class="update1" type="submit" name="submit" value="更新" >
                         </div>
-                        </dialog>
-            </details></div>
+                        </form>
+                               </dialog>
+</details></div></div></div></form></c:forEach>
 
-                        <div id="item2" class="draggable" draggable="true">
-            <details class="accordion-005"><!--折り畳み機能-->
-                <summary><!--折り畳み状態タイトル-->
-                    <tr>
-                        <td>
-                            タイトル2
-                        </td>
-                        <td>
-                            日付
-                        </td>
-                        <td>
-                            登録者名
-                        </td>
-                    </tr>
-                    </table> 
-                </summary>
-                <p>本文2</p>
-                    <tr>
-                        <td>
-                            最終更新日
-                        </td>
-                        <td>
-                            最終更新者
-                        </td>
-                    </tr>
-                        <button type="button" class="buttonIn" onclick="document.getElementById('realIn_modal3').showModal()">編集</button><!-- 編集ボタン -->
-	                    <input id="delete2" type="submit" name="delete" value="削除">
-
-                    <!-- 編集モーダル -->
-                        <dialog id="realIn_modal3">
-                            <form onsubmit="return checkdelete()" method="POST" action="/c1/BooksUpdateDeleteServlet">
-                                <input type="text" name="title" value="タイトル"><br>
-                                <textarea name="maintaxt">本文</textarea><br>
-                                    <div class="button">
-                            <!-- close()でモーダルを閉じる -->
-                                <button type="button" onclick="document.getElementById('realIn_modal3').close()">キャンセル</button>
-                                <input id="update2" type="submit" name="submit" value="更新" >
-                            </form>
-                        </div>
-                        </dialog>
-            </details>
-        </div></div></div>
-
-        <div>
-            <h2>　用語 <button type="button" class="gazo" onclick="document.getElementById('realIn_modal').showModal()"><span>＋</span></button><!-- 新規登録ボタン --></h2>
-
-                    <!-- 新規登録モーダル -->
-                        <dialog id="realIn_modal4">
-                            <form method="POST" action="/c1/BooksRegistServlet">
-                            	<input  type="hidden" name="id" readonly="readonly" style="background-color: lightgray" ><br>
-                                <input type="text" name="title" placeholder="タイトル"><br>
-                                <textarea name="maintaxt" placeholder="本文"></textarea><br>
-                                    <div class="button">
-                            <!-- close()でモーダルを閉じる -->
-                                <button type="button" onclick="document.getElementById('realIn_modal4').close()">キャンセル</button>
-                                <input id="add2" type="submit" name="submit" value="登録" >
-                            </form>
-                        </div>
-                        </dialog>
-            <details class="accordion-005"><!--折り畳み機能-->
-                <summary><!--折り畳み状態タイトル-->
-                    <tr>
-                        <td>
-                            タイトル1
-                        </td>
-                        <td>
-                            日付
-                        </td>
-                        <td>
-                            登録者名
-                        </td>
-                    </tr>
-                    </table> 
-                </summary>
-                <p>本文1</p>
-                    <tr>
-                        <td>
-                            最終更新日
-                        </td>
-                        <td>
-                            最終更新者
-                        </td>
-                    </tr>
-                        <button type="button" class="buttonIn" onclick="document.getElementById('realIn_modal5').showModal()">編集</button><!-- 編集ボタン -->
-	                    <input id="delete3" type="submit" name="delete" value="削除">
-
-                    <!-- 編集モーダル -->
-                        <dialog id="realIn_modal5">
-                            <form onsubmit="return checkdelete()" method="POST" action="/c1/BooksUpdateDeleteServlet">
-                                <input type="text" name="title" value="タイトル"><br>
-                                <textarea name="maintaxt">本文</textarea><br>
-                                    <div class="button">
-                            <!-- close()でモーダルを閉じる -->
-                                <button type="button" onclick="document.getElementById('realIn_modal5').close()">キャンセル</button>
-                                <input id="update3" type="submit" name="submit" value="更新" >
-                            </form>
-                        </div>
-                        </dialog>
-            </details>
-
-            <details class="accordion-005"><!--折り畳み機能-->
-                <summary><!--折り畳み状態タイトル-->
-                    <tr>
-                        <td>
-                            タイトル2
-                        </td>
-                        <td>
-                            日付
-                        </td>
-                        <td>
-                            登録者名
-                        </td>
-                    </tr>
-                    </table> 
-                </summary>
-                <p>本文2</p>
-                    <tr>
-                        <td>
-                            最終更新日
-                        </td>
-                        <td>
-                            最終更新者
-                        </td>
-                    </tr>
-                        <button type="button" class="buttonIn" onclick="document.getElementById('realIn_modal6').showModal()">編集</button><!-- 編集ボタン -->
-	                    <input id="delete4" type="submit" name="delete" value="削除">
-
-                    <!-- 編集モーダル -->
-                        <dialog id="realIn_modal6">
-                            <form onsubmit="return checkdelete()" method="POST" action="/c1/BooksUpdateDeleteServlet">
-                                <input type="text" name="title" value="タイトル"><br>
-                                <textarea name="maintaxt">本文</textarea><br>
-                                    <div class="button">
-                            <!-- close()でモーダルを閉じる -->
-                                <button type="button" onclick="document.getElementById('realIn_modal6').close()">キャンセル</button>
-                                <input id="update4" type="submit" name="submit" value="更新" >
-                            </form>
-                        </div>
-                        </dialog>
-            </details>
-        </div>
-
-        <div>
-            <h2>　その他 
-                <button type="button" class="gazo" onclick="document.getElementById('realIn_modal').showModal()"><span>＋</span>
-                </button><!-- 新規登録ボタン --></h2>
-
-                    <!-- 新規登録モーダル -->
-                        <dialog id="realIn_modal7">
-                            <form method="POST" action="/c1/BooksRegistServlet">
-                            	<input  type="hidden" name="id" readonly="readonly" style="background-color: lightgray" ><br>
-                                <input type="text" name="title" placeholder="タイトル"><br>
-                                <textarea name="maintaxt" placeholder="本文"></textarea><br>
-                                    <div class="button">
-                            <!-- close()でモーダルを閉じる -->
-                                <button type="button" onclick="document.getElementById('realIn_modal7').close()">キャンセル</button>
-                                <input id="add3" type="submit" name="submit" value="登録" >
-                            </form>
-                        </div>
-                        </dialog>
-            <details class="accordion-005"><!--折り畳み機能-->
-                <summary><!--折り畳み状態タイトル-->
-                    <tr>
-                        <td>
-                            タイトル1
-                        </td>
-                        <td>
-                            日付
-                        </td>
-                        <td>
-                            登録者名
-                        </td>
-                    </tr>
-                    </table> 
-                </summary>
-                <p>本文1</p>
-                    <tr>
-                        <td>
-                            最終更新日
-                        </td>
-                        <td>
-                            最終更新者
-                        </td>
-                    </tr>
-                        <button type="button" class="buttonIn" onclick="document.getElementById('realIn_modal8').showModal()">編集</button><!-- 編集ボタン -->
-	                    <input id="delete5" type="submit" name="delete" value="削除">
-
-                    <!-- 編集モーダル -->
-                        <dialog id="realIn_modal8">
-                            <form onsubmit="return checkdelete()" method="POST" action="/c1/BooksUpdateDeleteServlet">
-                                <input type="text" name="title" value="タイトル"><br>
-                                <textarea name="maintaxt">本文</textarea><br>
-                                    <div class="button">
-                            <!-- close()でモーダルを閉じる -->
-                                <button type="button" onclick="document.getElementById('realIn_modal8').close()">キャンセル</button>
-                                <input id="update5" type="submit" name="submit" value="更新" >
-                            </form>
-                        </div>
-                        </dialog>
-            </details>
-
-            <details class="accordion-005"><!--折り畳み機能-->
-                <summary><!--折り畳み状態タイトル-->
-                    <tr>
-                        <td>
-                            タイトル2
-                        </td>
-                        <td>
-                            日付
-                        </td>
-                        <td>
-                            登録者名
-                        </td>
-                    </tr>
-                    </table> 
-                </summary>
-                <p>本文2</p>
-                    <tr>
-                        <td>
-                            最終更新日
-                        </td>
-                        <td>
-                            最終更新者
-                        </td>
-                    </tr>
-                        <button type="button" class="buttonIn" onclick="document.getElementById('realIn_modal9').showModal()">編集</button><!-- 編集ボタン -->
-	                    <input id="delete6" type="submit" name="delete" value="削除">
-
-                    <!-- 編集モーダル -->
-                        <dialog id="realIn_modal9">
-                            <form onsubmit="return checkdelete()" method="POST" action="/c1/BooksUpdateDeleteServlet">
-                                <input type="text" name="title" value="タイトル"><br>
-                                <textarea name="maintaxt">本文</textarea><br>
-                                    <div class="button">
-                            <!-- close()でモーダルを閉じる -->
-                                <button type="button" onclick="document.getElementById('realIn_modal9').close()">キャンセル</button>
-                                <input id="update6" type="submit" name="submit" value="更新" >
-                            </form>
-                        </div>
-                        </dialog>
-            </details>
-        </div>
-        
-
-    </main>
-    <!-- メインここまで -->
+<c:if test="${empty cardList}">
+<p>指定された条件に一致するデータはありません。</p>
+</c:if>
+</main>
+    <!--メインここまで-->
+    <!--フッター-->
     <!-- フッター -->
     <footer>
         <div class="gotop">
@@ -419,69 +225,6 @@
     'use strict';
 <!--並び替え-->
 const draggables = document.querySelectorAll(".draggable"); const dropzones = document.querySelectorAll(".dropzone"); draggables.forEach(item => { item.addEventListener("dragstart", (e) => { e.dataTransfer.setData("text/plain", e.target.id); item.classList.add("dragging"); }); item.addEventListener("dragend", () => { item.classList.remove("dragging"); }); }); dropzones.forEach(zone => { zone.addEventListener("dragover", (e) => { e.preventDefault(); }); zone.addEventListener("drop", (e) => { e.preventDefault(); const data = e.dataTransfer.getData("text/plain"); const draggedEl = document.getElementById(data); zone.appendChild(draggedEl); }); }); 
-
-<!--登録ホップアップ-->
-document.getElementById("add1").addEventListener("click", function() {
- confirm("登録してよろしいですか？");
-});
-
-document.getElementById("add2").addEventListener("click", function() {
- confirm("登録してよろしいですか？");
-});
-
-document.getElementById("add3").addEventListener("click", function() {
- confirm("登録してよろしいですか？");
-});
-
-<!--更新ホップアップ-->
-document.getElementById("update1").addEventListener("click", function() {
- confirm("更新してよろしいですか？");
-});
-
-document.getElementById("update2").addEventListener("click", function() {
- confirm("更新してよろしいですか？");
-});
-
-document.getElementById("update3").addEventListener("click", function() {
- confirm("更新してよろしいですか？");
-});
-
-document.getElementById("update4").addEventListener("click", function() {
- confirm("更新してよろしいですか？");
-});
-
-document.getElementById("update5").addEventListener("click", function() {
- confirm("更新してよろしいですか？");
-});
-
-document.getElementById("update6").addEventListener("click", function() {
- confirm("更新してよろしいですか？");
-});
-
-<!--削除ホップアップ-->
-document.getElementById("delete1").addEventListener("click", function() {
- confirm("削除してよろしいですか？");
-});
-
-document.getElementById("delete2").addEventListener("click", function() {
- confirm("削除してよろしいですか？");
-});
-
-document.getElementById("delete3").addEventListener("click", function() {
- confirm("削除してよろしいですか？");
-});
-
-document.getElementById("delete4").addEventListener("click", function() {
- confirm("削除してよろしいですか？");
-});
-
-document.getElementById("delete5").addEventListener("click", function() {
- confirm("削除してよろしいですか？");
-});
-
-document.getElementById("delete6").addEventListener("click", function() {
- confirm("削除してよろしいですか？");
-});
 
 /* 時刻　*/
 function updateClock() {
@@ -510,6 +253,29 @@ function updateClock() {
 setInterval(updateClock, 1000);
 updateClock();
 
+/* 登録確認 */
+function checkregist(){
+    let ans = window.confirm('登録してよろしいですか？');
+    if (ans === false) {
+        event.preventDefault();
+    }
+};
+
+/* 更新確認 */
+function checkupdate(){
+    let ans = window.confirm('更新してよろしいですか？');
+    if (ans === false) {
+        event.preventDefault();
+    }
+};
+
+/* 削除確認 */
+function checkdelete(){
+    let ans = window.confirm('削除してよろしいですか？');
+    if (ans === false) {
+        event.preventDefault();
+    }
+};
 
 </script>
 </body>

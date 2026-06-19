@@ -36,7 +36,7 @@ public class BooksDao {
 					+ "manual LIKE ? AND "
 					+ "update_name LIKE ? AND "
 					+ "update_date LIKE ? "
-					+ "ORDER BY id";
+					+ "ORDER BY title ASC";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -212,7 +212,7 @@ public class BooksDao {
 					"root", "password");
 
 			// SQL文を準備する
-			String sql = "UPDATE Books SET user_id =?, date =?, category_id =?, title =?, teacher =?, manual =?, update_name =?, update_Date =? WHERE id=?";
+			String sql = "UPDATE Books SET user_id =?, date =?, category_id =?, title =?, teacher =?, manual =?, update_name =?, update_date =? WHERE id=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -258,7 +258,7 @@ public class BooksDao {
 				pStmt.setString(8, "");
 			}
 	
-			pStmt.setInt(0, card.getId());
+			pStmt.setInt(9, card.getId());
 
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
@@ -298,7 +298,7 @@ public class BooksDao {
 					"root", "password");
 
 			// SQL文を準備する
-			String sql = "DELETE FROM Books WHERE int=?";
+			String sql = "DELETE FROM Books WHERE id=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる

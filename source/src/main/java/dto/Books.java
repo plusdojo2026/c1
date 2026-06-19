@@ -14,6 +14,35 @@ public class Books implements Serializable {
 	private String update_name;  // update_name列
 	private String update_date;  // update_Date列
 	
+	// 引数があるコンストラクタ
+	public Books(int id, String user_id, String date, int category_id, String title
+			, String teacher, String manual, String update_name, String update_date) {
+		super();
+		this.id = id;
+		this.user_id = user_id;
+		this.date = date;
+		this.category_id = category_id;
+		this.title = title;
+		this.teacher = teacher;
+		this.manual = manual;
+		this.update_name = update_name;
+		this.update_date = update_date;
+	}
+	
+	// 引数がないコンストラクタ
+	public Books() {
+		super();
+		this.id = 0;
+		this.user_id = "";
+		this.date = "";
+		this.category_id = 0;
+		this.title = "";
+		this.teacher = "";
+		this.manual = "";
+		this.update_name = "";
+		this.update_date = "";
+	}
+	
 	// idのゲッタ
 	public int getId() {
 		return id;
@@ -101,34 +130,6 @@ public class Books implements Serializable {
 	
 	// update_dateのセッタ
 	public void setUpdate_date(String update_date) {
-		this.update_date = update_date;
-	}
-
-	// 引数がないコンストラクタ
-	public Books() {
-		super();
-		this.id = 0;
-		this.user_id = "";
-		this.date = "";
-		this.category_id = 0;
-		this.title = "";
-		this.teacher = "";
-		this.manual = "";
-		this.update_name = "";
-		this.update_date = "";
-	}
-	
-	// 引数があるコンストラクタ
-	public Books(int id, String user_id, String date, int category_id, String title
-			, String teacher, String manual, String update_name, String update_date) {
-		this.id = id;
-		this.user_id = user_id;
-		this.date = date;
-		this.category_id = category_id;
-		this.title = title;
-		this.teacher = teacher;
-		this.manual = manual;
-		this.update_name = update_name;
 		this.update_date = update_date;
 	}
 }

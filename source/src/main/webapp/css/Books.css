@@ -9,6 +9,7 @@ header {
     border-bottom: solid 8px #28A6A5;
     color: #FFFFFF;
     position: sticky;
+    z-index: 999;
     top: 0;
 }
 

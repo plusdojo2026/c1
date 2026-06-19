@@ -11,12 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.BooksDao;
 import dto.Books;
-import dto.BooksResult;
+import dto.Result;
 
 /**
  * Servlet implementation class UpdateDeleteServlet
  */
-@WebServlet("/UpdateDeleteServlet")
+@WebServlet("/BooksUpdateDeleteServlet")
 public class BooksUpdateDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -29,7 +29,7 @@ public class BooksUpdateDeleteServlet extends HttpServlet {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		/*HttpSession session = request.getSession();
 		if (session.getAttribute("id") == null) {
-			response.sendRedirect("/webapp/LoginServlet");
+			response.sendRedirect("/c1/LoginServlet");
 			return;
 		}*/
 
@@ -37,7 +37,7 @@ public class BooksUpdateDeleteServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String user_id  = request.getParameter("user_id");
 		String date = request.getParameter("date");
-		int category_id = Integer.parseInt("category_id");
+		Int category_id = request.getParameter("category_id");
 		String title = request.getParameter("title");
 		String teacher = request.getParameter("teacher");
 		String manual = request.getParameter("manual");
@@ -49,21 +49,21 @@ public class BooksUpdateDeleteServlet extends HttpServlet {
 		if (request.getParameter("submit").equals("更新")) {
 			if (bDao.update(new Books(0, user_id,date,category_id,title,teacher,
 					manual,update_name,update_date))) { // 更新成功
-				request.setAttribute("result", new BooksResult("更新成功！", "レコードを更新しました。", "/c1/BooksServlet"));
+				request.setAttribute("result", new Result("更新成功！", "レコードを更新しました。", "/c1/BooksServlet"));
 			} else { // 更新失敗
-				request.setAttribute("result", new BooksResult("更新失敗！", "レコードを更新できませんでした。", "/c1/BooksServlet"));
+				request.setAttribute("result", new Result("更新失敗！", "レコードを更新できませんでした。", "/c1/BooksServlet"));
 			}
 		} else {
 			if (bDao.delete(new Books(0, user_id,date,category_id,title,teacher,
 					manual,update_name,update_date))) { // 削除成功
-				request.setAttribute("result", new BooksResult("削除成功！", "レコードを削除しました。", "/c1/BooksServlet"));
+				request.setAttribute("result", new Result("削除成功！", "レコードを削除しました。", "/c1/BooksServlet"));
 			} else { // 削除失敗
-				request.setAttribute("result", new BooksResult("削除失敗！", "レコードを削除できませんでした。", "/c1/BooksServlet"));
+				request.setAttribute("result", new Result("削除失敗！", "レコードを削除できませんでした。", "/c1/BooksServlet"));
 			}
 		}
 
 		// 結果ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/BooksResult.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
 		dispatcher.forward(request, response);
 	}
 }
