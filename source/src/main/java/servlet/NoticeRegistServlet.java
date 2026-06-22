@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.NoticeDao;
 import dto.Notice;
+import dto.Result;
 
 /**
  * Servlet implementation class NoticeRegistServlet
@@ -51,6 +52,7 @@ public class NoticeRegistServlet extends HttpServlet {
 			response.sendRedirect("/java/LoginServlet");
 			return;
 		}
+		
 		// リクエストパラメータを取得する
 				request.setCharacterEncoding("UTF-8");
 				String user_id  = request.getParameter("user_id");
