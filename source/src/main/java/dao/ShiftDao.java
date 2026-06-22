@@ -31,12 +31,10 @@ public class ShiftDao {
 	            "FROM shift INNER JOIN user ON shift.user_id = user.user_id " +
 	            "WHERE 1=1";
 
-	        
 	        if (shift.getWord() != null && !shift.getWord().isEmpty()) {
 	            sql += " AND (user.user_name LIKE ? OR user.user_id LIKE ?)";
 	        }
 
-	        
 	        if (shift.getYear() != null && !shift.getYear().isEmpty()) {
 	            sql += " AND shift.date LIKE ?";
 	        }
@@ -211,7 +209,7 @@ public class ShiftDao {
 	}
 
 //	出勤登録
-	public boolean updateRealIn(String userName, String date) {
+	public boolean updateRealIn(Shift shift) {
 	    Connection conn = null;
 	    boolean result = false;
 
@@ -228,13 +226,17 @@ public class ShiftDao {
 
 	        String sql =
 	            "UPDATE shift SET real_in = ? " +
-	            "WHERE user_id = (SELECT user_id FROM user WHERE user_name = ?) " +
+	            "WHERE user_id = ? " +
 	            "AND date = ?";
 
 	        PreparedStatement ps = conn.prepareStatement(sql);
-	        ps.setString(1, time);
-	        ps.setString(2, userName);
-	        ps.setString(3, date);
+	        //ps.setString(1, time);
+	        //pStmt.setString(1, card.getUser_id());
+	        ps.setString(1, shift.getUser_id());
+	        ps.setString(2, shift.getDate());
+	        
+	        //ps.setString(1, user_id);
+	        //ps.setString(2, date);
 
 	        if (ps.executeUpdate() == 1) {
 	            result = true;
