@@ -51,6 +51,7 @@ public class SuggestionDao {
 	     // SQL文を完成させる
 	     			if (card.getUser_id() != null) {
 	     				pStmt.setString(1, card.getUser_id());
+	     				//System.out.println(card.getUser_id());
 	     			} else {
 	     				pStmt.setString(1, "");
 	     			}

@@ -46,15 +46,18 @@ public class HomeServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 	
-		String user_id = (String)session.getAttribute("user_id");	
+		String user_id = (String)session.getAttribute("user_id");
+//		String user_id = "yamada-yuki-m";
 		String suggestion = request.getParameter("suggestion");	
+		
+//		/WEB-INF/jsp/HomeResult.jsp
 		
 		// 登録処理を行う
 		SuggestionDao sDao = new SuggestionDao();
-		if (sDao.insert(new Suggestion(0, "", user_id, suggestion))) { // 送信成功
-				request.setAttribute ("result", new Result("送信成功！", "ご意見を送信しました。", "/c1/HomeServlet"));
+		if (sDao.insert(new Suggestion(0, user_id, "", suggestion))) { // 送信成功
+			request.setAttribute ("result", new Result("送信成功！", "ご意見を送信しました。", request.getContextPath() + "/HomeServlet"));
 			} else { // 送信失敗
-				request.setAttribute ("result", new Result("送信失敗！", "ご意見を送信できませんでした。", "/c1/HomeServlet"));
+			request.setAttribute ("result", new Result("送信失敗！", "ご意見を送信できませんでした。", request.getContextPath() + "/HomeServlet"));
 		}
 
 		// ホーム画面にフォワードする

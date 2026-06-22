@@ -53,11 +53,11 @@
                 </div>
             </div>
             <!-- ご意見箱 -->
-            <form action="new_result.html" onsubmit="confirmSubmit(event)">
+            <form method="POST" action="/c1/HomeServlet" onsubmit="confirmSubmit(event)">
                 <div class="opinion">
                     <p class="opinionT">ご意見箱</p>
                     <p class="opinionM">従業員の方はご自由に</p>
-                    <textarea class="textarea"></textarea>
+                    <textarea class="textarea" name="suggestion"></textarea>
                     <input class="opinionS" type="submit" value="送信">
                 </div>
             </form>
