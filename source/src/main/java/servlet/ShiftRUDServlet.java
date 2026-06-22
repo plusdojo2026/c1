@@ -31,7 +31,7 @@ public class ShiftRUDServlet extends HttpServlet {
             if ("insert".equals(action)) {
 
                 Shift shift = new Shift();
-                shift.setUser_name(request.getParameter("user_name"));
+                shift.setUser_id(request.getParameter("user_id"));
                 shift.setDate(request.getParameter("date"));
                 shift.setClock_in(request.getParameter("clock_in"));
                 shift.setClock_out(request.getParameter("clock_out"));

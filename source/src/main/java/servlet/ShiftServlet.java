@@ -21,7 +21,10 @@ public class ShiftServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        HttpSession session = request.getSession(false);
+//        HttpSession session = request.getSession(false);
+    	HttpSession session = request.getSession();
+    	
+		String user_id = (String)session.getAttribute("user_id");
         //ログインしていない場合
         if (session == null || session.getAttribute("user_id") == null) {
             response.sendRedirect("/c1/LoginServlet");
@@ -35,6 +38,7 @@ public class ShiftServlet extends HttpServlet {
 
         // DTO
         Shift condition = new Shift();
+        condition.setUser_id(user_id);
         condition.setWord(word);
         condition.setYear(year);
         condition.setMonth(month);
