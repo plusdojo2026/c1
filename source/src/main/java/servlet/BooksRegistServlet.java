@@ -46,7 +46,7 @@ public class BooksRegistServlet extends HttpServlet {
 
 		// 登録処理を行う
 		BooksDao bDao = new BooksDao();
-		if (bDao.insert(new Books(0, user_id,date,category_id,title,teacher,
+		if (bDao.insert(new Books(0, user_id,date,0,title,teacher,
 				manual,update_name,update_date))) { // 登録成功
 			request.setAttribute("result", new Result("登録成功！", "レコードを登録しました。", "/c1/BooksServlet"));
 		} else { // 登録失敗
