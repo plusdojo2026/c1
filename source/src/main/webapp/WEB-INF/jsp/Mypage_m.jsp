@@ -47,7 +47,7 @@
 	<main>
 		<h1>マイページ</h1>
 
-		<form method="POST" action="/c1/Mypage_m.Servlet" onsubmit="confirmSubmit(event)">
+		<form method="POST" action="/c1/Mypage_m_Servlet" onsubmit="confirmSubmit(event)">
 			<div class="change-group">
 				<h2>パスワード変更</h2>
 				<table class="change-table">
@@ -64,7 +64,6 @@
 			</div>
 		</form>
 
-		<p>
 			<form method="POST" action="/c1/Mypage_m.Servlet" onsubmit="confirmSubmit(event)">
 				<div class="add-group">
 					<h2>新規従業員登録</h2>
@@ -85,7 +84,6 @@
 					<p><input type="submit" name="add" value="追加する" class="add-button"></p>
 				</div>
 			</form>
-		</p>
 
 		<h1>ご意見箱一覧</h1>
 		<div class="suggestion-area">
