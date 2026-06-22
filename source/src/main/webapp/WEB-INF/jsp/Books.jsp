@@ -170,7 +170,7 @@ ${e.manual}<br><br>
 						<input type="hidden" name="teacher" value="${e.teacher}">
 						<input type="hidden" name="manual" value="${e.manual}">
 						<input type="hidden" name="update_name" value="${e.update_name}">
-						<input type="hidden" name="update_date" value="${e.update_Date}">
+						<input type="hidden" name="update_date" value="${e.update_date}">
 </td>
 </tr>
 <tr>
@@ -202,7 +202,7 @@ ${e.manual}<br><br>
 						<input type="hidden" name="category_id" value="${e.category_id}">
 						<input type="hidden" name="teacher" value="${e.teacher}">
 						<input type="hidden" name="update_name" value="${e.update_name}">
-						<input type="hidden" name="update_date" value="${e.update_Date}">
+						<input type="hidden" name="update_date" value="${e.update_date}">
 						
                         <textarea name="manual">${e.manual}</textarea><br>
                         <div class="button">
