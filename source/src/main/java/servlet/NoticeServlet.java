@@ -36,7 +36,7 @@ public class NoticeServlet extends HttpServlet {
 	*/
 
 		// 登録ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/NoticeRegist.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Notice.jsp");
 		dispatcher.forward(request, response);
 	}
 

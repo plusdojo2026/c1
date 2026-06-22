@@ -41,10 +41,17 @@
         </div>
     </header>
     <!-- ヘッダーここまで -->
+<h1 class="heading-6">お知らせ一覧</h1>
 
 <!-- ここからメイン -->
 <main>
+
+<!-- 画像をクリックすると別ページに移動 -->
+<a href="https://NoticeRegist.com" target="_blank">
+    <img src="images/hukidasi.png" alt="hukidasi">
+</a>
 <!-- 検索フォーム -->
+
 <form class="search-box" action="search.php" method="get">
     <input type="text" name="q" placeholder="タイトル" required>
     <input type="text" name="q" placeholder="記入者" required>
@@ -71,10 +78,9 @@
 <label for="member">確認者リスト:</label>
  	<select id="member" name="member">
     <option value=""> -- 選択してください -- </option>
-    <option value="001">山田 太郎</option>
-    <option value="002">佐藤 花子</option>
-    <option value="003">鈴木 一郎</option>
-    <option value="004">田中 美咲</option>
+    <option value="001">斎藤由利</option>
+    <option value="002">高橋翔</option>
+    <option value="003">山田祐樹</option>
   </select>
 
 	</label>

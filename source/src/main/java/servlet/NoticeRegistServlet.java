@@ -61,13 +61,13 @@ public class NoticeRegistServlet extends HttpServlet {
 				// 登録処理を行う
 				NoticeDao bDao = new NoticeDao();
 				if (bDao.insert(new Notice(0, user_id,registTitle,date,registText))) { // 登録成功
-					request.setAttribute("result", new Notice("登録成功！", "レコードを登録しました。", "/c1/NoticeServlet"));
+					request.setAttribute("result", new Result("登録成功！", "レコードを登録しました。", "/c1/NoticeServlet"));
 				} else { // 登録失敗
-					request.setAttribute("result", new Notice("登録失敗！", "レコードを登録できませんでした。", "/c1/NoticeServlet"));
+					request.setAttribute("result", new Result("登録失敗！", "レコードを登録できませんでした。", "/c1/NoticeServlet"));
 				}
 
 				// 結果ページにフォワードする
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/NoticeRegist.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Result.jsp");
 				dispatcher.forward(request, response);
 			}
 		}

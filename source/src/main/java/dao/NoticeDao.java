@@ -119,9 +119,6 @@ public class NoticeDao {
 				pStmt.setString(5, "");
 			}
 
-
-			
-
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
 				result = true;
