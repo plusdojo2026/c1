@@ -68,6 +68,7 @@ public class ShiftDao {
 	        while (rs.next()) {
 	            Shift s = new Shift(
 	                rs.getInt("id"),
+	                rs.getString("user_id"),
 	                rs.getString("user_name"),
 	                rs.getString("date"),
 	                rs.getString("clock_in"),
@@ -102,18 +103,18 @@ public class ShiftDao {
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mamoral?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
-
-			// SQL文を準備する
-			String sql = "INSERT INTO shift VALUES (0, ?, ?, ?, ?, ?, ?)";
+			
+//			SQL文を準備
+			String sql = "INSERT INTO shift (user_id, date, clock_in, clock_out, real_in, real_out) VALUES (?, ?, ?, ?, ?, ?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
+//			SQL文を完成させる
+			pStmt.setString(1, card.getUser_id());
+			pStmt.setString(2, card.getDate());
+			pStmt.setString(3, card.getClock_in());
+			pStmt.setString(4, card.getClock_out());
+			pStmt.setString(5, card.getReal_in()); 
+			pStmt.setString(6, card.getReal_out());
 
-			// SQL文を完成させる
-	        pStmt.setString(1, card.getUser_name());
-	        pStmt.setString(2, card.getDate());
-	        pStmt.setString(3, card.getClock_in());
-	        pStmt.setString(4, card.getClock_out());
-	        pStmt.setString(5, card.getReal_in());
-	        pStmt.setString(6, card.getReal_out());
 			
 			
 			

@@ -45,23 +45,41 @@
 
     <h1 class="hero">シフト・出退勤管理一覧(従業員)</h1>
     <main>
+    <c:if test="${not empty successMessage}">
+	    <div class="alert alert-success">${successMessage}</div>
+	    <c:remove var="successMessage" scope="session"/>
+	</c:if>
+	
+	<c:if test="${not empty errorMessage}">
+	    <div class="alert alert-danger">${errorMessage}</div>
+	    <c:remove var="errorMessage" scope="session"/>
+	</c:if>
       <!-- シフト登録 -->
       <div class="shift-add-box">
         <h2 class="shift-add-title">シフト登録</h2>
-        <form action="ShiftAddServlet" method="post" onsubmit="return confirm(' 登録してもよろしいですか？');" class="shift-add-form">
-          <div class="shift-add-row">
-            <input type="date" name="registDate" class="registDate" placeholder="年/月/日">
-          </div>
-          <div class="shift-add-row">
-            <input type="text" name="registIn" class="registIn" placeholder="出勤時刻">
-          </div>
-          <div class="shift-add-row">
-            <input type="text" name="registOut" class="registOut" placeholder="退勤時刻">
-          </div>
-          <div class="shift-add-row">
-            <button type="submit" name="shiftAdd" class="shiftAdd">登録</button>
-          </div>
-        </form>
+        <form action="ShiftRUDServlet" method="post" 
+      onsubmit="return confirm(' 登録してもよろしいですか？');" 
+      class="shift-add-form">
+
+    <input type="hidden" name="action" value="insert">
+	<input type="hidden" name="user_id" value="${sessionScope.user_id}">
+    <div class="shift-add-row">
+        <input type="date" name="date" class="registDate" placeholder="年/月/日">
+    </div>
+
+    <div class="shift-add-row">
+        <input type="text" name="clock_in" class="registIn" placeholder="出勤時刻">
+    </div>
+
+    <div class="shift-add-row">
+        <input type="text" name="clock_out" class="registOut" placeholder="退勤時刻">
+    </div>
+
+    <div class="shift-add-row">
+        <button type="submit" class="shiftAdd">登録</button>
+    </div>
+</form>
+
       </div>
 
 
@@ -89,9 +107,11 @@
         <form action="ShiftServlet" method="get">
         	<input type="text" name="word" placeholder="名前であいまい検索" class="searchWord">
         	<label for="year">年:</label>
-			<select id="year"></select>
+			<select id="year" name="year"></select>
+			
 			<label for="month">月:</label>
-			<select id="month"></select>
+			<select id="month" name="month"></select>
+
           <button type="submit" class="shiftSearch">検索</button>
         </form>
 
@@ -99,14 +119,14 @@
         <c:forEach var="e" items="${shiftList}">
         <div class="shift-row">
           <div class="shift-left">
-            <div class="shiftName">${user.user_name}</div>
-            <div class="date">${shift.date}</div>
+            <div class="shiftName">${e.user_name}</div>
+            <div class="date">${e.date}</div>
           </div>
           <div class="shift-right">
-            <div class="inandOut">シフト${shift.in}〜${shift.out}</div>
+            <div class="inandOut">シフト${e.clock_in}〜${e.clock_out}</div>
             <div>
-              <div class="shiftIn">出勤${shift.real_in}</div>
-              <div class="shiftOut">退勤${shift.real_out}</div>
+              <div class="shiftIn">出勤${e.real_in}</div>
+              <div class="shiftOut">退勤${e.real_out}</div>
             </div>
            
           </div>

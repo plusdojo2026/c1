@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class Shift implements Serializable {
 
     private int id;
+    private String user_id;
     private String user_name;
     private String date;
     private String clock_in;
@@ -19,11 +20,12 @@ public class Shift implements Serializable {
 
     public Shift() {}
 
-    public Shift(int id, String user_name, String date,
+    public Shift(int id, String user_id, String user_name, String date,
                  String clock_in, String clock_out,
                  String real_in, String real_out) {
 
         this.id = id;
+        this.user_id = user_id;
         this.user_name = user_name;
         this.date = date;
         this.clock_in = clock_in;
@@ -38,6 +40,14 @@ public class Shift implements Serializable {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
 	}
 
 	public String getUser_name() {

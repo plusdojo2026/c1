@@ -44,6 +44,15 @@
 <div class="background"><!-- 背景を表示する範囲の div -->
 <h1 class="hero">シフト・出退勤管理一覧(店長)</h1>
 <main>
+	<c:if test="${not empty successMessage}">
+	    <div class="alert alert-success">${successMessage}</div>
+	    <c:remove var="successMessage" scope="session"/>
+	</c:if>
+	
+	<c:if test="${not empty errorMessage}">
+	    <div class="alert alert-danger">${errorMessage}</div>
+	    <c:remove var="errorMessage" scope="session"/>
+	</c:if>
     <!-- 出退勤、シフト一覧 -->
         <div class="shift-card">
             <!-- 検索 -->
@@ -61,35 +70,35 @@
             <div class="shift-row">
                 <div class="shift-left">
                     <!-- 従業員名 -->
-                        <div class="shiftName">${user.user_name}</div>
+                        <div class="shiftName">${e.user_name}</div>
 
                     <!-- 日付 -->
-                        <div class="date">${shift.date}</div>
+                        <div class="date">${e.date}</div>
                 </div>
 
                 <div class="shift-right">
                     <!-- シフト予定 -->
                     <div class="inandOut">
-                    シフト<input type="text" name="in" value="${shift.in}"> 〜
-                        <input type="text" name="out" value="${shift.out}">
+                    シフト<input type="text" name="in" value="${e.clock_in}"> 〜
+                        <input type="text" name="out" value="${e.clock_out}">
                     </div>
 
                     <!-- 出退勤 -->
                     <div>
-                        <div class="shiftIn">出勤<input type="text" name="realIn" value="${shift.real_in}" ></div>
-                        <div class="shiftOut">退勤<input type="text" name="realOut" value="${shift.real_out}"></div>
+                        <div class="shiftIn">出勤<input type="text" name="realIn" value="${e.real_in}" ></div>
+                        <div class="shiftOut">退勤<input type="text" name="realOut" value="${e.real_out}"></div>
                     </div>
                 </div>
 
                 <!-- 更新・削除ボタン -->
                 <div class="shift-buttons">
-                    <form action="ShiftUpdate" method="post" onsubmit="return confirm('更新してよろしいですか？');">
-                    <input type="hidden" name="id" value="${shift.id}">
+                    <form action="ShiftRUDServlet" method="post" onsubmit="return confirm('更新してよろしいですか？');">
+                    <input type="hidden" name="id" value="${e.id}">
                     <button type="submit" name="update" class="update">更新</button>
                     </form>
 
-                    <form action="ShiftDelete" method="post"  onsubmit="return confirm('削除してもよろしいですか？');">
-                    <input type="hidden" name="id" value="${shift.id}">
+                    <form action="ShiftRUDServlet" method="post"  onsubmit="return confirm('削除してもよろしいですか？');">
+                    <input type="hidden" name="id" value="${e.id}">
                     <button type="submit" name="delete" class="delete">削除</button>
                     </form>
                 </div>
