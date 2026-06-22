@@ -1,13 +1,18 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import dao.ShiftDao;
+import dto.Shift;
 
 @WebServlet("/ShiftServlet")
 public class ShiftServlet extends HttpServlet {
@@ -17,26 +22,39 @@ public class ShiftServlet extends HttpServlet {
             throws ServletException, IOException {
 
         HttpSession session = request.getSession(false);
-
-        // ログインしていない場合
+        //ログインしていない場合
         if (session == null || session.getAttribute("user_id") == null) {
             response.sendRedirect("/c1/LoginServlet");
             return;
         }
 
-        
+        // 検索条件
+        String word = request.getParameter("word");
+        String year = request.getParameter("year");
+        String month = request.getParameter("month");
+
+        // DTO
+        Shift condition = new Shift();
+        condition.setWord(word);
+        condition.setYear(year);
+        condition.setMonth(month);
+
+        // DAO呼び出し
+        ShiftDao dao = new ShiftDao();
+        List<Shift> list = dao.select(condition);
+
+        request.setAttribute("shiftList", list);
+
+        // 権限で画面分岐
         int authority = (int) session.getAttribute("authority_id");
 
-       
         if (authority == 1) {
-            // 店長
-            request.getRequestDispatcher("/WEB-INF/jsp/Shift_m.jsp").forward(request, response);
-        } else if (authority == 2) {
-            // 従業員
-            request.getRequestDispatcher("/WEB-INF/jsp/Shift_e.jsp").forward(request, response);
-        } 
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Shift_m.jsp");
+            dispatcher.forward(request, response);
+        } else {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Shift_e.jsp");
+            dispatcher.forward(request, response);
+        }
     }
-    
-
-
 }
+

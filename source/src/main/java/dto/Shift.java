@@ -11,16 +11,13 @@ public class Shift implements Serializable {
     private String clock_out;
     private String real_in;
     private String real_out;
+    
 
-    public Shift() {
-        this.id = 0;
-        this.user_name = "";
-        this.date = "";
-        this.clock_in = "";
-        this.clock_out = "";
-        this.real_in = "";
-        this.real_out = "";
-    }
+    private String word;
+    private String year;
+    private String month;
+
+    public Shift() {}
 
     public Shift(int id, String user_name, String date,
                  String clock_in, String clock_out,
@@ -89,6 +86,30 @@ public class Shift implements Serializable {
 
 	public void setReal_out(String real_out) {
 		this.real_out = real_out;
+	}
+
+	public String getWord() {
+		return word;
+	}
+
+	public void setWord(String word) {
+		this.word = word;
+	}
+
+	public String getYear() {
+		return year;
+	}
+
+	public void setYear(String year) {
+		this.year = year;
+	}
+
+	public String getMonth() {
+		return month;
+	}
+
+	public void setMonth(String month) {
+		this.month = month;
 	}
 
 }

@@ -14,61 +14,80 @@ import dto.Shift;
 public class ShiftDao {
 	// 引数shift指定された項目で検索して、取得されたデータのリストを返す
 	public List<Shift> select(Shift shift) {
-		Connection conn = null;
-		List<Shift> shiftList = new ArrayList<Shift>();
+	    Connection conn = null;
+	    List<Shift> shiftList = new ArrayList<>();
 
-		try {
-			// JDBCドライバを読み込む
-			Class.forName("com.mysql.cj.jdbc.Driver");
+	    try {
+	        Class.forName("com.mysql.cj.jdbc.Driver");
 
-			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mamoral?"
-					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"root", "password");
+	        conn = DriverManager.getConnection(
+	            "jdbc:mysql://localhost:3306/mamoral?"
+	            + "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9",
+	            "root", "password");
 
-			// SQL文を準備する
-			String sql = "SELECT shift.id, user.user_name, shift.date, " +
-		            "shift.clock_in, shift.clock_out, shift.real_in, shift.real_out " +
-		            "FROM shift INNER JOIN user ON shift.user_id = user.user_id "+
-		            "WHERE user.user_name = ?";
-			PreparedStatement pStmt = conn.prepareStatement(sql);
+	        String sql =
+	            "SELECT shift.id, user.user_name, shift.date, " +
+	            "shift.clock_in, shift.clock_out, shift.real_in, shift.real_out " +
+	            "FROM shift INNER JOIN user ON shift.user_id = user.user_id " +
+	            "WHERE 1=1";
 
-			// SQL文を完成させる
-			
-			pStmt.setString(1, shift.getUser_name());
-			
-			
-			// SQL文を実行し、結果表を取得する
-			ResultSet rs = pStmt.executeQuery();
+	        
+	        if (shift.getWord() != null && !shift.getWord().isEmpty()) {
+	            sql += " AND (user.user_name LIKE ? OR user.user_id LIKE ?)";
+	        }
 
-			// 結果表をコレクションにコピーする
-			while (rs.next()) {
-				Shift s = new Shift(rs.getInt("id"), rs.getString("user_name"), rs.getString("date"), 
-							rs.getString("clock_in"), rs.getString("clock_out"), rs.getString("real_in"), 
-							rs.getString("real_out"));
-				shiftList.add(s);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-			shiftList = null;
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-			shiftList = null;
-		} finally {
-			// データベースを切断
-			if (conn != null) {
-				try {
-					conn.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-					shiftList = null;
-				}
-			}
-		}
+	        
+	        if (shift.getYear() != null && !shift.getYear().isEmpty()) {
+	            sql += " AND shift.date LIKE ?";
+	        }
 
-		// 結果を返す
-		return shiftList;
+	        
+	        if (shift.getMonth() != null && !shift.getMonth().isEmpty()) {
+	            sql += " AND shift.date LIKE ?";
+	        }
+
+	        PreparedStatement pStmt = conn.prepareStatement(sql);
+
+	        int index = 1;
+
+	        if (shift.getWord() != null && !shift.getWord().isEmpty()) {
+	            pStmt.setString(index++, "%" + shift.getWord() + "%");
+	            pStmt.setString(index++, "%" + shift.getWord() + "%");
+	        }
+
+	        if (shift.getYear() != null && !shift.getYear().isEmpty()) {
+	            pStmt.setString(index++, shift.getYear() + "%");  
+	        }
+
+	        if (shift.getMonth() != null && !shift.getMonth().isEmpty()) {
+	            pStmt.setString(index++, "%-" + shift.getMonth() + "-%");
+	        }
+
+	        ResultSet rs = pStmt.executeQuery();
+
+	        while (rs.next()) {
+	            Shift s = new Shift(
+	                rs.getInt("id"),
+	                rs.getString("user_name"),
+	                rs.getString("date"),
+	                rs.getString("clock_in"),
+	                rs.getString("clock_out"),
+	                rs.getString("real_in"),
+	                rs.getString("real_out")
+	            );
+	            shiftList.add(s);
+	        }
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        shiftList = null;
+	    } finally {
+	        try { if (conn != null) conn.close(); } catch (SQLException e) {}
+	    }
+
+	    return shiftList;
 	}
+
 
 	// 引数cardで指定されたレコードを登録し、成功したらtrueを返す
 	public boolean insert(Shift card) {
@@ -265,6 +284,7 @@ public class ShiftDao {
 	    }
 
 	    return result;
+	    
 	}
 
 }

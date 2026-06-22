@@ -42,7 +42,7 @@
     <!-- ヘッダーここまで -->
 
 
-  <div class="background"><!-- 背景を表示する範囲の div -->
+
     <h1 class="hero">シフト・出退勤管理一覧(従業員)</h1>
     <main>
       <!-- シフト登録 -->
@@ -87,14 +87,16 @@
       <!-- 出退勤、シフト一覧 -->
       <div class="shift-card">
         <form action="ShiftServlet" method="get">
-          <input type="text" name="word" placeholder="名前・社員IDであいまい検索" class="searchWord">
-          <select name="year" class="selectYear"></select>
-          <select name="month" class="selectMonth"></select>
-          <select name="day" class="selectDay"></select>
+        	<input type="text" name="word" placeholder="名前であいまい検索" class="searchWord">
+        	<label for="year">年:</label>
+			<select id="year"></select>
+			<label for="month">月:</label>
+			<select id="month"></select>
           <button type="submit" class="shiftSearch">検索</button>
         </form>
 
         <!-- シフトデータ -->
+        <c:forEach var="e" items="${shiftList}">
         <div class="shift-row">
           <div class="shift-left">
             <div class="shiftName">${user.user_name}</div>
@@ -106,11 +108,13 @@
               <div class="shiftIn">出勤${shift.real_in}</div>
               <div class="shiftOut">退勤${shift.real_out}</div>
             </div>
+           
           </div>
         </div>
+       </c:forEach>
       </div>
+     
     </main>
-  </div>
 </body>
 
 
@@ -143,6 +147,34 @@ function updateClock() {
 
 setInterval(updateClock, 1000);
 updateClock();
+
+document.addEventListener('DOMContentLoaded', () => {
+    const yearSelect = document.getElementById('year');
+    const monthSelect = document.getElementById('month');
+
+    try {
+        const startYear = 2025;
+        const endYear = new Date().getFullYear() + 5;
+
+        
+        for (let y = startYear; y <= endYear; y++) {
+            const option = document.createElement('option');
+            option.value = y;
+            option.textContent = y + '年';
+            yearSelect.appendChild(option);
+        }
+
+     
+        for (let m = 1; m <= 12; m++) {
+            const option = document.createElement('option');
+            option.value = m;
+            option.textContent = m + '月';
+            monthSelect.appendChild(option);
+        }
+    } catch (err) {
+        console.error('年月セレクト生成中にエラー:', err);
+    }
+});
 </script>
 
 <footer>

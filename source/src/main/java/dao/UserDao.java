@@ -87,6 +87,7 @@ public class UserDao {
 		                rs.getInt("authority_id")  
 		            );
 		        }
+		        
 		     // データベースを切断
 		    } catch (Exception e) {
 		        e.printStackTrace();
