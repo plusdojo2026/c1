@@ -37,7 +37,7 @@ public class BooksUpdateDeleteServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String user_id  = request.getParameter("user_id");
 		String date = request.getParameter("date");
-		Int category_id = request.getParameter("category_id");
+		String category_id = request.getParameter("category_id");
 		String title = request.getParameter("title");
 		String teacher = request.getParameter("teacher");
 		String manual = request.getParameter("manual");
@@ -47,14 +47,14 @@ public class BooksUpdateDeleteServlet extends HttpServlet {
 		// 更新または削除を行う
 		BooksDao bDao = new BooksDao();
 		if (request.getParameter("submit").equals("更新")) {
-			if (bDao.update(new Books(0, user_id,date,category_id,title,teacher,
+			if (bDao.update(new Books(0, user_id,date,0,title,teacher,
 					manual,update_name,update_date))) { // 更新成功
 				request.setAttribute("result", new Result("更新成功！", "レコードを更新しました。", "/c1/BooksServlet"));
 			} else { // 更新失敗
 				request.setAttribute("result", new Result("更新失敗！", "レコードを更新できませんでした。", "/c1/BooksServlet"));
 			}
 		} else {
-			if (bDao.delete(new Books(0, user_id,date,category_id,title,teacher,
+			if (bDao.delete(new Books(0, user_id,date,0,title,teacher,
 					manual,update_name,update_date))) { // 削除成功
 				request.setAttribute("result", new Result("削除成功！", "レコードを削除しました。", "/c1/BooksServlet"));
 			} else { // 削除失敗

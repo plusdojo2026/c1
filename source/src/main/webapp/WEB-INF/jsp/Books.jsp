@@ -108,12 +108,19 @@
 </tr>
 <tr>
 <td>
-                     <input  type="text" name="company" placeholder="会社" >
+                     <input  type="text" name="title" placeholder="タイトル" >
+                        <input type="hidden" name="id" value="${e.id}">
+                        <input type="hidden" name="user_id" value="${e.user_id}">
+                        <input type="hidden" name="date" value="${e.date}">
+						<input type="hidden" name="category_id" value="${e.category_id}">
+						<input type="hidden" name="teacher" value="${e.teacher}">
+						<input type="hidden" name="update_name" value="${e.update_name}">
+						<input type="hidden" name="update_date" value="${e.update_Date}">
 </td>
 </tr>
 <tr>
 <td>
-                     <textarea name="remarks" placeholder="備考"></textarea>
+                     <textarea name="manual" placeholder="本文"></textarea>
 </td>
 </tr>
 <tr>

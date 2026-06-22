@@ -59,6 +59,7 @@ public class BooksServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String user_id  = request.getParameter("user_id");
 		String date = request.getParameter("date");
+		String category_id = request.getParameter("category_id");
 		String title = request.getParameter("title");
 		String teacher = request.getParameter("teacher");
 		String manual = request.getParameter("manual");
