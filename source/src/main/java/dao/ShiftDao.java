@@ -26,17 +26,15 @@ public class ShiftDao {
 	            "root", "password");
 
 	        String sql =
-	            "SELECT shift.id, user.user_name, shift.date, " +
-	            "shift.clock_in, shift.clock_out, shift.real_in, shift.real_out " +
-	            "FROM shift INNER JOIN user ON shift.user_id = user.user_id " +
-	            "WHERE 1=1";
+	        	    "SELECT shift.id, shift.user_id, user.user_name, shift.date, " +
+	        	    "shift.clock_in, shift.clock_out, shift.real_in, shift.real_out " +
+	        	    "FROM shift INNER JOIN user ON shift.user_id = user.user_id " +
+	        	    "WHERE 1=1";
 
-	        
-	        if (shift.getWord() != null && !shift.getWord().isEmpty()) {
-	            sql += " AND (user.user_name LIKE ? OR user.user_id LIKE ?)";
-	        }
+	        	if (shift.getUser_id() != null && !shift.getUser_id().isEmpty()) {
+	        	    sql += " AND shift.user_id = ?";
+	        	}
 
-	        
 	        if (shift.getYear() != null && !shift.getYear().isEmpty()) {
 	            sql += " AND shift.date LIKE ?";
 	        }
@@ -50,10 +48,10 @@ public class ShiftDao {
 
 	        int index = 1;
 
-	        if (shift.getWord() != null && !shift.getWord().isEmpty()) {
-	            pStmt.setString(index++, "%" + shift.getWord() + "%");
-	            pStmt.setString(index++, "%" + shift.getWord() + "%");
+	        if (shift.getUser_id() != null && !shift.getUser_id().isEmpty()) {
+	            pStmt.setString(index++, shift.getUser_id());
 	        }
+
 
 	        if (shift.getYear() != null && !shift.getYear().isEmpty()) {
 	            pStmt.setString(index++, shift.getYear() + "%");  
