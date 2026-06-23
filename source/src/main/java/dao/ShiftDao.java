@@ -5,8 +5,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import dto.Shift;
@@ -26,14 +28,14 @@ public class ShiftDao {
 	            "root", "password");
 
 	        String sql =
-	        	    "SELECT shift.id, shift.user_id, user.user_name, shift.date, " +
-	        	    "shift.clock_in, shift.clock_out, shift.real_in, shift.real_out " +
-	        	    "FROM shift INNER JOIN user ON shift.user_id = user.user_id " +
-	        	    "WHERE 1=1";
+	            "SELECT shift.id, user.user_name, shift.date, " +
+	            "shift.clock_in, shift.clock_out, shift.real_in, shift.real_out " +
+	            "FROM shift INNER JOIN user ON shift.user_id = user.user_id " +
+	            "WHERE 1=1";
 
-	        	if (shift.getUser_id() != null && !shift.getUser_id().isEmpty()) {
-	        	    sql += " AND shift.user_id = ?";
-	        	}
+	        if (shift.getWord() != null && !shift.getWord().isEmpty()) {
+	            sql += " AND (user.user_name LIKE ? OR user.user_id LIKE ?)";
+	        }
 
 	        if (shift.getYear() != null && !shift.getYear().isEmpty()) {
 	            sql += " AND shift.date LIKE ?";
@@ -48,10 +50,10 @@ public class ShiftDao {
 
 	        int index = 1;
 
-	        if (shift.getUser_id() != null && !shift.getUser_id().isEmpty()) {
-	            pStmt.setString(index++, shift.getUser_id());
+	        if (shift.getWord() != null && !shift.getWord().isEmpty()) {
+	            pStmt.setString(index++, "%" + shift.getWord() + "%");
+	            pStmt.setString(index++, "%" + shift.getWord() + "%");
 	        }
-
 
 	        if (shift.getYear() != null && !shift.getYear().isEmpty()) {
 	            pStmt.setString(index++, shift.getYear() + "%");  
@@ -209,7 +211,7 @@ public class ShiftDao {
 	}
 
 //	出勤登録
-	public boolean updateRealIn(String userName, String date) {
+	public boolean updateRealIn(Shift shift) {
 	    Connection conn = null;
 	    boolean result = false;
 
@@ -219,20 +221,48 @@ public class ShiftDao {
 	        conn = DriverManager.getConnection(
 	            "jdbc:mysql://localhost:3306/mamoral?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9",
 	            "root", "password");
+	        
+//	        日付を取得し変数をを格納
+			Calendar cl = Calendar.getInstance();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
+			
 	        // 現在時刻を取得（HH:mm:ss）
 	        LocalTime now = LocalTime.now();
 	        String time = now.toString();
 
 	        String sql =
 	            "UPDATE shift SET real_in = ? " +
-	            "WHERE user_id = (SELECT user_id FROM user WHERE user_name = ?) " +
+	            "WHERE user_id = ? " +
 	            "AND date = ?";
 
 	        PreparedStatement ps = conn.prepareStatement(sql);
-	        ps.setString(1, time);
-	        ps.setString(2, userName);
-	        ps.setString(3, date);
+	        
+	        
+	        //ps.setString(1, time);
+	        //pStmt.setString(1, card.getUser_id());
+	        //ps.setString(1, shift.getReal_in());
+	        //ps.setString(2, shift.getUser_id());
+	        //ps.setString(3, shift.getDate());
+	        //ps.setString(1, user_id);
+	        //ps.setString(2, date);
+	        
+	        
+	        if (time != null) {
+ 				ps.setString(1, time);
+ 			} else {
+ 				ps.setString(1, "");
+ 			}
+	        if (shift.getUser_id() != null) {
+ 				ps.setString(2, shift.getUser_id());
+ 			} else {
+ 				ps.setString(2, "");
+ 			}
+ 			if (shift.getDate() != null) {
+ 				ps.setString(3, shift.getDate());
+ 			} else {
+ 				ps.setString(3, "");
+ 			}
 
 	        if (ps.executeUpdate() == 1) {
 	            result = true;

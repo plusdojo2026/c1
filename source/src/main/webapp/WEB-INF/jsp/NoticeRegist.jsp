@@ -45,7 +45,7 @@
 <!-- メイン -->
 <main>
 
-<form action="save_notice.php" method="post">
+<form action="Result.jsp" method="post">
     <label>タイトル
         <input type="text" name="registTitle" required>
     </label>
