@@ -222,9 +222,10 @@ public class ShiftDao {
 	            "jdbc:mysql://localhost:3306/mamoral?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9",
 	            "root", "password");
 	        
-//	        日付を取得し変数をを格納
+	        //日付を取得し変数をを格納
 			Calendar cl = Calendar.getInstance();
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			
 
 			
 	        // 現在時刻を取得（HH:mm:ss）
@@ -238,7 +239,6 @@ public class ShiftDao {
 
 	        PreparedStatement ps = conn.prepareStatement(sql);
 	        
-	        
 	        //ps.setString(1, time);
 	        //pStmt.setString(1, card.getUser_id());
 	        //ps.setString(1, shift.getReal_in());
@@ -246,7 +246,6 @@ public class ShiftDao {
 	        //ps.setString(3, shift.getDate());
 	        //ps.setString(1, user_id);
 	        //ps.setString(2, date);
-	        
 	        
 	        if (time != null) {
  				ps.setString(1, time);
@@ -258,7 +257,7 @@ public class ShiftDao {
  			} else {
  				ps.setString(2, "");
  			}
- 			if (shift.getDate() != null) {
+ 			if (shift.getDate() == sdf) {
  				ps.setString(3, shift.getDate());
  			} else {
  				ps.setString(3, "");
@@ -267,6 +266,7 @@ public class ShiftDao {
 	        if (ps.executeUpdate() == 1) {
 	            result = true;
 	        }
+	        
 
 	    } catch (Exception e) {
 	        e.printStackTrace();
