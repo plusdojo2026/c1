@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>マイページ-店長画面</title>
+		<title>マイページ-従業員画面</title>
 		<link rel = "stylesheet" href = "css/Mypage_m.css">
 	</head>
 	<body>
@@ -44,10 +44,11 @@
 		</div>
 	</header>
 
+
 	<main>
 		<h1>マイページ</h1>
 
-		<form method="POST" action="/c1/Mypage_m.Servlet" onsubmit="confirmSubmit(event)">
+		<form method="POST" action="/c1/MypageServlet" onsubmit="confirmSubmit(event)">
 			<div class="change-group">
 				<h2>パスワード変更</h2>
 				<table class="change-table">
@@ -64,7 +65,6 @@
 			</div>
 		</form>
 
-		<p>
 			<form method="POST" action="/c1/Mypage_m.Servlet" onsubmit="confirmSubmit(event)">
 				<div class="add-group">
 					<h2>新規従業員登録</h2>
@@ -85,7 +85,6 @@
 					<p><input type="submit" name="add" value="追加する" class="add-button"></p>
 				</div>
 			</form>
-		</p>
 
 		<h1>ご意見箱一覧</h1>
 		<div class="suggestion-area">
@@ -96,6 +95,8 @@
 				<textarea name="suggestion" class = "text-box" > ${e.suggestion}</textarea><br>
 			</div>
 		</div>	
+	
+
 	</main>
 
 	<footer>
@@ -106,6 +107,7 @@
 
 	<script>
 		'use strict';
+
 
 		function confirmSubmit(event) {
 			// 確認ダイアログを表示
@@ -142,6 +144,27 @@
 
 		setInterval(updateClock, 1000);
 		updateClock();
+
+		document.getElementById('form').onsubmit = function(event) {
+            let nowPassword = document.getElementById('form').nowPassword.value;
+            let newPassword = document.getElementById('form').newPassword.value;
+            
+			if (nowPassword === '' && newPassword === '') {
+                window.alert('現在のパスワードと新しいパスワードを入力してください');
+                event.preventDefault();
+			}else if (nowPassword === '' && newPassword !== '' ) {
+                window.alert('現在のパスワードを入力してください！');
+                event.preventDefault();
+            }else if (nowPassword !== '' && newPassword === '') {
+                window.alert('新しいパスワードを入力してください！');
+                event.preventDefault();
+            }else if (nowPassword === newPassword ) {
+                window.alert('同じパスワードを入力しています。違うものを入力してください。');
+                event.preventDefault();
+            }
+        }
+
+
 
 	</script>
 
