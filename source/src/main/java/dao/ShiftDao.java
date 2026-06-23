@@ -5,8 +5,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import dto.Shift;
@@ -219,7 +221,12 @@ public class ShiftDao {
 	        conn = DriverManager.getConnection(
 	            "jdbc:mysql://localhost:3306/mamoral?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9",
 	            "root", "password");
+	        
+//	        日付を取得し変数をを格納
+			Calendar cl = Calendar.getInstance();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
+			
 	        // 現在時刻を取得（HH:mm:ss）
 	        LocalTime now = LocalTime.now();
 	        String time = now.toString();
@@ -230,13 +237,32 @@ public class ShiftDao {
 	            "AND date = ?";
 
 	        PreparedStatement ps = conn.prepareStatement(sql);
+	        
+	        
 	        //ps.setString(1, time);
 	        //pStmt.setString(1, card.getUser_id());
-	        ps.setString(1, shift.getUser_id());
-	        ps.setString(2, shift.getDate());
-	        
+	        //ps.setString(1, shift.getReal_in());
+	        //ps.setString(2, shift.getUser_id());
+	        //ps.setString(3, shift.getDate());
 	        //ps.setString(1, user_id);
 	        //ps.setString(2, date);
+	        
+	        
+	        if (time != null) {
+ 				ps.setString(1, time);
+ 			} else {
+ 				ps.setString(1, "");
+ 			}
+	        if (shift.getUser_id() != null) {
+ 				ps.setString(2, shift.getUser_id());
+ 			} else {
+ 				ps.setString(2, "");
+ 			}
+ 			if (shift.getDate() != null) {
+ 				ps.setString(3, shift.getDate());
+ 			} else {
+ 				ps.setString(3, "");
+ 			}
 
 	        if (ps.executeUpdate() == 1) {
 	            result = true;
