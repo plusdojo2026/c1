@@ -1,3 +1,4 @@
+// 6/23 12:11 backUp
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -48,13 +49,13 @@
 	<main>
 		<h1>マイページ</h1>
 
-		<form method="POST" action="/c1/Mypage_e.Servlet" onsubmit="confirmSubmit(event)">
+		<form method="POST" action="/c1/MypageServlet" onsubmit="confirmSubmit(event)">
 			<div class="change-group">
 				<h2>パスワード変更</h2>
 				<table class="change-table">
 					<tr>
 						<th>現在使用しているパスワード</th>
-						<td><input type="text" name="nowPassword" class="text-box"></td>
+						<td><input type="text" name="password" class="text-box"></td>
 					</tr>
 					<tr>
 						<th>新たに変更するパスワード</th>

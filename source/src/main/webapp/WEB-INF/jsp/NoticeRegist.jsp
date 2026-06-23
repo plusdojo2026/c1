@@ -45,9 +45,9 @@
 <!-- メイン -->
 <main>
 
-<form action="Result.jsp" method="post">
+<form action="/c1/NoticeRegistServlet" method="POST">
     <label>タイトル
-        <input type="text" name="registTitle" required>
+        <input type="text" name="title" required>
     </label>
     <label>日付
         <input type="date" id="datepicker">
@@ -55,7 +55,7 @@
     </label>
 
     <p>内容</p>
-        <p><textarea name="registText" required></textarea>
+        <p><textarea name="text" required></textarea>
     </label>
     <input type="submit" value="登録">
 </p>
@@ -94,9 +94,7 @@ function updateClock() {
 setInterval(updateClock, 1000);
 updateClock();
 </script>
-
 <script>
-'use strict'
 window.onload = function() {
 const today = new Date();
 const yyyy = today.getFullYear();
@@ -106,6 +104,5 @@ const formattedDate = `${yyyy}-${mm}-${dd}`;
 document.getElementById("datepicker").value = formattedDate;
 };
 </script>
-
 </body>
 </html>

@@ -6,28 +6,28 @@ public class Notice implements Serializable {
 		/*フィールド*/
 		private int id; 
 		private String user_id;		
-		private String registTitle;		
+		private String title;		
 		private String date; 			
-		private String registText; 				
+		private String text; 				
 	
 		/*コンストラクタ*/
 		public Notice() {
 			super();
 			this.id = 0;
 			this.user_id = "";
-			this.registTitle = "";
+			this.title = "";
 			this.date = "";
-			this.registText = "";
+			this.text = "";
 
 		}
 		
-		public Notice(int id, String user_id, String registTitle, String date,  String registText) {
+		public Notice(int id, String user_id, String title, String date,  String text) {
 			super();
 			this.id = id;
 			this.user_id = user_id;
-			this.registTitle = registTitle;
+			this.title = title;
 			this.date = date;
-			this.registText = registText;
+			this.text = text;
 		}
 
 		public int getId() {
@@ -47,11 +47,11 @@ public class Notice implements Serializable {
 		}
 		
 		public String getRegistTitle() {
-			return registTitle;
+			return title;
 		}
 
-		public void setRegistTitle(String registTitle) {
-			this.registTitle = registTitle;
+		public void settitle(String title) {
+			this.title = title;
 		}
 		public String getDate() {
 			return date;
@@ -61,12 +61,12 @@ public class Notice implements Serializable {
 			this.date = date;
 		}
 
-		public String getregistText() {
-			return registText;
+		public String gettext() {
+			return text;
 		}
 
-		public void setregistText(String registText) {
-			this.registText = registText;
+		public void settext(String text) {
+			this.text = text;
 		}
 
 }

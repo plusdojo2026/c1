@@ -1,10 +1,11 @@
+// 6/23 12:11 backUp
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>マイページ-店長画面</title>
+		<title>マイページ-従業員画面</title>
 		<link rel = "stylesheet" href = "css/Mypage_m.css">
 	</head>
 	<body>
@@ -44,10 +45,11 @@
 		</div>
 	</header>
 
+
 	<main>
 		<h1>マイページ</h1>
 
-		<form method="POST" action="/c1/Mypage_m_Servlet" onsubmit="confirmSubmit(event)">
+		<form method="POST" action="/c1/MypageServlet" onsubmit="confirmSubmit(event)">
 			<div class="change-group">
 				<h2>パスワード変更</h2>
 				<table class="change-table">
@@ -63,7 +65,7 @@
 				<p><input type="submit" name="change" value="変更する" class="change-button"></p>
 			</div>
 		</form>
-
+		
 			<form method="POST" action="/c1/Mypage_m.Servlet" onsubmit="confirmSubmit(event)">
 				<div class="add-group">
 					<h2>新規従業員登録</h2>
@@ -94,6 +96,8 @@
 				<textarea name="suggestion" class = "text-box" > ${e.suggestion}</textarea><br>
 			</div>
 		</div>	
+	
+
 	</main>
 
 	<footer>
@@ -104,6 +108,7 @@
 
 	<script>
 		'use strict';
+
 
 		function confirmSubmit(event) {
 			// 確認ダイアログを表示
@@ -140,6 +145,27 @@
 
 		setInterval(updateClock, 1000);
 		updateClock();
+
+		document.getElementById('form').onsubmit = function(event) {
+            let nowPassword = document.getElementById('form').nowPassword.value;
+            let newPassword = document.getElementById('form').newPassword.value;
+            
+			if (nowPassword === '' && newPassword === '') {
+                window.alert('現在のパスワードと新しいパスワードを入力してください');
+                event.preventDefault();
+			}else if (nowPassword === '' && newPassword !== '' ) {
+                window.alert('現在のパスワードを入力してください！');
+                event.preventDefault();
+            }else if (nowPassword !== '' && newPassword === '') {
+                window.alert('新しいパスワードを入力してください！');
+                event.preventDefault();
+            }else if (nowPassword === newPassword ) {
+                window.alert('同じパスワードを入力しています。違うものを入力してください。');
+                event.preventDefault();
+            }
+        }
+
+
 
 	</script>
 
