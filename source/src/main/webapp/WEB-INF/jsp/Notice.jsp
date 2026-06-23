@@ -49,29 +49,25 @@
 
 <!-- 画像をクリックすると別ページに移動 -->
 <a href="https://NoticeRegist.com" target="_blank">
+
+    <img src="images/fukidashi.png" alt="fukidashi">
+
 	<img src="images/fukidashi.png" alt="fukidashi">
+
 </a>
 <!-- 検索フォーム -->
 
-<form class="search-box" action="search.php" method="get">
+<form class="search-box" action="Notice.jsp" method="get">
     <input type="text" name="q" placeholder="タイトル" required>
     <input type="text" name="q" placeholder="記入者" required>
     <button type="submit">検索</button>
 </form>
 
-<form action="save_notice.php" method="post">
+<form action="Notice.jsp" method="post">
     <table id="newsTable">
 
-<!--   <label>タイトル
-        <input type="text" name="registTitle" required>
-    </label>
-    <label>日付
-        <input type="date" id="datepicker" name="date">
-        </label>
-<p>内容</p>
-        <p><textarea name="registText" required></textarea>
-
-    </label> -->  
+    <label>タイトル
+        <input type="text" name="title" required>  
     
     <form id="editForm" method="post" action="/update">
     <!-- タイトル -->
