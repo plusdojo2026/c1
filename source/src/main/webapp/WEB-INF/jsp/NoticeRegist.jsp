@@ -45,9 +45,9 @@
 <!-- メイン -->
 <main>
 
-<form action="Result.jsp" method="post">
+<form action="/c1/NoticeRegistServlet" method="POST">
     <label>タイトル
-        <input type="text" name="registTitle" required>
+        <input type="text" name="title" required>
     </label>
     <label>日付
         <input type="date" id="datepicker">
@@ -55,7 +55,7 @@
     </label>
 
     <p>内容</p>
-        <p><textarea name="registText" required></textarea>
+        <p><textarea name="text" required></textarea>
     </label>
     <input type="submit" value="登録">
 </p>

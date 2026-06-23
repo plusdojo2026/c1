@@ -21,18 +21,18 @@ public class NoticeDao {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/webapp1?"
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mamoral?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"root", "Kensyuu8610");
+					"root", "password");
 
 			// SQL文を準備する
-			String sql = "SELECT * FROM Bc "
+			String sql = "SELECT * FROM notice "
 					+ "WHERE "
 					+ "user_id LIKE ? AND "
-					+ "registTitle LIKE ? AND "
+					+ "title LIKE ? AND "
 					+ "date LIKE ? AND "
-					+ "registText LIKE ? AND "
-					+ "datepicker LIKE ? AND "
+					+ "text LIKE ? AND "
+					+ "date LIKE ? AND "
 					+ "ORDER BY id";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
@@ -48,8 +48,8 @@ public class NoticeDao {
 
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
-				Notice Notice = new Notice(rs.getInt("id"),rs.getString("user_id"), rs.getString("registTitle"),
-						rs.getString("date"),rs.getString("registText"));
+				Notice Notice = new Notice(rs.getInt("id"),rs.getString("user_id"), rs.getString("title"),
+						rs.getString("date"),rs.getString("text"));
 				cardList.add(Notice);
 			}
 		} catch (SQLException e) {
@@ -84,12 +84,12 @@ public class NoticeDao {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/webapp1?"
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mamoral?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"root", "Kensyuu8610");
+					"root", "password");
 
 			// SQL文を準備する
-			String sql = "INSERT INTO Bc VALUES (0, ?,?,?,?,?)";
+			String sql = "INSERT INTO notice VALUES (0, ?,?,?,?,?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -113,8 +113,8 @@ public class NoticeDao {
 			} else {
 				pStmt.setString(4, "");
 			}
-			if (card.getregistText() != null) {
-				pStmt.setString(5, card.getregistText());
+			if (card.gettext() != null) {
+				pStmt.setString(5, card.gettext());
 			} else {
 				pStmt.setString(5, "");
 			}
@@ -152,12 +152,12 @@ public class NoticeDao {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/webapp1?"
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mamoral?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"root", "Kensyuu8610");
+					"root", "password");
 
 			// SQL文を準備する
-			String sql = "UPDATE Notice SET user_id =?, registTitle =?, WHERE id=?";
+			String sql = "UPDATE Notice SET user_id =?, Title =?, WHERE id=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -177,8 +177,8 @@ public class NoticeDao {
 			} else {
 				pStmt.setString(3, "");
 			}
-			if (card.getregistText() != null) {
-				pStmt.setString(4, card.getregistText());
+			if (card.gettext() != null) {
+				pStmt.setString(4, card.gettext());
 			} else {
 				pStmt.setString(4, "");
 			}
@@ -218,7 +218,7 @@ public class NoticeDao {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/webapp1?"
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mamoral?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "Kensyuu8610");
 
