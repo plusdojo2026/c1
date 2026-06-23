@@ -7,7 +7,7 @@ public class Books implements Serializable {
 	private int id;				// id列
 	private String user_id;		// user_id列
 	private String date;		// date列
-	private int category_id; 	// category_id列
+	private String category_id; 	// category_id列
 	private String title;  		// title列
 	private String teacher;  	// teacher列
 	private String manual;  	// manual列
@@ -15,8 +15,8 @@ public class Books implements Serializable {
 	private String update_date;  // update_Date列
 	
 	// 引数があるコンストラクタ
-	public Books(int id, String user_id, String date, int category_id, String title
-			, String teacher, String manual, String update_name, String update_date) {
+	public Books(int id, String user_id, String date, String category_id, String title,
+			 String teacher, String manual, String update_name, String update_date) {
 		super();
 		this.id = id;
 		this.user_id = user_id;
@@ -35,7 +35,7 @@ public class Books implements Serializable {
 		this.id = 0;
 		this.user_id = "";
 		this.date = "";
-		this.category_id = 0;
+		this.category_id = "";
 		this.title = "";
 		this.teacher = "";
 		this.manual = "";
@@ -74,12 +74,12 @@ public class Books implements Serializable {
 	}
 	
 	// category_idのゲッタ
-	public int getCategory_id() {
+	public String getCategory_id() {
 		return category_id;
 	}
 	
 	// category_idのセッタ
-	public void setCategory_id(int category_id) {
+	public void setCategory_id(String category_id) {
 		this.category_id = category_id;
 	}
 	

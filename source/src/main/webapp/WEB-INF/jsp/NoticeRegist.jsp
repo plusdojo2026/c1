@@ -94,7 +94,9 @@ function updateClock() {
 setInterval(updateClock, 1000);
 updateClock();
 </script>
+
 <script>
+'use strict'
 window.onload = function() {
 const today = new Date();
 const yyyy = today.getFullYear();
@@ -104,5 +106,6 @@ const formattedDate = `${yyyy}-${mm}-${dd}`;
 document.getElementById("datepicker").value = formattedDate;
 };
 </script>
+
 </body>
 </html>

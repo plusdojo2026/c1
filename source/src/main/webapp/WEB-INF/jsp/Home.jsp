@@ -47,7 +47,7 @@
             <div>
                 <div>
                     <!-- 出勤ボタン -->
-                    <button type="button" class="buttonIn" onclick="document.getElementById('realIn_modal').showModal()">出勤</button>&emsp;
+                   	<button type="button" class="buttonIn" onclick="document.getElementById('realIn_modal').showModal()">出勤</button>&emsp;
                     <!-- 退勤ボタン -->
                     <button type="button" class="buttonOut" onclick="document.getElementById('realOut_modal').showModal()">退勤</button>
                 </div>
@@ -100,7 +100,7 @@
         </h3>
         <!-- 出勤確認モーダル -->
         <dialog id="realIn_modal">
-            <form action="new_result.html" name="check">
+            <form method="POST" action="/c1/RealInServlet" name="check">
                     <p class="realIn">出勤確認<p>
                     <!-- required属性を付与 -->
                     <input type="checkbox" class="realInC" required>SNSの不適切な使用はしていません<br>

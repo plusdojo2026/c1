@@ -50,8 +50,8 @@ public class BooksDao {
 			} else {
 				pStmt.setString(2, "%");
 			}
-			if (card.getCategory_id() != 0) {
-				pStmt.setInt(3, 0 + card.getCategory_id() + 0);
+			if (card.getCategory_id() != null) {
+				pStmt.setString(3, "%" + card.getCategory_id() + "%");
 			} else {
 				pStmt.setInt(3, 0);
 			}
@@ -86,7 +86,7 @@ public class BooksDao {
 
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
-				Books books = new Books(rs.getInt("id"),rs.getString("user_id"), rs.getString("date"),  rs.getInt("category_id"), rs.getString("title"),rs.getString("teacher"),
+				Books books = new Books(rs.getInt("id"),rs.getString("user_id"), rs.getString("date"),  rs.getString("category_id"), rs.getString("title"),rs.getString("teacher"),
 						rs.getString("manual"),rs.getString("update_name"),rs.getString("update_date") );
 				cardList.add(books);
 			}
@@ -112,6 +112,57 @@ public class BooksDao {
 		return cardList;
 	}
 
+	public List<Books> select() {
+		Connection conn = null;
+		List<Books> cardList = new ArrayList<Books>();
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("com.mysql.cj.jdbc.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mamoral?"
+					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+					"root", "password");
+
+			// SQL文を準備する
+			String sql = "SELECT * FROM Books ";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を完成させる
+
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+			// 結果表をコレクションにコピーする
+			while (rs.next()) {
+				Books books = new Books(rs.getInt("id"),rs.getString("user_id"), rs.getString("date"),  rs.getString("category_id"), rs.getString("title"),rs.getString("teacher"),
+						rs.getString("manual"),rs.getString("update_name"),rs.getString("update_date") );
+				cardList.add(books);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			cardList = null;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			cardList = null;
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+					cardList = null;
+				}
+			}
+		}
+
+		// 結果を返す
+		return cardList;
+	}
+
+	
 	// 引数cardで指定されたレコードを登録し、成功したらtrueを返す
 	public boolean insert(Books card) {
 		Connection conn = null;
@@ -141,10 +192,10 @@ public class BooksDao {
 			} else {
 				pStmt.setString(2, "");
 			}
-			if (card.getCategory_id() != 0) {
-				pStmt.setInt(3, card.getCategory_id());
+			if (card.getCategory_id() != "") {
+				pStmt.setString(3, card.getCategory_id());
 			} else {
-				pStmt.setInt(3, 0);
+				pStmt.setString(3, "");
 			}
 			if (card.getTitle() != null) {
 				pStmt.setString(4, card.getTitle());
@@ -227,10 +278,10 @@ public class BooksDao {
 			} else {
 				pStmt.setString(2, "");
 			}
-			if (card.getCategory_id() != 0) {
-				pStmt.setInt(3, card.getCategory_id());
+			if (card.getCategory_id() != null) {
+				pStmt.setString(3, card.getCategory_id());
 			} else {
-				pStmt.setInt(3, 0);
+				pStmt.setString(3,"");
 			}
 			if (card.getTitle() != null) {
 				pStmt.setString(4, card.getTitle());

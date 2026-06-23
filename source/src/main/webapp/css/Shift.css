@@ -96,14 +96,14 @@ form {
     border:1px solid #28A6A5;
 }
 
-/* 左側 */
+/* 左側（名前＋日付） */
 .shift-left {
     display: flex;
     flex-direction: column;
     gap: 5px;
 }
 
-/* 右側 */
+/* 右側（シフト情報） */
 .shift-right {
     display: flex;
     flex-direction: column;
@@ -114,18 +114,7 @@ form {
     
 }
 
-.shift-form {
-    display: contents;
-}
-
-
-/* シフト予定 */
-.shift-time {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
+/* シフト予定（in/out） */
 .inandOut {
     margin-bottom: 10px;
 }
