@@ -257,7 +257,7 @@ public class ShiftDao {
  			} else {
  				ps.setString(2, "");
  			}
- 			if (shift.getDate() == sdf.format(cl)) {
+ 			if (shift.getDate().equals(sdf.format(cl.getTime()))) {
  				ps.setString(3, shift.getDate());
  			} else {
  				ps.setString(3, "");
