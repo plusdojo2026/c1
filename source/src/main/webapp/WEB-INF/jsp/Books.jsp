@@ -75,15 +75,15 @@
                             </select>
                         </td>
                 <td>
-                     <input type="text" name="company"  placeholder="会社">
+                     <input type="text" name="teacher"  placeholder="登録者">
                 </td>
                 <td>
-                     <input type="text" name="address"  placeholder="住所">
+                     <input type="text" name="title"  placeholder="タイトル">
                 </td>
             </tr>
             <tr>
                 <td>
-                     <input type="text" name="remarks"  placeholder="備考"></p>
+                     <input type="text" name="manual"  placeholder="キーワード"></p>
                 </td>
             <tr>
                 <td>

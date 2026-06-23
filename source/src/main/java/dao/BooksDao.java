@@ -278,7 +278,7 @@ public class BooksDao {
 			} else {
 				pStmt.setString(2, "");
 			}
-			if (card.getCategory_id() != "") {
+			if (card.getCategory_id() != null) {
 				pStmt.setString(3, card.getCategory_id());
 			} else {
 				pStmt.setString(3,"");

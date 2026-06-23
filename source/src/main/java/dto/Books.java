@@ -15,8 +15,8 @@ public class Books implements Serializable {
 	private String update_date;  // update_Date列
 	
 	// 引数があるコンストラクタ
-	public Books(int id, String user_id, String date, String category_id, String title
-			, String teacher, String manual, String update_name, String update_date) {
+	public Books(int id, String user_id, String date, String category_id, String title,
+			 String teacher, String manual, String update_name, String update_date) {
 		super();
 		this.id = id;
 		this.user_id = user_id;
