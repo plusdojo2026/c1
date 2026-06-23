@@ -176,7 +176,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const startYear = 2025;
         const endYear = new Date().getFullYear() + 5;
 
-        
+        yearSelect.appendChild(new Option('--', ''));
+        monthSelect.appendChild(new Option('--', ''));
+
         for (let y = startYear; y <= endYear; y++) {
             const option = document.createElement('option');
             option.value = y;
@@ -184,7 +186,6 @@ document.addEventListener('DOMContentLoaded', () => {
             yearSelect.appendChild(option);
         }
 
-     
         for (let m = 1; m <= 12; m++) {
             const option = document.createElement('option');
             option.value = m;

@@ -41,7 +41,7 @@
     </header>
     <!-- ヘッダーここまで -->
 
-<div class="background"><!-- 背景を表示する範囲の div -->
+
 <h1 class="hero">シフト・出退勤管理一覧(店長)</h1>
 <main>
 	<c:if test="${not empty successMessage}">
@@ -66,47 +66,43 @@
             </form>
 
             <!--    シフトデータ -->
-            <c:forEach var="e" items="${shiftList}">
-            <div class="shift-row">
-                <div class="shift-left">
-                    <!-- 従業員名 -->
-                        <div class="shiftName">${e.user_name}</div>
+<c:forEach var="e" items="${shiftList}">
+<form action="ShiftRUDServlet" method="post" class="shift-row">
 
-                    <!-- 日付 -->
-                        <div class="date">${e.date}</div>
-                </div>
+    <div class="shift-left">
+        <div class="shiftName">${e.user_name}</div>
+        <div class="date">${e.date}</div>
+    </div>
 
-                <div class="shift-right">
-                    <!-- シフト予定 -->
-                    <div class="inandOut">
-                    シフト<input type="text" name="in" value="${e.clock_in}"> 〜
-                        <input type="text" name="out" value="${e.clock_out}">
-                    </div>
+    <div class="shift-right">
+	    <div class="shift-time">
+	        シフト
+	        <input type="text" name="clock_in" value="${e.clock_in}">
+	        〜
+	        <input type="text" name="clock_out" value="${e.clock_out}">
+		</div>
+        <div class="shiftIn">
+            出勤 <input type="text" name="real_in" value="${e.real_in}">
+        </div>
+        <div class="shiftOut">
+            退勤 <input type="text" name="real_out" value="${e.real_out}">
+        </div>
+    </div>
 
-                    <!-- 出退勤 -->
-                    <div>
-                        <div class="shiftIn">出勤<input type="text" name="realIn" value="${e.real_in}" ></div>
-                        <div class="shiftOut">退勤<input type="text" name="realOut" value="${e.real_out}"></div>
-                    </div>
-                </div>
+    <div class="shift-buttons">
+        <input type="hidden" name="id" value="${e.id}">
+        <input type="hidden" name="date" value="${e.date}">
 
-                <!-- 更新・削除ボタン -->
-                <div class="shift-buttons">
-                    <form action="ShiftRUDServlet" method="post" onsubmit="return confirm('更新してよろしいですか？');">
-                    <input type="hidden" name="id" value="${e.id}">
-                    <button type="submit" name="update" class="update">更新</button>
-                    </form>
+        <button type="submit" name="action" value="update" class="update">更新</button>
+        <button type="submit" name="action" value="delete" class="delete">削除</button>
+    </div>
 
-                    <form action="ShiftRUDServlet" method="post"  onsubmit="return confirm('削除してもよろしいですか？');">
-                    <input type="hidden" name="id" value="${e.id}">
-                    <button type="submit" name="delete" class="delete">削除</button>
-                    </form>
-                </div>
-            </div>
-            </c:forEach>
+</form>
+</c:forEach>
+
+
         </div>
 </main>
-</div>
 </body>
 
 <script>
@@ -146,7 +142,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const startYear = 2025;
         const endYear = new Date().getFullYear() + 5;
 
-        
+        yearSelect.appendChild(new Option('--', ''));
+        monthSelect.appendChild(new Option('--', ''));
+
         for (let y = startYear; y <= endYear; y++) {
             const option = document.createElement('option');
             option.value = y;
@@ -154,7 +152,6 @@ document.addEventListener('DOMContentLoaded', () => {
             yearSelect.appendChild(option);
         }
 
-     
         for (let m = 1; m <= 12; m++) {
             const option = document.createElement('option');
             option.value = m;
