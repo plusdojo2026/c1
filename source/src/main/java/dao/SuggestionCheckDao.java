@@ -35,7 +35,9 @@ public class SuggetionCheckDao {
 					+ "FROM suggestion INNER JOIN user ON suggestion.user_id = user.user_id;";
 			
 			PreparedStatement pStmt = conn.prepareStatement(sql);
+
 			
+//			?がなく、setするものがないため以下のものはいらない、そのためコメントアウト
 			// user_nameとsuggestionをセットする
 //			pStmt.setString(user_name);
 //			pStmt.setString(suggestion_date);
