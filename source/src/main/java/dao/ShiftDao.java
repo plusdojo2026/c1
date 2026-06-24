@@ -28,10 +28,11 @@ public class ShiftDao {
 	            "root", "password");
 
 	        String sql =
-	            "SELECT shift.id, user.user_name, shift.date, " +
-	            "shift.clock_in, shift.clock_out, shift.real_in, shift.real_out " +
-	            "FROM shift INNER JOIN user ON shift.user_id = user.user_id " +
-	            "WHERE 1=1";
+	        	    "SELECT shift.id, user.user_id, user.user_name, shift.date, " +
+	        	    "shift.clock_in, shift.clock_out, shift.real_in, shift.real_out " +
+	        	    "FROM shift INNER JOIN user ON shift.user_id = user.user_id " +
+	        	    "WHERE 1=1";
+
 
 	        if (shift.getWord() != null && !shift.getWord().isEmpty()) {
 	            sql += " AND (user.user_name LIKE ? OR user.user_id LIKE ?)";
