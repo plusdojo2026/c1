@@ -88,12 +88,20 @@
 
 		<h1>ご意見箱一覧</h1>
 		<div class="suggestion-area">
+			<c:forEach var="e" items="${suggestionList}" >
 			<div class="box">
 				<div class="text-title">名前</div>
-				<input type="text" name="name" value = "${e.name}" class = "name-box" ><br>
+				<input type="text" name="name" value = "${e.name} + ${e.suggestion_date}" class = "name-box" ><br>
 				<div class="text-title">内容</div>
 				<textarea name="suggestion" class = "text-box" > ${e.suggestion}</textarea><br>
 			</div>
+			</c:forEach>
+			
+			<c:if test="${empty suggestionList}">
+			<p>指定された条件に一致するデータはありません。</p>
+			</c:if>
+			
+			
 		</div>	
 	
 
