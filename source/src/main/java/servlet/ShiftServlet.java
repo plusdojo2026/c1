@@ -21,7 +21,11 @@ public class ShiftServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        HttpSession session = request.getSession(false);
+//      HttpSession session = request.getSession(false);
+  	HttpSession session = request.getSession();
+  	
+		String user_id = (String)session.getAttribute("user_id");
+		int authority_id = (int) session.getAttribute("authority_id");
         //ログインしていない場合
         if (session == null || session.getAttribute("user_id") == null) {
             response.sendRedirect("/c1/LoginServlet");
@@ -35,6 +39,9 @@ public class ShiftServlet extends HttpServlet {
 
         // DTO
         Shift condition = new Shift();
+        if (authority_id == 2) {
+            condition.setUser_id(user_id);
+        }
         condition.setWord(word);
         condition.setYear(year);
         condition.setMonth(month);
@@ -46,9 +53,9 @@ public class ShiftServlet extends HttpServlet {
         request.setAttribute("shiftList", list);
 
         // 権限で画面分岐
-        int authority = (int) session.getAttribute("authority_id");
 
-        if (authority == 1) {
+
+        if (authority_id == 1) {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Shift_m.jsp");
             dispatcher.forward(request, response);
         } else {

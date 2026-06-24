@@ -41,6 +41,7 @@
         </div>
     </header>
     <!-- ヘッダーここまで -->
+    
 <h1 class="heading-6">お知らせ一覧</h1>
 
 <!-- ここからメイン -->
@@ -48,7 +49,11 @@
 
 <!-- 画像をクリックすると別ページに移動 -->
 <a href="https://NoticeRegist.com" target="_blank">
+
     <img src="images/fukidashi.png" alt="fukidashi">
+
+	<img src="images/fukidashi.png" alt="fukidashi">
+
 </a>
 <!-- 検索フォーム -->
 
@@ -60,31 +65,44 @@
 
 <form action="Notice.jsp" method="post">
     <table id="newsTable">
+
     <label>タイトル
-        <input type="text" name="title" required>
-    </label>
-    <label>日付
-        <input type="date" id="datepicker" name="date">
-        </label>
- 
+        <input type="text" name="title" required>  
+    
+    <form id="editForm" method="post" action="/update">
+    <!-- タイトル -->
+    <label for="title">タイトル</label>
+    <input type="text" id="title" name="registTitle" value="サンプルタイトル" required>
 
-<p>内容</p>
-        <p><textarea name="text" required></textarea>
+    <!-- 日付 -->
+    <label for="date">日付</label>
+    <input type="date" id="date" name="date" value="2026-06-22" required>
 
-    </label>
-<p>状態: <span id="status">未確認</span></p>
-<button id="checkBtn">確認</button>
-
-<label for="member">確認者リスト:</label>
- 	<select id="member" name="member">
+    <!-- 内容 -->
+    <p>
+    <label for="content">内容</label>
+  	</p>  
+    <textarea id="content" name="registText" rows="5" required>ここに内容が入ります。</textarea>
+    
+</form>
+<select id="member" name="member">
     <option value=""> -- 選択してください -- </option>
     <option value="001">斎藤由利</option>
     <option value="002">高橋翔</option>
-    <option value="003">山田祐樹</option>
   </select>
+<button id="checkBtn">確認</button>
+
+<p>
+<label for="member">確認者リスト:</label>
+<ul id="confirmedList"></ul>
+
+ 	<select id="member" name="member">
+    <option value="001">斎藤由利</option>
+    <option value="002">高橋翔</option>
+  </select>
+</p>
 
 	</label>
-    
 <input type="submit"name="submit"value="更新">
 </table>
 </form>
@@ -125,16 +143,70 @@
         updateClock();
     </script>
 
- <script>
-document.getElementById("checkBtn").addEventListener("click", function() {
-    // 確認ダイアログを表示
-    if (confirm("本当に確認しますか？")) {
-        document.getElementById("status").textContent = "確認済";
-        document.getElementById("status").style.color = "green";
-        this.disabled = true; // ボタンを無効化
+<script>
+'use strict'
+    const confirmBtn = document.getElementById('confirmBtn');
+    const peopleList = document.getElementById('peopleList');
+    let counter = 0; // 押した人数カウント
+
+    confirmBtn.addEventListener('click', () => {
+        counter++;
+
+        // 最初の「まだ誰も押していません」オプションを削除
+        if (peopleList.options.length === 1 && peopleList.options[0].value === "") {
+            peopleList.remove(0);
+        }
+
+        // 新しいオプションを追加
+        const label = `ユーザー${counter}`;
+        const option = document.createElement('option');
+        option.value = label;
+        option.textContent = label;
+        peopleList.appendChild(option);
+    });
+</script>
+
+<script>
+'use strict'
+// 簡易バリデーション
+document.getElementById("editForm").addEventListener("submit", function(e) {
+    const title = document.getElementById("registTitle").value.trim();
+    const date = document.getElementById("date").value;
+    const content = document.getElementById("registText").value.trim();
+
+    if (!title || !date || !content) {
+        alert("すべての項目を入力してください。");
+        e.preventDefault();
     }
 });
-</script>  
+</script>
+
+<script>
+'use strict'
+document.getElementById("confirmBtn").addEventListener("click", function() {
+    const select = document.getElementById("nameSelect");
+    const name = select.value.trim();
+    const list = document.getElementById("confirmedList");
+
+    // 入力チェック
+    if (!name) {
+        alert("名前を選択してください。");
+        return;
+    }
+
+    // 重複チェック
+    const existingNames = Array.from(list.children).map(li => li.textContent);
+    if (existingNames.includes(name)) {
+        alert("この名前はすでにリストにあります。");
+        return;
+    }
+
+    // リストに追加
+    const li = document.createElement("li");
+    li.textContent = name;
+    list.appendChild(li);
+});
+</script>
 
 </body>
 </html>

@@ -20,19 +20,19 @@ public class Shift implements Serializable {
 
     public Shift() {}
 
-    public Shift(int id, String user_id, String user_name, String date,
-                 String clock_in, String clock_out,
-                 String real_in, String real_out) {
+    public Shift(int id, String user_id, String user_name,
+            String date, String clock_in, String clock_out,
+            String real_in, String real_out) {
+		   this.id = id;
+		   this.user_id = user_id;
+		   this.user_name = user_name;
+		   this.date = date;
+		   this.clock_in = clock_in;
+		   this.clock_out = clock_out;
+		   this.real_in = real_in;
+		   this.real_out = real_out;
+}
 
-        this.id = id;
-        this.user_id = user_id;
-        this.user_name = user_name;
-        this.date = date;
-        this.clock_in = clock_in;
-        this.clock_out = clock_out;
-        this.real_in = real_in;
-        this.real_out = real_out;
-    }
 
 	public int getId() {
 		return id;

@@ -47,8 +47,10 @@ public class HomeServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 	
 		String user_id = (String)session.getAttribute("user_id");
+//		String user_id = "yamada-yuki-m";
 		String suggestion = request.getParameter("suggestion");	
 		
+//		/WEB-INF/jsp/HomeResult.jsp
 		
 		// 登録処理を行う
 		SuggestionDao sDao = new SuggestionDao();
@@ -62,6 +64,4 @@ public class HomeServlet extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/HomeResult.jsp");
 		dispatcher.forward(request, response);
 		}
-}
-
-
+	}
