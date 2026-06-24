@@ -30,15 +30,16 @@ public class SuggetionCheckDao {
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements"
 					+ "=true","root", "password");
 
-			// SQL文を準備する(user_name、suggestionを取り出す)
-			String sql = "SELECT user.user_name,suggestion.suggestion "
-					+ "FROM suggestion INNER JOIN user ON suggestion.user_id = user.user_id";
+			// SQL文を準備する(user_name、suggestion_date、suggestionを取り出す)
+			String sql = "SELECT user.user_name, suggestion.suggestion_date, suggestion.suggestion "
+					+ "FROM suggestion INNER JOIN user ON suggestion.user_id = user.user_id;";
 			
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			
 			// user_nameとsuggestionをセットする
-			pStmt.setString(1,this.user_id);
-			pStmt.setString(2,);
+//			pStmt.setString(user_name);
+//			pStmt.setString(suggestion_date);
+//			pStmt.setString(suggestion);
 
 
 			// SQL文を実行し、結果表を取得する
@@ -48,6 +49,7 @@ public class SuggetionCheckDao {
 			while (rs.next()) {
 				Suggestion s = new Suggestion(
 						rs.getInt("id"), 
+						rs.getString("user_id"),
 						rs.getString("user_name"),
 						rs.getString("suggestion_date"),
 						rs.getString("suggestion"));
