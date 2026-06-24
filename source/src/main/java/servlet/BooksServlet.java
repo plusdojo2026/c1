@@ -73,10 +73,10 @@ public class BooksServlet extends HttpServlet {
 
 		// 検索処理を行う
 		BooksDao bDao = new BooksDao();
-		//List<Books> cardList = bDao.select(new Books(0, user_id,date,category_id,title,teacher,
-		//		manual,update_name,update_date));
+		List<Books> cardList = bDao.select(new Books(0, user_id,date,category_id,title,teacher,
+				manual,update_name,update_date));
 		
-		List<Books> cardList = bDao.select();
+		//List<Books> cardList = bDao.select();
 		
 		// 検索結果をリクエストスコープに格納する
 		request.setAttribute("cardList", cardList);

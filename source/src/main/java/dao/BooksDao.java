@@ -114,7 +114,7 @@ public class BooksDao {
 		return cardList;
 	}
 
-	public List<Books> select() {
+	/*public List<Books> select() {
 		Connection conn = null;
 		List<Books> cardList = new ArrayList<Books>();
 
@@ -163,7 +163,7 @@ public class BooksDao {
 		// 結果を返す
 		return cardList;
 	}
-
+*/
 	
 	// 引数cardで指定されたレコードを登録し、成功したらtrueを返す
 	public boolean insert(Books card) {
