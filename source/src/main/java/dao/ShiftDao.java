@@ -258,9 +258,9 @@ public class ShiftDao {
  				ps.setString(2, "");
  			}
  			if (shift.getDate().equals(sdf.format(cl.getTime()))) {
- 				ps.setString(3, shift.getDate());
+ 				ps.setDate(3, Date.valuesOf(shift.getDate()));
  			} else {
- 				ps.setString(3, "");
+ 				ps.setDate(3, "");
  			}
 
 	        if (ps.executeUpdate() == 1) {
