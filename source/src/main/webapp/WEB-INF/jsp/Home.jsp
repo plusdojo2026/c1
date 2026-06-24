@@ -175,12 +175,9 @@
 
         // 内容のパターン
         const terrorContents = [
-            "食材をゴミ箱に捨てる動画を拡散"+
-            "少年3人書類送検",
-            "従業員がゴミ箱に捨てた食材をまな板に戻す動画"+
-            "株価約27億円下落・従業員を刑事告訴",
-            "従業員が冷凍庫に入った写真を投稿"+
-            "店舗閉店・約1,300万円の損害賠償請求"
+            "食材をゴミ箱に捨てる動画を拡散<br>少年3人書類送検",
+            "従業員がゴミ箱に捨てた食材をまな板に戻す動画<br>株価約27億円下落・従業員を刑事告訴",
+            "従業員が冷凍庫に入った写真を投稿<br>店舗閉店・約1,300万円の損害賠償請求"
         ];
 
         // モーダルが開かれた時にランダム表示
@@ -188,7 +185,7 @@
             const index = Math.floor(Math.random() * terrorTitles.length);
 
             document.getElementById("terrorTitle").textContent = terrorTitles[index];
-            document.getElementById("terrorContent").textContent = terrorContents[index];
+            document.getElementById("terrorContent").innerHTML = terrorContents[index];
         }
 
     </script>
@@ -223,7 +220,7 @@
     </script>
     <script>
         // 用語マナーTipsの表示を変更する
-        const areaTerm = ['内容1', '内容2', '内容3',]
+        const areaTerm = ['大きな声であいさつ！', '「了解しました」ではなく「承知いたしました」や「かしこまりました」', '電話対応したら店長に報告',]
 
         // querySelectorで
         const termArea = document.querySelector('#termArea')
