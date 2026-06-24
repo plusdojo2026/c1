@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.BooksDao;
 import dto.Books;
@@ -35,19 +36,25 @@ public class BooksRegistServlet extends HttpServlet {
 
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
-		String user_id  = request.getParameter("user_id");
+		
+		HttpSession session = request.getSession();
+		
+		String user_id  = (String)session.getAttribute("user_id");
 		String date = request.getParameter("date");
 		String category_id = request.getParameter("category_id");
 		String title = request.getParameter("title");
-		String teacher = request.getParameter("teacher");
+		
+		HttpSession session2 = request.getSession();
+		String teacher = (String)session2.getAttribute("teacher");
+		
 		String manual = request.getParameter("manual");
-		String update_name = request.getParameter("update_name");
+		String update_name = (String)session.getAttribute("update_name");
 		String update_date = request.getParameter("update_date");
 
 		// 登録処理を行う
 		BooksDao bDao = new BooksDao();
-		if (bDao.insert(new Books(0, user_id,date,category_id,title,teacher,
-				manual,update_name,update_date))) { // 登録成功
+		if (bDao.insert(new Books(0, user_id,"",category_id,title,teacher,
+				manual,update_name,""))) { // 登録成功
 			request.setAttribute("result", new Result("登録成功！", "レコードを登録しました。", "/c1/BooksServlet"));
 		} else { // 登録失敗
 			request.setAttribute("result", new Result("登録失敗！", "レコードを登録できませんでした。", "/c1/BooksServlet"));

@@ -5,7 +5,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import dto.Books;
@@ -53,7 +55,7 @@ public class BooksDao {
 			if (card.getCategory_id() != null) {
 				pStmt.setString(3, "%" + card.getCategory_id() + "%");
 			} else {
-				pStmt.setInt(3, 0);
+				pStmt.setString(3, "%");
 			}
 			if (card.getTitle() != null) {
 				pStmt.setString(4, "%" + card.getTitle() + "%");
@@ -177,6 +179,10 @@ public class BooksDao {
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
 
+//			日付を取得し変数をを格納
+			Calendar cl = Calendar.getInstance();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			
 			// SQL文を準備する
 			String sql = "INSERT INTO Books VALUES (0, ?,?,?,?,?,?,?,?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -188,11 +194,11 @@ public class BooksDao {
 				pStmt.setString(1, "");
 			}
 			if (card.getDate() != null) {
-				pStmt.setString(2, card.getDate());
+				pStmt.setString(2, sdf.format(cl.getTime()));
 			} else {
 				pStmt.setString(2, "");
 			}
-			if (card.getCategory_id() != "") {
+			if (card.getCategory_id() != null) {
 				pStmt.setString(3, card.getCategory_id());
 			} else {
 				pStmt.setString(3, "");
@@ -218,7 +224,7 @@ public class BooksDao {
 				pStmt.setString(7, "");
 			}
 			if (card.getUpdate_date() != null) {
-				pStmt.setString(8, card.getUpdate_date());
+				pStmt.setString(8, sdf.format(cl.getTime()));
 			} else {
 				pStmt.setString(8, "");
 			}
@@ -261,6 +267,10 @@ public class BooksDao {
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mamoral?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
+			
+//			日付を取得し変数をを格納
+			Calendar cl = Calendar.getInstance();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
 			// SQL文を準備する
 			String sql = "UPDATE Books SET user_id =?, date =?, category_id =?, title =?, teacher =?, manual =?, update_name =?, update_date =? WHERE id=?";
