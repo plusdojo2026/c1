@@ -32,7 +32,8 @@ public class ShiftDao {
 	        	    "SELECT shift.id, user.user_id, user.user_name, shift.date, " +
 	        	    "shift.clock_in, shift.clock_out, shift.real_in, shift.real_out " +
 	        	    "FROM shift INNER JOIN user ON shift.user_id = user.user_id " +
-	        	    "WHERE 1=1";
+	        	    "WHERE 1=1 "+
+	        	    "ORDER BY shift.date DESC, user.user_name ASC";
 
 
 	        if (shift.getWord() != null && !shift.getWord().isEmpty()) {
