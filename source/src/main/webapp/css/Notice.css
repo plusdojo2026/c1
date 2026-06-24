@@ -142,7 +142,7 @@ footer {
     color: #253958;
 }
 
-.heading-6::before,
+/*.heading-6::before,
 .heading-6::after {
     content: '';
     display: inline-block;
@@ -159,7 +159,44 @@ footer {
 
 .heading-6::after {
     right: 0;
-}
+}*/
+
+.image-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .image-container img.main-image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* 重ねるテキストとアイコン */
+  .overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 49%;
+    transform: translate(-50%, -50%);
+    display: flex; /* 横並びにする */
+    align-items: center; /* 縦位置を中央揃え */
+    gap: 10px; /* 文字と画像の間隔 */
+    color: white;
+    font-size: 2em;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+    text-align: center;
+    padding: 0.5em 1em;
+  }
+
+  /* 小さいアイコン画像 */
+  .overlay-text img.icon {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+  }
 
 /* フォーム全体 */
 form{

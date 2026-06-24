@@ -27,13 +27,6 @@ public class NoticeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-		/**
-		HttpSession session = request.getSession();
-		if (session.getAttribute("user_id") == null) {
-			response.sendRedirect("/c1/LoginServlet");
-			return;
-		}
-	*/
 
 		// 登録ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Notice.jsp");

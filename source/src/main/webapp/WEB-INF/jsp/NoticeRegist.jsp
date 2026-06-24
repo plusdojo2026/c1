@@ -40,10 +40,13 @@
         </div>
     </header>
     <!-- ヘッダーここまで -->
-    <h1 class="heading-6">お知らせ登録</h1>
     
 <!-- メイン -->
 <main>
+<div class="image-container">
+  <img src="images/fukidashi.png" alt="fukidashi">
+  <div class="overlay-text">お知らせ登録</div>
+</div>
 
 <form action="/c1/NoticeRegistServlet" method="POST">
     <label>タイトル
