@@ -33,8 +33,11 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response)
 	
 	HttpSession session = request.getSession();
 	String user_id = (String)session.getAttribute("user_id");
-	String real_in = request.getParameter("real_in");
 	String date = request.getParameter("date");
+	String clock_in = request.getParameter("clock_in");
+	String clock_out = request.getParameter("clock_out");
+	String real_in = request.getParameter("real_in");
+	
 	
 	//現在日時を測る
 	
@@ -42,7 +45,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response)
 	
 	// 登録処理を行う
 	ShiftDao shiftDao = new ShiftDao();
-	if (shiftDao.updateRealIn(new Shift(0, user_id, "", date, "", "", real_in, ""))) { // 送信成功
+	if (shiftDao.updateRealIn(new Shift(0, user_id, date, clock_in, clock_out, real_in, ""))) { // 送信成功
 		request.setAttribute ("result", new Result("出勤完了！", "今日も1日頑張りましょう！", request.getContextPath() + "/HomeServlet"));
 		} else { // 送信失敗
 		request.setAttribute ("result", new Result("出勤失敗！", "今日は休みです。", request.getContextPath() + "/HomeServlet"));

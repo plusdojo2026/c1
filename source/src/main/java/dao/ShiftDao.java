@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -210,7 +211,78 @@ public class ShiftDao {
 
 	    return result;
 	}
+	
+	public boolean RealInSelect(Shift select) {
+	    Connection conn = null;
+	    boolean resultAns = false;
 
+	    try {
+	        Class.forName("com.mysql.cj.jdbc.Driver");
+
+	        conn = DriverManager.getConnection(
+	            "jdbc:mysql://localhost:3306/mamoral?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9",
+	            "root", "password");
+	        
+	     // SQL文を準備する
+	     // userテーブルからuser_id,passwordが該当するものを検索する。
+	     		String sql = "SELECT * FROM shift WHERE user_id = ? "
+	     				+ "AND date = ?";
+	     			
+	     		PreparedStatement pStmt = conn.prepareStatement(sql);
+	     		pStmt.setString(1,select.getUser_id());
+	     		pStmt.setString(2,select.getDate());
+	     			
+	     		// SQL文を実行し、結果表を取得する
+	    		ResultSet rs = pStmt.executeQuery();
+	    		
+	    		// 現在時刻を取得（HH:mm:ss）
+		        LocalTime now = LocalTime.now();
+		        String realTime = now.toString();
+	    		
+	    		if (rs.next()) {
+	    			int Rid = rs.getInt("id");
+//	    			String Ruser_id = rs.getString("user_id");
+//	    			String Rdate = rs.getString("date");
+//	    			String Rclock_in = rs.getString("clock_in");
+//	    			String Rclock_out = rs.getString("clock_out");
+	    			String Rreal_in = realTime;
+//	    			String Rreal_out = rs.getString("real_out");
+	    			
+	    			sql = "UPDATE shift SET " +
+//	    				  "user_id = ? " +
+//	    				  "date = ? " +
+//	    				  "clock_in = ? " +
+//    				  	  "clock_out = ? " +
+	    				  "real_in = ? " +
+//	    				  "real_out = ? " +
+	    		          "WHERE id = ? ";
+	    			
+	    			pStmt = conn.prepareStatement(sql);
+	    			pStmt.setString(1,Rreal_in);
+	    			pStmt.setInt(2,Rid);
+	    						
+	    			if (pStmt.executeUpdate() == 1) {
+	    				resultAns =  true;
+	    			} else {
+	    				resultAns = false;
+	    			}
+	    		} else {
+	    			resultAns = false;
+	    		}
+	    	} catch (Exception e) {
+	    		e.printStackTrace();
+	    	} finally {
+	    			// データベースを切断
+	    			if (conn != null) {
+	    				try {
+	    					conn.close();
+	    				} catch (SQLException e) {
+	    					e.printStackTrace();
+	    				}
+	    			}
+	    		}
+	    	return resultAns;
+	}
 //	出勤登録
 	public boolean updateRealIn(Shift shift) {
 	    Connection conn = null;
@@ -226,8 +298,6 @@ public class ShiftDao {
 	        //日付を取得し変数をを格納
 			Calendar cl = Calendar.getInstance();
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-			
-
 			
 	        // 現在時刻を取得（HH:mm:ss）
 	        LocalTime now = LocalTime.now();
@@ -248,25 +318,29 @@ public class ShiftDao {
 	        //ps.setString(1, user_id);
 	        //ps.setString(2, date);
 	        
-	        if (time != null) {
- 				ps.setString(1, time);
- 			} else {
- 				ps.setString(1, "");
- 			}
-	        if (shift.getUser_id() != null) {
- 				ps.setString(2, shift.getUser_id());
- 			} else {
- 				ps.setString(2, "");
- 			}
- 			if (shift.getDate().equals(sdf.format(cl.getTime()))) {
- 				ps.setDate(3, Date.valuesOf(shift.getDate()));
- 			} else {
- 				ps.setDate(3, "");
- 			}
+	        	if (shift.getDate().equals(sdf.format(cl.getTime()))) {
+//	        			ps.setTime(1, Time.valueOf(time));
+	        		if (time != null) {
+	     				ps.setTime(1, Time.valueOf(time));
+	     			} else {
+	     				ps.setString(1, "");
+	     			}
+	        		if (shift.getUser_id() != null) {
+	        			ps.setString(2, shift.getUser_id());
+	        		} else {
+	        			ps.setString(2, "");
+	        		}
+	        		if (shift.getUser_id() != null) {
+	        			ps.setString(3, shift.getDate());
+	        		} else {
+	        			ps.setString(3, "");
+	        		}
+	        	}
+	        	
 
-	        if (ps.executeUpdate() == 1) {
-	            result = true;
-	        }
+	        	if (ps.executeUpdate() == 1) {
+	        	result = true;
+	        	}
 	        
 
 	    } catch (Exception e) {
