@@ -2,6 +2,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,7 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.PassDao;
+import dao.SuggetionCheckDao;
 import dto.ResultPage;
+import dto.Suggestion;
 import dto.User;
 
 
@@ -49,6 +52,29 @@ public class MypageServlet extends HttpServlet {
 		      RequestDispatcher disp = request.getRequestDispatcher("/WEB-INF/jsp/Mypage_e.jsp");
 		      disp.forward(request, response);
 		  }
+			
+	        // DTO
+			Suggetion condition = new Suggetion();
+
+			
+			// ご意見箱の内容をリクエストスコープに格納する
+			SuggetionCheckDao sDao = new SuggetionCheckDao();
+			List<Suggestion> suggestionList = sDao.select(condition);
+			request.setAttribute("suggestionList", suggestionList);
+			
+//	        // DAO呼び出し
+//	        ShiftDao dao = new ShiftDao();
+//	        List<Shift> list = dao.select(condition);
+//
+//	        request.setAttribute("shiftList", list);
+
+			
+			
+//			BcDAO bDao = new BcDAO();
+//			List<Bc> cardList = bDao.select(new Bc(0,company,department,position,
+//					familly_name,first_name,familly_reading,first_reading,
+//					gender,post,address,main_phone,fax,phone,mail,memo));
+
 
 		
 //		HttpSession session = request.getSession();
