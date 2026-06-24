@@ -180,7 +180,7 @@
     </script>
     <script>
         // バイトテロTipsの表示を変更する
-        const area = ['内容1', '内容2', '内容3',]
+        const area = ['バイトテロの損害賠償は数千万円にものぼる事例があります。', 'バイトテロは損害賠償だけでなく懲役や罰金などといった刑事罰の対象になることがあります。', 'バイトテロによる内定取り消しや退学処分の事例があります。',]
 
         // querySelectorで
         const terrorArea = document.querySelector('#terrorArea')
