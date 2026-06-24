@@ -12,6 +12,7 @@
     <header class="header">
         <!-- ロゴ -->
         <img src="images/mamorallogo.png" alt="Mamoral" class="logo">
+        
     </header>
 <main>
 	<!-- <form method="GET" action="/c1/HomeServlet"> -->
@@ -23,5 +24,6 @@
 <footer>
         <p class="copylight">Copyright 2026 &copy; クエン酸. all rights reserved.</p>
 </footer>
+
 </body>
 </html>
