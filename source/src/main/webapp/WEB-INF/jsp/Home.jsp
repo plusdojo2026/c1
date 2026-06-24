@@ -49,7 +49,7 @@
                     <!-- 出勤ボタン -->
                    	<button type="button" class="buttonIn" onclick="document.getElementById('realIn_modal').showModal()">出勤</button>&emsp;
                     <!-- 退勤ボタン -->
-                    <button type="button" class="buttonOut" onclick="document.getElementById('realOut_modal').showModal()">退勤</button>
+                    <button type="button" class="buttonOut" onclick="setRandomTerrorText(); document.getElementById('realOut_modal').showModal()">退勤</button>
                 </div>
             </div>
             <!-- ご意見箱 -->
@@ -120,8 +120,8 @@
         <dialog id="realOut_modal">
             <form action="new_result.html" >
                 <p class="realOut">退勤確認<p><br>
-                    <p class="realOutT">バイトテロ事例</p><br>
-                    <p class="realOutC">バイトテロ事例の内容</p><br>
+                    <p class="realOutT" id="terrorTitle">バイトテロ事例</p><br>
+                    <p class="realOutC" id="terrorContent">バイトテロ事例の内容</p><br>
                     <input type="checkbox" class="realOutC" required>上記の行動はしていません<br>
 
                 <div class="button">
@@ -165,6 +165,32 @@
 
         setInterval(updateClock, 1000);
         updateClock();
+        
+     // タイトルのパターン
+        const terrorTitles = [
+            "バイトテロ事例①",
+            "バイトテロ事例②",
+            "バイトテロ事例③"
+        ];
+
+        // 内容のパターン
+        const terrorContents = [
+            "食材をゴミ箱に捨てる動画を拡散"+
+            "少年3人書類送検",
+            "従業員がゴミ箱に捨てた食材をまな板に戻す動画"+
+            "株価約27億円下落・従業員を刑事告訴",
+            "従業員が冷凍庫に入った写真を投稿"+
+            "店舗閉店・約1,300万円の損害賠償請求"
+        ];
+
+        // モーダルが開かれた時にランダム表示
+        function setRandomTerrorText() {
+            const index = Math.floor(Math.random() * terrorTitles.length);
+
+            document.getElementById("terrorTitle").textContent = terrorTitles[index];
+            document.getElementById("terrorContent").textContent = terrorContents[index];
+        }
+
     </script>
     <script>
         'use strict'
