@@ -49,16 +49,6 @@
 <form method="POST" action="/c1/BooksServlet"  id="searchform">
        <table>
             <tr>
-                                    <td>
-                            <!--カテゴリープルダウン選択-->
-                            <select name="category">
-                                <option hidden>カテゴリー選択</option>
-                                <option></option>
-                                <option value="manual">マニュアル</option>
-                                <option value="term">用語</option>
-                                <option value="others">その他</option>
-                            </select>
-                        </td>
                         <td>
                             <!--月選択-->
                             <input type="month">
@@ -67,9 +57,8 @@
                             <!--並び替えプルダウン選択-->
                             <select name="sort">
                                 <option hidden>並び替え</option>
-                                <option>デフォルト</option>
-                                <option value="nameUp">名前昇順</option>
-                                <option value="nameDown">名前降順</option>
+                                <option value="nameUp">タイトル昇順</option>
+                                <option value="nameDown">タイトル降順</option>
                                 <option value="dateUp">日付昇順</option>
                                 <option value="dateDown">日付降順</option>
                             </select>
@@ -77,6 +66,8 @@
                 <td>
                      <input type="text" name="company"  placeholder="会社">
                 </td>
+                                        </tr>
+                                        <tr>
                 <td>
                      <input type="text" name="address"  placeholder="住所">
                 </td>
