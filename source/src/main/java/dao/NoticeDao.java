@@ -89,7 +89,7 @@ public class NoticeDao {
 					"root", "password");
 
 			// SQL文を準備する
-			String sql = "INSERT INTO notice VALUES (0, ?,?,?,?,?)";
+			String sql = "INSERT INTO notice VALUES (0, ?,?,?,?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -108,15 +108,11 @@ public class NoticeDao {
 			} else {
 				pStmt.setString(3, "");
 			}
-			if (card.getDate() != null) {
-				pStmt.setString(4, card.getDate());
+			
+			if (card.gettext() != null) {
+				pStmt.setString(4, card.gettext());
 			} else {
 				pStmt.setString(4, "");
-			}
-			if (card.gettext() != null) {
-				pStmt.setString(5, card.gettext());
-			} else {
-				pStmt.setString(5, "");
 			}
 
 			// SQL文を実行する

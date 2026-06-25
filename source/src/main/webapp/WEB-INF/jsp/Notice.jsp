@@ -76,7 +76,6 @@
 <p>内容</p>
         <p><textarea name="text" required></textarea>
 
-    </label>
 <p>状態: <span id="status">未確認</span></p>
 <button id="checkBtn">確認</button>
 

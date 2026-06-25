@@ -41,15 +41,16 @@ public class NoticeRegistServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-		HttpSession session = request.getSession();
-		if (session.getAttribute("id") == null) {
-			response.sendRedirect("/java/LoginServlet");
-			return;
-		}
+//		HttpSession session = request.getSession();
+//		if (session.getAttribute("id") == null) {
+//			response.sendRedirect("/java/LoginServlet");
+//			return;
+//		}
 		
 		// リクエストパラメータを取得する
 				request.setCharacterEncoding("UTF-8");
-				String user_id  = request.getParameter("user_id");
+				HttpSession session = request.getSession();
+				String user_id  = (String)session.getAttribute("user_id");
 				String title = request.getParameter("title");
 				String date = request.getParameter("date");
 				String text = request.getParameter("text");

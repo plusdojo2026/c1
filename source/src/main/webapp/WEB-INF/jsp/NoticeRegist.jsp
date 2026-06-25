@@ -53,13 +53,12 @@
         <input type="text" name="title" required>
     </label>
     <label>日付
-        <input type="date" id="datepicker">
+        <input type="date" id="datepicker" name="date">
 
     </label>
 
     <p>内容</p>
         <p><textarea name="text" required></textarea>
-    </label>
     <input type="submit" value="登録">
 </p>
 </form>
