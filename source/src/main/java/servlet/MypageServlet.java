@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.PassDao;
-import dao.SuggetionCheckDao;
+import dao.SuggestionCheckDao;
 import dto.ResultPage;
 import dto.Suggestion;
 import dto.User;
@@ -54,11 +54,10 @@ public class MypageServlet extends HttpServlet {
 		  }
 			
 	        // DTO
-			Suggetion condition = new Suggetion();
-
+			Suggestion condition = new Suggestion();
 			
 			// ご意見箱の内容をリクエストスコープに格納する
-			SuggetionCheckDao sDao = new SuggetionCheckDao();
+			SuggestionCheckDao sDao = new SuggestionCheckDao();
 			List<Suggestion> suggestionList = sDao.select(condition);
 			request.setAttribute("suggestionList", suggestionList);
 			

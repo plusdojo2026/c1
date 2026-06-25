@@ -13,11 +13,11 @@ import java.util.List;
 
 import dto.Suggestion;
 
-public class SuggetionCheckDao {
+public class SuggestionCheckDao {
 	
 	
 	// 引数card指定された項目で検索して、取得されたデータのリストを返す(セレクトメソッド)
-	public List<Suggestion> select(Suggestion suggestion) {
+	public List<Suggestion> select(Suggestion Suggestion) {
 		Connection conn = null;
 		List<Suggestion> suggestionList = new ArrayList<>();
 
@@ -31,7 +31,7 @@ public class SuggetionCheckDao {
 					+ "=true","root", "password");
 
 			// SQL文を準備する(user_name、suggestion_date、suggestionを取り出す)
-			String sql = "SELECT user.user_name, suggestion.suggestion_date, suggestion.suggestion "
+			String sql = "SELECT suggestion.id, user.user_id, user.user_name, suggestion.suggestion_date, suggestion.suggestion "
 					+ "FROM suggestion INNER JOIN user ON suggestion.user_id = user.user_id;";
 			
 			PreparedStatement pStmt = conn.prepareStatement(sql);
