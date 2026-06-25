@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -33,19 +35,20 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response)
 	
 	HttpSession session = request.getSession();
 	String user_id = (String)session.getAttribute("user_id");
-	String date = request.getParameter("date");
-	String clock_in = request.getParameter("clock_in");
-	String clock_out = request.getParameter("clock_out");
-	String real_in = request.getParameter("real_in");
+	
+	//日付を取得し変数をを格納
+	Calendar cl = Calendar.getInstance();
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	String date = sdf.format(cl.getTime());
 	
 	
 	//現在日時を測る
 	
 	//現在日付とシフトの日付を比較する
 	
-	// 登録処理を行う
+	// 更新処理を行う
 	ShiftDao shiftDao = new ShiftDao();
-	if (shiftDao.updateRealIn(new Shift(0, user_id, date, clock_in, clock_out, real_in, ""))) { // 送信成功
+	if (shiftDao.RealInSelect(new Shift(0, user_id, "", date, "", "", "", ""))) { // 送信成功
 		request.setAttribute ("result", new Result("出勤完了！", "今日も1日頑張りましょう！", request.getContextPath() + "/HomeServlet"));
 		} else { // 送信失敗
 		request.setAttribute ("result", new Result("出勤失敗！", "今日は休みです。", request.getContextPath() + "/HomeServlet"));

@@ -225,7 +225,7 @@ public class ShiftDao {
 	            "root", "password");
 	        
 	     // SQL文を準備する
-	     // userテーブルからuser_id,passwordが該当するものを検索する。
+	     // userテーブルからuser_id,dateが該当するものを検索する。
 	     		String sql = "SELECT * FROM shift WHERE user_id = ? "
 	     				+ "AND date = ?";
 	     			
