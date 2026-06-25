@@ -44,11 +44,12 @@ public class BooksRegistServlet extends HttpServlet {
 		String category_id = request.getParameter("category_id");
 		String title = request.getParameter("title");
 		
-		HttpSession session2 = request.getSession();
-		String teacher = (String)session2.getAttribute("teacher");
+		String teacher = (String)session.getAttribute("user_name");
 		
 		String manual = request.getParameter("manual");
-		String update_name = (String)session.getAttribute("update_name");
+		
+		HttpSession session2 = request.getSession();
+		String update_name  = (String)session2.getAttribute("user_name");
 		String update_date = request.getParameter("update_date");
 
 		// 登録処理を行う

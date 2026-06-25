@@ -114,7 +114,7 @@ public class BooksDao {
 		return cardList;
 	}
 
-	/*public List<Books> select() {
+	public List<Books> select() {
 		Connection conn = null;
 		List<Books> cardList = new ArrayList<Books>();
 
@@ -163,7 +163,6 @@ public class BooksDao {
 		// 結果を返す
 		return cardList;
 	}
-*/
 	
 	// 引数cardで指定されたレコードを登録し、成功したらtrueを返す
 	public boolean insert(Books card) {
@@ -314,7 +313,7 @@ public class BooksDao {
 				pStmt.setString(7, "");
 			}
 			if (card.getUpdate_date() != null) {
-				pStmt.setString(8, card.getUpdate_date());
+				pStmt.setString(8, sdf.format(cl.getTime()));
 			} else {
 				pStmt.setString(8, "");
 			}

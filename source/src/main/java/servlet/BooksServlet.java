@@ -34,7 +34,25 @@ public class BooksServlet extends HttpServlet {
 			return;
 		}
 	*/
+		
+		// リクエストパラメータを取得する
+		request.setCharacterEncoding("UTF-8");
+		String user_id  = request.getParameter("user_id");
+		String date = request.getParameter("date");
+		String category_id = request.getParameter("category_id");
+		String title = request.getParameter("title");
+		String teacher = request.getParameter("teacher");
+		String manual = request.getParameter("manual");
+		String update_name = request.getParameter("update_name");
+		String update_date = request.getParameter("update_date");
 
+		BooksDao bDao = new BooksDao();
+		List<Books> cardList = bDao.select(new Books(0, user_id,date,category_id,title,teacher,
+				manual,update_name,update_date));
+		
+		// 検索結果をリクエストスコープに格納する
+		request.setAttribute("cardList", cardList);
+		
 		// 検索ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Books.jsp");
 		dispatcher.forward(request, response);

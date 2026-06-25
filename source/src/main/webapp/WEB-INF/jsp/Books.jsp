@@ -51,17 +51,7 @@
             <tr>
                         <td>
                             <!--月選択-->
-                            <input type="month">
-                        </td>
-                        <td>
-                            <!--並び替えプルダウン選択-->
-                            <select name="sort">
-                                <option hidden>並び替え</option>
-                                <option value="nameUp">タイトル昇順</option>
-                                <option value="nameDown">タイトル降順</option>
-                                <option value="dateUp">日付昇順</option>
-                                <option value="dateDown">日付降順</option>
-                            </select>
+                            <input type="month" name="date">
                         </td>
                 <td>
                      <input type="text" name="teacher"  placeholder="登録者">
@@ -129,8 +119,6 @@
 <c:forEach var="e" items="${cardList}">
 <form>
                 <div class="container">
-                    <div id="dropzone1" class="dropzone">
-                        <div id="item1" class="draggable" draggable="true">
 <form>
             <details class="accordion-005"><!--折り畳み機能-->
                 <summary><!--折り畳み状態タイトル-->
@@ -221,8 +209,6 @@ ${e.manual}<br><br>
     <!-- フッターここまで -->
 <script>
     'use strict';
-<!--並び替え-->
-const draggables = document.querySelectorAll(".draggable"); const dropzones = document.querySelectorAll(".dropzone"); draggables.forEach(item => { item.addEventListener("dragstart", (e) => { e.dataTransfer.setData("text/plain", e.target.id); item.classList.add("dragging"); }); item.addEventListener("dragend", () => { item.classList.remove("dragging"); }); }); dropzones.forEach(zone => { zone.addEventListener("dragover", (e) => { e.preventDefault(); }); zone.addEventListener("drop", (e) => { e.preventDefault(); const data = e.dataTransfer.getData("text/plain"); const draggedEl = document.getElementById(data); zone.appendChild(draggedEl); }); }); 
 
 /* 時刻　*/
 function updateClock() {
