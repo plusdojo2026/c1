@@ -212,8 +212,9 @@ public class ShiftDao {
 
 	    return result;
 	}
-	
-	public boolean RealInSelect(Shift select) {
+
+// 出勤登録最新版
+public boolean RealInSelect(Shift select) {
 	    Connection conn = null;
 	    boolean resultAns = false;
 
@@ -284,7 +285,7 @@ public class ShiftDao {
 	    		}
 	    	return resultAns;
 	}
-//	出勤登録
+//	出勤登録旧版
 	public boolean updateRealIn(Shift shift) {
 	    Connection conn = null;
 	    boolean result = false;
@@ -352,7 +353,78 @@ public class ShiftDao {
 
 	    return result;
 	}
+	// 退勤登録最新版
+	public boolean RealOutSelect(Shift select) {
+		    Connection conn = null;
+		    boolean resultAns = false;
 
+		    try {
+		        Class.forName("com.mysql.cj.jdbc.Driver");
+
+		        conn = DriverManager.getConnection(
+		            "jdbc:mysql://localhost:3306/mamoral?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9",
+		            "root", "password");
+		        
+		     // SQL文を準備する
+		     // userテーブルからuser_id,dateが該当するものを検索する。
+		     		String sql = "SELECT * FROM shift WHERE user_id = ? "
+		     				+ "AND date = ?";
+		     			
+		     		PreparedStatement pStmt = conn.prepareStatement(sql);
+		     		pStmt.setString(1,select.getUser_id());
+		     		pStmt.setString(2,select.getDate());
+		     			
+		     		// SQL文を実行し、結果表を取得する
+		    		ResultSet rs = pStmt.executeQuery();
+		    		
+		    		// 現在時刻を取得（HH:mm:ss）
+			        LocalTime now = LocalTime.now();
+			        String realTime = now.toString();
+		    		
+		    		if (rs.next()) {
+		    			int Rid = rs.getInt("id");
+//		    			String Ruser_id = rs.getString("user_id");
+//		    			String Rdate = rs.getString("date");
+//		    			String Rclock_in = rs.getString("clock_in");
+//		    			String Rclock_out = rs.getString("clock_out");
+//		    			String Rreal_in = realTime;
+		    			String Rreal_out = realTime;
+		    			
+		    			sql = "UPDATE shift SET " +
+//		    				  "user_id = ? " +
+//		    				  "date = ? " +
+//		    				  "clock_in = ? " +
+//	    				  	  "clock_out = ? " +
+//		    				  "real_in = ? " +
+		    				  "real_out = ? " +
+		    		          "WHERE id = ? ";
+		    			
+		    			pStmt = conn.prepareStatement(sql);
+		    			pStmt.setString(1,Rreal_out);
+		    			pStmt.setInt(2,Rid);
+		    						
+		    			if (pStmt.executeUpdate() == 1) {
+		    				resultAns =  true;
+		    			} else {
+		    				resultAns = false;
+		    			}
+		    		} else {
+		    			resultAns = false;
+		    		}
+		    	} catch (Exception e) {
+		    		e.printStackTrace();
+		    	} finally {
+		    			// データベースを切断
+		    			if (conn != null) {
+		    				try {
+		    					conn.close();
+		    				} catch (SQLException e) {
+		    					e.printStackTrace();
+		    				}
+		    			}
+		    		}
+		    	return resultAns;
+		}
 //	退勤登録
 	public boolean updateRealOut(String userName, String date) {
 	    Connection conn = null;

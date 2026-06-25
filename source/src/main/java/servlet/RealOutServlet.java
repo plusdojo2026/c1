@@ -19,8 +19,8 @@ import dto.Shift;
 /**
  * Servlet implementation class RealInServlet
  */
-@WebServlet("/RealInServlet")
-public class RealInServlet extends HttpServlet {
+@WebServlet("/RealOutServlet")
+public class RealOutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -43,10 +43,10 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response)
 	
 	// 更新処理を行う
 	ShiftDao shiftDao = new ShiftDao();
-	if (shiftDao.RealInSelect(new Shift(0, user_id, "", date, "", "", "", ""))) { // 送信成功
-		request.setAttribute ("result", new Result("出勤完了！", "今日も1日頑張りましょう！", request.getContextPath() + "/HomeServlet"));
+	if (shiftDao.RealOutSelect(new Shift(0, user_id, "", date, "", "", "", ""))) { // 送信成功
+		request.setAttribute ("result", new Result("退勤完了！", "お疲れさまでした。", request.getContextPath() + "/HomeServlet"));
 		} else { // 送信失敗
-		request.setAttribute ("result", new Result("出勤失敗！", "今日は休みです。", request.getContextPath() + "/HomeServlet"));
+		request.setAttribute ("result", new Result("退勤失敗！", "退勤登録できませんでした。", request.getContextPath() + "/HomeServlet"));
 	}
 
 	// ホーム画面にフォワードする

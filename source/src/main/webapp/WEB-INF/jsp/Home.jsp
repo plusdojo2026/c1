@@ -118,7 +118,7 @@
         </dialog>
         <!-- 退勤確認モーダル -->
         <dialog id="realOut_modal">
-            <form action="new_result.html" >
+            <form method="POST" action="/c1/RealOutServlet" >
                 <p class="realOut">退勤確認<p><br>
                     <p class="realOutT" id="terrorTitle">バイトテロ事例</p><br>
                     <p class="realOutC" id="terrorContent">バイトテロ事例の内容</p><br>
