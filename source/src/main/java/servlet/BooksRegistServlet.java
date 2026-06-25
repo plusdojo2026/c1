@@ -28,16 +28,15 @@ public class BooksRegistServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-		/*HttpSession session = request.getSession();
-		if (session.getAttribute("id") == null) {
+		HttpSession session = request.getSession();
+		if (session == null || session.getAttribute("user_id") == null) {
 			response.sendRedirect("/c1/LoginServlet");
 			return;
-		}*/
+		}
 
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 		
-		HttpSession session = request.getSession();
 		
 		String user_id  = (String)session.getAttribute("user_id");
 		String date = request.getParameter("date");

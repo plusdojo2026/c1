@@ -28,11 +28,11 @@ public class BooksUpdateDeleteServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-		/*HttpSession session = request.getSession();
-		if (session.getAttribute("id") == null) {
+		HttpSession session = request.getSession();
+		if (session == null || session.getAttribute("user_id") == null) {
 			response.sendRedirect("/c1/LoginServlet");
 			return;
-		}*/
+		}
 
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
@@ -43,7 +43,6 @@ public class BooksUpdateDeleteServlet extends HttpServlet {
 		String title = request.getParameter("title");
 		String teacher = request.getParameter("teacher");
 		String manual = request.getParameter("manual");
-		HttpSession session = request.getSession();
 		String update_name  = (String)session.getAttribute("user_name");
 		String update_date = request.getParameter("update_date");
 
