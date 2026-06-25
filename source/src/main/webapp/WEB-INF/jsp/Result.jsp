@@ -15,30 +15,6 @@
             <img src="images/mamorallogo.png" alt="MaMoral">
     </div>
     <!-- 時計 -->
-    <div id="clock"  ></div>
-    <!-- メニューバーの設置 -->
-        <div class="menu-wrapper">
-            <input type="checkbox" id="menu-toggle" hidden>
-
-                <label class="menu-icon" for="menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </label>
-
-            <div class="overlay"></div>
-
-            <nav class="menu">
-                <ul>
-                    <li><a href="/c1/HomeServlet">ホーム</a></li>
-                    <li><a href="/c1/NoticeServlet">お知らせ</a></li>
-                    <li><a href="/c1/ShiftServlet">シフト・出退勤管理</a></li>
-                    <li><a href="/c1/BooksServlet">用語本棚一覧</a></li>
-                    <li><a href="/c1/MypageServlet">マイページ</a></li>
-                    <li><a href="/c1/LoginServlet">ログアウト</a></li>
-                </ul>
-            </nav>
-        </div>
     </header>
     <!-- ヘッダーここまで -->
     <!-- 見出し&ヒーロー -->
