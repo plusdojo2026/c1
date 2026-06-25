@@ -6,28 +6,35 @@ public class Notice implements Serializable {
 		/*フィールド*/
 		private int id; 
 		private String user_id;		
-		private String title;		
-		private String date; 			
-		private String text; 				
+		private String date;		
+		private String title; 			
+		private String notice; 
+		private String update_name;
+		private String update_date;
 	
 		/*コンストラクタ*/
 		public Notice() {
 			super();
 			this.id = 0;
 			this.user_id = "";
-			this.title = "";
 			this.date = "";
-			this.text = "";
+			this.title = "";
+			this.notice = "";
+			this.update_name = "";
+			this.update_date = "";
 
 		}
 		
-		public Notice(int id, String user_id, String title, String date,  String text) {
+		public Notice(int id, String user_id, String date, String title,  String notice, 
+				String update_name, String update_date	) {
 			super();
 			this.id = id;
 			this.user_id = user_id;
-			this.title = title;
 			this.date = date;
-			this.text = text;
+			this.title = title;
+			this.notice = notice;
+			this.update_name = update_name;
+			this.update_date = update_date;
 		}
 
 		public int getId() {
@@ -45,14 +52,7 @@ public class Notice implements Serializable {
 		public void setUser_id(String user_id) {
 			this.user_id = user_id;
 		}
-		
-		public String getRegistTitle() {
-			return title;
-		}
 
-		public void settitle(String title) {
-			this.title = title;
-		}
 		public String getDate() {
 			return date;
 		}
@@ -61,12 +61,35 @@ public class Notice implements Serializable {
 			this.date = date;
 		}
 
-		public String gettext() {
-			return text;
+		public String getTitle() {
+			return title;
 		}
 
-		public void settext(String text) {
-			this.text = text;
+		public void setTitle(String title) {
+			this.title = title;
 		}
 
+		public String getNotice() {
+			return notice;
+		}
+
+		public void setNotice(String notice) {
+			this.notice = notice;
+		}
+
+		public String getUpdate_name() {
+			return update_name;
+		}
+
+		public void setUpdate_name(String update_name) {
+			this.update_name = update_name;
+		}
+
+		public String getUpdate_date() {
+			return update_date;
+		}
+
+		public void setUpdate_date(String update_date) {
+			this.update_date = update_date;
+		}
 }
