@@ -91,7 +91,7 @@
 			<c:forEach var="e" items="${suggestionList}" >
 			<div class="box">
 				<div class="text-title">名前</div>
-				<input type="text" name="name" value = "${e.name} + ${e.suggestion_date}" class = "name-box" ><br>
+				<input type="text" name="name" value = "${e.user_name} + ${e.suggestion_date}" class = "name-box" ><br>
 				<div class="text-title">内容</div>
 				<textarea name="suggestion" class = "text-box" > ${e.suggestion}</textarea><br>
 			</div>

@@ -1,4 +1,3 @@
-// 6/23 12:11 backUp
 package servlet;
 
 import java.io.IOException;
@@ -45,6 +44,23 @@ public class MypageServlet extends HttpServlet {
 //			HttpSession session = request.getSession();
 			int authority = (int) session.getAttribute("authority_id");
 			
+			
+			// DBから最初から表示させたいものを持ってくる（今回だとご意見内容）
+			Suggestion condition = new Suggestion();
+			
+			SuggestionCheckDao bDao = new SuggestionCheckDao();
+			List<Suggestion> suggestionList = bDao.select( condition);
+			
+			request.setAttribute("suggestionList", suggestionList);
+
+
+			
+//			BcDAO bDao = new BcDAO();
+//			List<Bc> cardList = bDao.select(new Bc(0,company,department,position,
+//					familly_name,first_name,familly_reading,first_reading,
+//					gender,post,address,main_phone,fax,phone,mail,memo));
+
+			
 			if (authority == 1) {
 		      RequestDispatcher disp = request.getRequestDispatcher("/WEB-INF/jsp/Mypage_m.jsp");
 		      disp.forward(request, response);
@@ -53,28 +69,25 @@ public class MypageServlet extends HttpServlet {
 		      disp.forward(request, response);
 		  }
 			
+
+			//最初に書いていた場所。ここに書いてはjspに反映されない！
+//			Suggestion condition = new Suggestion();
+//			
+//			SuggestionCheckDao sDao = new SuggestionCheckDao();
+//			List<Suggestion> suggestionList = sDao.select(condition);
+//			request.setAttribute("suggestionList", suggestionList);
+			
+			
+//			参考にしたもの
 	        // DTO
-			Suggestion condition = new Suggestion();
-			
-			// ご意見箱の内容をリクエストスコープに格納する
-			SuggestionCheckDao sDao = new SuggestionCheckDao();
-			List<Suggestion> suggestionList = sDao.select(condition);
-			request.setAttribute("suggestionList", suggestionList);
-			
+//	        Shift condition = new Shift();
+
 //	        // DAO呼び出し
 //	        ShiftDao dao = new ShiftDao();
 //	        List<Shift> list = dao.select(condition);
-//
 //	        request.setAttribute("shiftList", list);
-
 			
 			
-//			BcDAO bDao = new BcDAO();
-//			List<Bc> cardList = bDao.select(new Bc(0,company,department,position,
-//					familly_name,first_name,familly_reading,first_reading,
-//					gender,post,address,main_phone,fax,phone,mail,memo));
-
-
 		
 //		HttpSession session = request.getSession();
 //		if (session == null || session.getAttribute("user_id") == null) {
@@ -82,9 +95,6 @@ public class MypageServlet extends HttpServlet {
 //			return;
 //		}
 
-//		// マイページ（店長画面）のjspを読み込む
-//		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Mypage_m.jsp");
-//		dispatcher.forward(request, response);
 	}
 
 	/**
@@ -141,9 +151,5 @@ public class MypageServlet extends HttpServlet {
 //            RequestDispatcher disp = request.getRequestDispatcher("/WEB-INF/jsp/Mypage_e.jsp");
 //            disp.forward(request, response);
 //        }
-		
-		
 	}
-	
-	
 }

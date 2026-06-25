@@ -68,7 +68,7 @@ public class Suggestion implements Serializable {
 			return suggestion_date;
 		}
 
-		public void setSuddestion_date(String suggestion_date) {
+		public void setSuggestion_date(String suggestion_date) {
 			this.suggestion_date = suggestion_date;
 		}
 		
