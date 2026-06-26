@@ -83,7 +83,7 @@
       </div>
 
 
-    <!-- 給与 -->
+    <!-- 給与
     <div class="salary">
     <h2>給与</h2>
         <table border="1">
@@ -100,12 +100,12 @@
             <td>26000</td>
             </tr>
 
-            </table>
-    </div>
+            </table> 
+    </div>-->
       <!-- 出退勤、シフト一覧 -->
       <div class="shift-card">
         <form action="ShiftServlet" method="get">
-        	<input type="text" name="word" placeholder="名前であいまい検索" class="searchWord">
+        	<!-- <input type="text" name="word" placeholder="名前であいまい検索" class="searchWord"> -->
         	<label for="year">年:</label>
 			<select id="year" name="year"></select>
 			
