@@ -106,8 +106,8 @@
                     <input type="checkbox" class="realInC" required>SNSの不適切な使用はしていません<br>
                     <input type="checkbox" class="realInC" required>手洗いうがいはしました<br>
                     <input type="checkbox" class="realInC" required>風邪などの体調不良ではありません<br>
-                    <input type="checkbox" class="realInC" required>SNSの使用はしていません<br>
-                    <input type="checkbox" class="realInC" required>SNSの使用はしていません<br>
+                    <input type="checkbox" class="realInC" required>身だしなみは整っています（髪型・服装）<br>
+                    <input type="checkbox" class="realInC" required>未確認のお知らせはありません<br>
                 
                 <div class="button">
                     <!-- close()でモーダルを閉じる -->
