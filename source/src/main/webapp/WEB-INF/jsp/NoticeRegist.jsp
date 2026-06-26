@@ -52,13 +52,13 @@
     <label>タイトル
         <input type="text" name="title" required>
     </label>
-    
 
     <p>内容</p>
         <p><textarea name="notice" required></textarea>
     <input type="submit" value="登録">
 </p>
 </form>
+<a href="/c1/NoticeServlet">お知らせ一覧へ戻る</a>
 </main>
 
 <footer>

@@ -38,6 +38,7 @@ public class NoticeUpdateDeleteServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		int id = Integer.parseInt(request.getParameter("id"));
 		String user_id  = request.getParameter("user_id");
+		String user_name  = request.getParameter("user_name");
 		String date = request.getParameter("date");
 		String title = request.getParameter("title");
 		String notice = request.getParameter("notice");
@@ -48,13 +49,13 @@ public class NoticeUpdateDeleteServlet extends HttpServlet {
 		// 更新または削除を行う
 		NoticeDao bDao = new NoticeDao();
 		if (request.getParameter("submit").equals("更新")) {
-			if (bDao.insert(new Notice(id, user_id,date,title,notice,update_name,""))) { // 更新成功
+			if (bDao.insert(new Notice(id, user_id,user_name,date,title,notice,update_name,""))) { // 更新成功
 				request.setAttribute("result", new Result("更新成功！", "レコードを更新しました。", "/c1/NoticeServlet"));
 			} else { // 更新失敗
 				request.setAttribute("result", new Result("更新失敗！", "レコードを更新できませんでした。", "/c1/NoticeServlet"));
 			}
 		} else {
-			if (bDao.delete(new Notice(id, user_id,date,title,notice,update_name,update_date))) { // 削除成功
+			if (bDao.delete(new Notice(id, user_id,user_name,date,title,notice,update_name,update_date))) { // 削除成功
 				request.setAttribute("result", new Result("削除成功！", "レコードを削除しました。", "/c1/NoticeServlet"));
 			} else { // 削除失敗
 				request.setAttribute("result", new Result("削除失敗！", "レコードを削除できませんでした。", "/c1/NoticeServlet"));
