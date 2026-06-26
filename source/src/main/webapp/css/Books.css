@@ -286,6 +286,12 @@ main h2{
     opacity: 1;
 }
 
+/* テキストエリア */
+textarea{
+	width:300px;
+	height:200px;
+}
+
 /* ページ上部へ */
 .gotop {
     text-align: center;

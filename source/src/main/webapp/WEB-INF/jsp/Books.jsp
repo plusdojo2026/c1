@@ -45,7 +45,7 @@
     <!-- メイン -->
         <main>
         <details class="accordion-008"><!--折り畳み機能-->
-            <summary>絞り込み検索/並び替え</summary><!--折り畳み状態タイトル-->
+            <summary>絞り込み検索</summary><!--折り畳み状態タイトル-->
 <form method="POST" action="/c1/BooksServlet"  id="searchform">
        <table>
             <tr>
