@@ -34,11 +34,16 @@ public class PassDao {
 			// JDBCドライバを読み込む
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
-			// データベースに接続する
+			// データベースに接続する　アップロードの際にコメントアウトをつける
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mamoral?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements"
 					+ "=true","root", "password");
 
+//			アップロードの際にコメントアウトを外す
+//			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/c1?"
+//					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+//					"c1", "c3aXB3a6xd7ursUv");
+			
 			// SQL文を準備する
 			// userテーブルからuser_id,passwordが該当するものを検索する。
 			String sql = "SELECT user_id,password FROM user WHERE user_id = ? "
