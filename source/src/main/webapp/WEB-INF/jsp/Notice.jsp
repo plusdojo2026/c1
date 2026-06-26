@@ -80,18 +80,9 @@
 
 <p>状態: <span id="status">未確認</span></p>
 <button id="checkBtn">確認</button>
-
-<label for="member">確認者リスト:</label>
- 	<select id="member" name="member">
-    <option value=""> -- 選択してください -- </option>
-    <option value="001">斎藤由利</option>
-    <option value="002">高橋翔</option>
-    <option value="003">山田祐樹</option>
-  </select>
-
  
- 	<form onsubmit="return checkdelete()" id="resultform" class="search_result" method="POST" action="/c1/NoticeUpdateDeleteServlet">
-
+<!--  0<form onsubmit="return checkdelete()" id="resultform" class="search_result" method="POST" action="/c1/NoticeUpdateDeleteServlet">
+-->
 <tr>
 <td>
 ${e.notice}<br><br></td>
@@ -115,7 +106,6 @@ ${e.notice}<br><br></td>
 </tr>
 <tr>
 <td>
-	<button type="button" class="buttonIn" onclick="document.getElementById('realIn_modal2${e.id}').showModal()">編集</button><!-- 編集ボタン -->
 	<input class="delete1" type="submit" name="submit" value="削除">
 </td>
 </tr>
@@ -123,25 +113,26 @@ ${e.notice}<br><br></td>
 
 
 
-<!-- 編集モーダル -->
-<dialog id="realIn_modal2${e.id}">
+<!-- 編集モーダル 
+
 <form  onsubmit="return checkupdate()" id="resultform" class="search_result" method="POST" action="/c1/NoticeUpdateDeleteServlet">
 <input type="hidden" name="id" value="${e.id}">
 <input type="hidden" name="user_id" value="${e.user_id}">
 <input type="hidden" name="user_name" value="${e.user_name}">
 <input type="hidden" name="notice" value="${e.notice}">
-<input type="hidden" name="update_namel" value="${e.update_name}">
+<input type="hidden" name="update_name" value="${e.update_name}">
 <input type="hidden" name="update_date" value="${e.update_date}">
 						
-<textarea name="manual">${e.notice}</textarea><br>
-<div class="button">
-<!-- close()でモーダルを閉じる -->
+<textarea name="notice">${e.notice}</textarea><br>
+<div class="button">  -->
+<!-- close()でモーダルを閉じる 
 <button type="button" onclick="document.getElementById('realIn_modal2${e.id}').close()">キャンセル</button>
 <input class="update1" type="submit" name="submit" value="更新" >
-</div>
+</div>-->
 </form>
-                               </dialog>
-</details></div></div></div></form></c:forEach>
+
+</details></div></div></div></form>
+</c:forEach>
 
 <c:if test="${empty cardList}">
 <p>指定された条件に一致するデータはありません。</p>
