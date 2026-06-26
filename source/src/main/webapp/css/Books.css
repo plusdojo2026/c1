@@ -292,6 +292,10 @@ textarea{
 	height:200px;
 }
 
+dialog {
+	font-size: x-large;
+}
+
 /* ページ上部へ */
 .gotop {
     text-align: center;
