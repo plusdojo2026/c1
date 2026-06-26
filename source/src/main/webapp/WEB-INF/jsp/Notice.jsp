@@ -57,24 +57,27 @@
 
 <!-- 検索フォーム -->
 
-<form class="search-box" action="Notice.jsp" method="get">
-    <input type="text" name="q" placeholder="タイトル" required>
-    <input type="text" name="q" placeholder="記入者" required>
+<form class="search-box" action="/c1/NoticeServlet" method="POST">
+    <input type="text" name="title" placeholder="タイトル" required>
+    <input type="text" name="user_name" placeholder="記入者" required>
     <button type="submit">検索</button>
 </form>
 
-<form action="Notice.jsp" method="post">
+
+
+
+<c:forEach var="e" items="${cardList}" >
+<form action="/c1/NoticeUpdateDeleteServlet" method="POST">
     <table id="newsTable">
     <label>タイトル
-        <input type="text" name="title" required>
+        <input type="text" name="title" value="${e.title}"required>
     </label>
     <label>日付
-        <input type="date" id="datepicker" name="date">
+        <input type="date" id="datepicker" name="date"value="${e.date}">
         </label>
  
-
 <p>内容</p>
-        <p><textarea name="text" required></textarea>
+        <p><textarea name="notice" value="${e.notice}"required></textarea>
 
 <p>状態: <span id="status">未確認</span></p>
 <button id="checkBtn">確認</button>
@@ -90,6 +93,7 @@
 <input type="submit"name="submit"value="更新">
 </table>
 </form>
+</c:forEach>
 </main>
 
 <!-- ここからフッター -->

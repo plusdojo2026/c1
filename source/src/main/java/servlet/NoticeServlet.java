@@ -35,6 +35,23 @@ public class NoticeServlet extends HttpServlet {
 		}
 	*/
 
+		// リクエストパラメータを取得する
+		request.setCharacterEncoding("UTF-8");
+		String user_id  = request.getParameter("user_id");
+		String user_name = null;
+		String date= request.getParameter("date");
+		String title = request.getParameter("title");
+		String notice = request.getParameter("notice");
+		String update_name = request.getParameter("update_name");
+		String update_date = request.getParameter("update_date");
+		
+		// 検索処理を行う
+		NoticeDao bDao = new NoticeDao();
+		List<Notice> cardList = bDao.select(new Notice(0, user_id,user_name,date,title,notice,update_name,update_date));
+
+		// 検索結果をリクエストスコープに格納する
+		request.setAttribute("cardList", cardList);
+		
 		// 登録ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Notice.jsp");
 		dispatcher.forward(request, response);
@@ -58,13 +75,17 @@ public class NoticeServlet extends HttpServlet {
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 		String user_id  = request.getParameter("user_id");
-		String registTitle = request.getParameter("registTitle");
-		String date = request.getParameter("date");
-		String registText = request.getParameter("registText");
-
+		String user_name  = request.getParameter("user_name");
+	System.out.println("☆☆" + user_name);
+		String date= request.getParameter("date");
+		String title = request.getParameter("title");
+		String notice = request.getParameter("notice");
+		String update_name = request.getParameter("update_name");
+		String update_date = request.getParameter("update_date");
+		
 		// 検索処理を行う
 		NoticeDao bDao = new NoticeDao();
-		List<Notice> cardList = bDao.select(new Notice(0, user_id,registTitle,date,registText));
+		List<Notice> cardList = bDao.select(new Notice(0, user_id,user_name,date,title,notice,update_name,update_date));
 
 		// 検索結果をリクエストスコープに格納する
 		request.setAttribute("cardList", cardList);

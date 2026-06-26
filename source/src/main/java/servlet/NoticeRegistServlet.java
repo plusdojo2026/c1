@@ -51,6 +51,7 @@ public class NoticeRegistServlet extends HttpServlet {
 				request.setCharacterEncoding("UTF-8");
 				HttpSession session0 = request.getSession();
 				String user_id  = (String)session0.getAttribute("user_id");
+				String user_name = request.getParameter("user_name");
 				String date = request.getParameter("date");
 				String title = request.getParameter("title");
 				String notice = request.getParameter("notice");
@@ -60,7 +61,7 @@ public class NoticeRegistServlet extends HttpServlet {
 		
 				// 登録処理を行う
 				NoticeDao bDao = new NoticeDao();
-				if (bDao.insert(new Notice(0, user_id,"",title,notice,update_name,""))) { // 登録成功
+				if (bDao.insert(new Notice(0, user_id,user_name,"",title,notice,update_name,""))) { // 登録成功
 					request.setAttribute("result", new Result("登録成功！", "レコードを登録しました。", "/c1/NoticeServlet"));
 				} else { // 登録失敗
 					request.setAttribute("result", new Result("登録失敗！", "レコードを登録できませんでした。", "/c1/NoticeServlet"));
