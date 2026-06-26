@@ -122,7 +122,7 @@
                 <p class="realOut">退勤確認<p><br>
                     <p class="realOutT" id="terrorTitle">バイトテロ事例</p><br>
                     <p class="realOutC" id="terrorContent">バイトテロ事例の内容</p><br>
-                    <input type="checkbox" class="realOutC" required>上記の行動はしていません<br>
+                    <input type="checkbox" class="realOutC" required>上記に該当する行動はしていません<br>
 
                 <div class="button">
                     <!-- close()でモーダルを閉じる -->
