@@ -22,15 +22,15 @@ public class BooksDao {
 			// JDBCドライバを読み込む
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
-			// データベースに接続する　アップロードの際コメントアウト
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mamoral?"
-					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"root", "password");
+//			// データベースに接続する　アップロードの際コメントアウト
+//			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mamoral?"
+//					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+//					"root", "password");
 			
 //			アップロードの際にコメントアウトを外す
-//			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/c1?"
-//					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-//					"c1", "c3aXB3a6xd7ursUv");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/c1?"
+					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+					"c1", "c3aXB3a6xd7ursUv");
 
 			// SQL文を準備する
 			String sql = "SELECT * FROM Books "
@@ -128,14 +128,14 @@ public class BooksDao {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
 			// データベースに接続する　アップロードの際コメントアウト
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mamoral?"
-					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"root", "password");
+//			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mamoral?"
+//					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+//					"root", "password");
 			
 //			アップロードの際にコメントアウトを外す
-//			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/c1?"
-//					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-//					"c1", "c3aXB3a6xd7ursUv");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/c1?"
+					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+					"c1", "c3aXB3a6xd7ursUv");
 
 			// SQL文を準備する
 			String sql = "SELECT * FROM Books ";
@@ -184,14 +184,14 @@ public class BooksDao {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
 			// データベースに接続する　アップロードの際にコメントアウトをつける
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mamoral?"
-					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"root", "password");
+//			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mamoral?"
+//					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+//					"root", "password");
 
 //			アップロードの際にコメントアウトを外す
-//			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/c1?"
-//					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-//					"c1", "c3aXB3a6xd7ursUv");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/c1?"
+					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+					"c1", "c3aXB3a6xd7ursUv");
 
 //			日付を取得し変数をを格納
 			Calendar cl = Calendar.getInstance();
@@ -278,14 +278,14 @@ public class BooksDao {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mamoral?"
-					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"root", "password");
+//			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mamoral?"
+//					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+//					"root", "password");
 
 //			アップロードの際にコメントアウトを外す　アップロードの際にコメントアウトをつける
-//			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/c1?"
-//					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-//					"c1", "c3aXB3a6xd7ursUv");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/c1?"
+					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+					"c1", "c3aXB3a6xd7ursUv");
 			
 //			日付を取得し変数をを格納
 			Calendar cl = Calendar.getInstance();
@@ -373,14 +373,14 @@ public class BooksDao {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
 			// データベースに接続する　アップロードの際にコメントアウトをつける
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mamoral?"
-					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"root", "password");
+//			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mamoral?"
+//					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+//					"root", "password");
 
 //			アップロードの際にコメントアウトを外す
-//			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/c1?"
-//					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-//					"c1", "c3aXB3a6xd7ursUv");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/c1?"
+					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+					"c1", "c3aXB3a6xd7ursUv");
 
 			// SQL文を準備する
 			String sql = "DELETE FROM Books WHERE id=?";
