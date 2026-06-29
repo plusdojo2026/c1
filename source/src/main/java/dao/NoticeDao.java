@@ -238,7 +238,7 @@ System.out.println(rs.getString("user_name"));
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
 			// SQL文を準備する
-			String sql = "UPDATE Notice SET user_id =?, Date=?,Title =?,Notice =?,Update_name=?,Update_date=?,WHERE id=?";
+			String sql = "UPDATE notice SET user_id=?, date=?, title=?, notice=?, update_name=?, update_date=? WHERE id=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -268,14 +268,17 @@ System.out.println(rs.getString("user_name"));
 			} else {
 				pStmt.setString(5, "");
 			}
-			if (card.getUpdate_date() != null) {
-				pStmt.setString(6, sdf.format(cl.getTime()));
-			} else {
-				pStmt.setString(6, "");
-			}
-			
+			if (card.getUpdate_date() == null || card.getUpdate_date().isEmpty()) {
+	            pStmt.setString(6, sdf.format(cl.getTime()));
+	        } else {
+	            pStmt.setString(6, card.getUpdate_date());
+	        }
 
-			pStmt.setInt(7, card.getId());
+	        pStmt.setInt(7, card.getId());
+
+	        if (pStmt.executeUpdate() == 1) {
+	            result = true;
+	        }
 
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {

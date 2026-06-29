@@ -64,10 +64,9 @@
     <button type="submit">検索</button>
 </form>
 
-<div class = "box-area">
+<div class="box-area">
 <c:forEach var="e" items="${cardList}" >
 <form action="/c1/NoticeUpdateDeleteServlet" method="POST">
-    <table id="newsTable">
     <label>タイトル
         <input type="text" name="title" value="${e.title}">
     </label>
@@ -76,16 +75,13 @@
         </label>
 
 <p>内容</p>
-        <p><textarea name="notice" >${e.notice}</textarea>
+        <p><textarea name="notice" >${e.notice}</textarea></p>
 
 <p>状態: <span id="status">未確認</span></p>
 <button id="checkBtn">確認</button>
  
 <!--  0<form onsubmit="return checkdelete()" id="resultform" class="search_result" method="POST" action="/c1/NoticeUpdateDeleteServlet">
 -->
-<tr>
-<td>
-${e.notice}<br><br></td>
 <input type="hidden" name="id" value="${e.id}">
 <input type="hidden" name="user_id" value="${e.user_id}">
 <input type="hidden" name="user_name" value="${e.user_name}">
@@ -93,23 +89,11 @@ ${e.notice}<br><br></td>
 <input type="hidden" name="notice" value="${e.notice}">
 <input type="hidden" name="update_namel" value="${e.update_name}">
 <input type="hidden" name="update_date" value="${e.update_date}">
-</tr>
-<tr>
-<td>
-	最終更新日：${e.update_date}<br>
-</td>
-</tr>
-<tr>
-<td>
-	最終更新者：${e.update_name}<br>
-</td>
-</tr>
-<tr>
-<td>
+	<ul>
+	<li>最終更新日：${e.update_date}</li>
+	<li>最終更新者：${e.update_name}</li>
+	</ul>
 	<input class="delete1" type="submit" name="submit" value="削除">
-</td>
-</tr>
-</form>
 
 
 
@@ -128,19 +112,23 @@ ${e.notice}<br><br></td>
 <!-- close()でモーダルを閉じる 
 <button type="button" onclick="document.getElementById('realIn_modal2${e.id}').close()">キャンセル</button>
 <input class="update1" type="submit" name="submit" value="更新" >
-</div>-->
+</div>
 </form>
 
-</details></div></div></div></form>
-</c:forEach>
+</details></div></div></div></form>-->
 
+
+
+   
+<input type="submit"name="submit"value="更新"><br>
+
+</form>
+</c:forEach>
 <c:if test="${empty cardList}">
 <p>指定された条件に一致するデータはありません。</p>
 </c:if>
-   
-<input type="submit"name="submit"value="更新">
-</table>
 </div>
+
 </main>
 
 <!-- ここからフッター -->

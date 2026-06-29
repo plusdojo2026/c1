@@ -38,7 +38,7 @@
     right: 20px;
     cursor: pointer;
     z-index: 3;
-    display: inline-blck;
+    display: inline-block;
 
 }
 
@@ -52,13 +52,13 @@
 }
 
 /* ハンバーガーがXが変形 */
-#menu-tggle:checked + .menu-icon span:nth-child(1) {
+#menu-toggle:checked + .menu-icon span:nth-child(1) {
     transform: translateY(10px) rotate(45deg);
 }
-#menu-toggle:checked + menu-icon span:nth-child(2) {
+#menu-toggle:checked + .menu-icon span:nth-child(2) {
     opacity: 0;
 }
-#menu-toggle:checked + menu-icon span:nth-child(3) {
+#menu-toggle:checked + .menu-icon span:nth-child(3) {
     transform: translateY(-10px) rotate(-45deg);
 }
 
@@ -162,7 +162,7 @@ footer {
 }*/
 
 .image-container {
-    position: relative;
+    /*position: relative;*/
     display: inline-block;
     width: 100%;
     max-width: 600px;
@@ -201,17 +201,23 @@ footer {
 /* フォーム全体 */
 form{
     width: 400px;
-    margin: px auto;
+    margin: 0 auto;
     background: white;
     padding: 35px;
     border-radius: 25px;
     box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-/* 	display:grid;*/
-/*  grid-template-columns: 1fr 1fr;*/
-/*	grid-template-columns: repeat(3, minmax(200px, 1fr)); */
+ 	/*display:grid;*/
+ 	/*grid-template-columns: 1fr 1fr;*/
+ 	/*grid-template-columns: repeat(3, minmax(200px, 1fr));*/
   	  gap: 10px;
 }
 
+.box-area{
+	width: 400px;
+	display:grid;
+ 	grid-template-columns: 1fr 1fr;
+ 	gap: 10px
+}
 textarea {
 width: 350px;
 height: 150px;
