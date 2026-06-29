@@ -179,7 +179,7 @@ footer {
   .overlay-text {
     position: absolute;
     top: 50%;
-    left: 49%;
+    left: 37%;
     transform: translate(-50%, -50%);
     display: flex; /* 横並びにする */
     align-items: center; /* 縦位置を中央揃え */
