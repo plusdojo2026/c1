@@ -23,14 +23,14 @@ public class SuggestionDao {
 	    	Class.forName("com.mysql.cj.jdbc.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mamoral?"
-					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"root", "password");
+//			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mamoral?"
+//					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+//					"root", "password");
 			
 //			アップロードの際にコメントアウトを外す
-//			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/c1?"
-//					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-//					"c1", "c3aXB3a6xd7ursUv");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/c1?"
+					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+					"c1", "c3aXB3a6xd7ursUv");
 
 			// SQL文を準備する
 //			String sql = "SELECT suggestion.id ,user.user_name ,suggestion.suggestion "+
