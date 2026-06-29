@@ -67,12 +67,12 @@
             <p class="noticeLogo">お知らせ</p>
                     <dive class="noticeB-content">
                         <input type="checkbox" id="cb">
-                            <p class="noticeTittle">タイトル1</p>
-                            <p class="noticeTittle">タイトル1</p>
+                            <p class="noticeTittle"></p>
+                            <p class="noticeTittle">年末年始の営業について</p>
                         <div class="more_wrap">
-                            <p class="noticeTittle">タイトル1</p>
-                            <p class="noticeTittle">タイトル1</p>
-                            <p class="noticeTittle">タイトル1</p>
+                            <p class="noticeTittle">11/2 食い逃げ発生と再発防止について</p>
+                            <p class="noticeTittle">11/30 本部長視察のご連絡</p>
+                            <p class="noticeTittle">新メニュー「北海道ミルクのクリームブリュレ」</p>
                         </div>
                         <label for="cb" class="more_btn"></label>
                     </dive>
