@@ -64,7 +64,7 @@
             </tr>
             <tr>
                 <td>
-                     <input type="text" name="manual"  placeholder="キーワード"></p>
+                     <input type="text" name="manual_x"  placeholder="キーワード"></p>
                 </td>
             <tr>
                 <td>
@@ -101,7 +101,7 @@
 </tr>
 <tr>
 <td>
-                     <textarea name="manual" placeholder="本文"></textarea>
+                     <textarea name="manual_x" placeholder="本文"></textarea>
 </td>
 </tr>
 <tr>
@@ -140,14 +140,14 @@
 	<form onsubmit="return checkdelete()" id="resultform" class="search_result" method="POST" action="/c1/BooksUpdateDeleteServlet">
 <tr>
 <td>
-${e.manual}<br><br>
+${e.manual_x}<br><br>
                         <input type="hidden" name="id" value="${e.id}">
                         <input type="hidden" name="user_id" value="${e.user_id}">
                         <input type="hidden" name="date" value="${e.date}">
 						<input type="hidden" name="category_id" value="${e.category_id}">
 						<input type="hidden" name="title" value="${e.title}">
 						<input type="hidden" name="teacher" value="${e.teacher}">
-						<input type="hidden" name="manual" value="${e.manual}">
+						<input type="hidden" name="manual_x" value="${e.manual_x}">
 						<input type="hidden" name="update_name" value="${e.update_name}">
 						<input type="hidden" name="update_date" value="${e.update_date}">
 </td>
@@ -183,7 +183,7 @@ ${e.manual}<br><br>
 						<input type="hidden" name="update_name" value="${e.update_name}">
 						<input type="hidden" name="update_date" value="${e.update_date}">
 						
-                        <textarea name="manual">${e.manual}</textarea><br>
+                        <textarea name="manual_x">${e.manual_x}</textarea><br>
                         <div class="button">
                         <!-- close()でモーダルを閉じる -->
                         <button type="button" onclick="document.getElementById('realIn_modal2${e.id}').close()">キャンセル</button>

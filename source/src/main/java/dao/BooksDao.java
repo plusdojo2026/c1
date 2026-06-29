@@ -40,7 +40,7 @@ public class BooksDao {
 					+ "category_id LIKE ? AND "
 					+ "title LIKE ? AND "
 					+ "teacher LIKE ? AND "
-					+ "manual LIKE ? AND "
+					+ "manual_x LIKE ? AND "
 					+ "update_name LIKE ? AND "
 					+ "update_date LIKE ? "
 					+ "ORDER BY title ASC";
@@ -72,8 +72,8 @@ public class BooksDao {
 			} else {
 				pStmt.setString(5, "%");
 			}
-			if (card.getManual() != null) {
-				pStmt.setString(6, "%" + card.getManual() + "%");
+			if (card.getManual_x() != null) {
+				pStmt.setString(6, "%" + card.getManual_x() + "%");
 			} else {
 				pStmt.setString(6, "%");
 			}
@@ -94,7 +94,7 @@ public class BooksDao {
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
 				Books books = new Books(rs.getInt("id"),rs.getString("user_id"), rs.getString("date"),  rs.getString("category_id"), rs.getString("title"),rs.getString("teacher"),
-						rs.getString("manual"),rs.getString("update_name"),rs.getString("update_date") );
+						rs.getString("manual_x"),rs.getString("update_name"),rs.getString("update_date") );
 				cardList.add(books);
 			}
 		} catch (SQLException e) {
@@ -149,7 +149,7 @@ public class BooksDao {
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
 				Books books = new Books(rs.getInt("id"),rs.getString("user_id"), rs.getString("date"),  rs.getString("category_id"), rs.getString("title"),rs.getString("teacher"),
-						rs.getString("manual"),rs.getString("update_name"),rs.getString("update_date") );
+						rs.getString("manual_x"),rs.getString("update_name"),rs.getString("update_date") );
 				cardList.add(books);
 			}
 		} catch (SQLException e) {
@@ -227,8 +227,8 @@ public class BooksDao {
 			} else {
 				pStmt.setString(5, "");
 			}
-			if (card.getManual() != null) {
-				pStmt.setString(6, card.getManual());
+			if (card.getManual_x() != null) {
+				pStmt.setString(6, card.getManual_x());
 			} else {
 				pStmt.setString(6, "");
 			}
@@ -292,7 +292,7 @@ public class BooksDao {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
 			// SQL文を準備する
-			String sql = "UPDATE Books SET user_id =?, date =?, category_id =?, title =?, teacher =?, manual =?, update_name =?, update_date =? WHERE id=?";
+			String sql = "UPDATE Books SET user_id =?, date =?, category_id =?, title =?, teacher =?, manual_x =?, update_name =?, update_date =? WHERE id=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -322,8 +322,8 @@ public class BooksDao {
 			} else {
 				pStmt.setString(5, "");
 			}
-			if (card.getManual() != null) {
-				pStmt.setString(6, card.getManual());
+			if (card.getManual_x() != null) {
+				pStmt.setString(6, card.getManual_x());
 			} else {
 				pStmt.setString(6, "");
 			}

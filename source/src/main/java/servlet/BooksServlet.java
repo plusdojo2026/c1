@@ -41,13 +41,13 @@ public class BooksServlet extends HttpServlet {
 		String category_id = request.getParameter("category_id");
 		String title = request.getParameter("title");
 		String teacher = request.getParameter("teacher");
-		String manual = request.getParameter("manual");
+		String manual_x = request.getParameter("manual_x");
 		String update_name = request.getParameter("update_name");
 		String update_date = request.getParameter("update_date");
 
 		BooksDao bDao = new BooksDao();
 		List<Books> cardList = bDao.select(new Books(0, user_id,date,category_id,title,teacher,
-				manual,update_name,update_date));
+				manual_x,update_name,update_date));
 		
 		// 検索結果をリクエストスコープに格納する
 		request.setAttribute("cardList", cardList);
@@ -82,14 +82,14 @@ public class BooksServlet extends HttpServlet {
 		
 		String title = request.getParameter("title");
 		String teacher = request.getParameter("teacher");
-		String manual = request.getParameter("manual");
+		String manual_x = request.getParameter("manual_x");
 		String update_name = request.getParameter("update_name");
 		String update_date = request.getParameter("update_date");
 
 		// 検索処理を行う
 		BooksDao bDao = new BooksDao();
 		List<Books> cardList = bDao.select(new Books(0, user_id,date,category_id,title,teacher,
-				manual,update_name,update_date));
+				manual_x,update_name,update_date));
 		
 		//List<Books> cardList = bDao.select();
 		

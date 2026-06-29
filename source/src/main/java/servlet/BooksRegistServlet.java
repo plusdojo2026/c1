@@ -45,7 +45,7 @@ public class BooksRegistServlet extends HttpServlet {
 		
 		String teacher = (String)session.getAttribute("user_name");
 		
-		String manual = request.getParameter("manual");
+		String manual_x = request.getParameter("manual_x");
 		
 		HttpSession session2 = request.getSession();
 		String update_name  = (String)session2.getAttribute("user_name");
@@ -54,7 +54,7 @@ public class BooksRegistServlet extends HttpServlet {
 		// 登録処理を行う
 		BooksDao bDao = new BooksDao();
 		if (bDao.insert(new Books(0, user_id,"",category_id,title,teacher,
-				manual,update_name,""))) { // 登録成功
+				manual_x,update_name,""))) { // 登録成功
 			request.setAttribute("result", new Result("登録成功！", "レコードを登録しました。", "/c1/BooksServlet"));
 		} else { // 登録失敗
 			request.setAttribute("result", new Result("登録失敗！", "レコードを登録できませんでした。", "/c1/BooksServlet"));
