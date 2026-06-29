@@ -31,9 +31,9 @@ public class BooksDao {
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/c1?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"c1", "c3aXB3a6xd7ursUv");
-
+			
 			// SQL文を準備する
-			String sql = "SELECT * FROM Books "
+			String sql = "SELECT * FROM books "
 					+ "WHERE "
 					+ "user_id LIKE ? AND "
 					+ "date LIKE ? AND "
@@ -138,7 +138,7 @@ public class BooksDao {
 					"c1", "c3aXB3a6xd7ursUv");
 
 			// SQL文を準備する
-			String sql = "SELECT * FROM Books ";
+			String sql = "SELECT * FROM books ";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -198,7 +198,7 @@ public class BooksDao {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			
 			// SQL文を準備する
-			String sql = "INSERT INTO Books VALUES (0, ?,?,?,?,?,?,?,?)";
+			String sql = "INSERT INTO books VALUES (0, ?,?,?,?,?,?,?,?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -292,7 +292,7 @@ public class BooksDao {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
 			// SQL文を準備する
-			String sql = "UPDATE Books SET user_id =?, date =?, category_id =?, title =?, teacher =?, manual_x =?, update_name =?, update_date =? WHERE id=?";
+			String sql = "UPDATE books SET user_id =?, date =?, category_id =?, title =?, teacher =?, manual_x =?, update_name =?, update_date =? WHERE id=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -383,7 +383,7 @@ public class BooksDao {
 					"c1", "c3aXB3a6xd7ursUv");
 
 			// SQL文を準備する
-			String sql = "DELETE FROM Books WHERE id=?";
+			String sql = "DELETE FROM books WHERE id=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる

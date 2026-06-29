@@ -43,7 +43,7 @@
                 parent.insertAdjacentHTML('beforeend', `<tr><td>${item[0]}</td><td>${item[1]}</td></tr>`);
             }
         }
-
+<%--
         window.addEventListener('DOMContentLoaded', (e) => {
             try {
                 const urlParam = decodeURIComponent(location.search.replace(/\+/g, ' ')).slice(1);
@@ -59,7 +59,9 @@
             }
         });
         
+        --%>
         /* 時刻　*/
+        <%--
         function updateClock() {
             const now = new Date();
 
@@ -85,7 +87,7 @@
 
         setInterval(updateClock, 1000);
         updateClock();
-
+--%>
     </script>
 </body>
 </html>

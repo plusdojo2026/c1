@@ -323,7 +323,7 @@ System.out.println(rs.getString("user_name"));
 					"c1", "c3aXB3a6xd7ursUv");
 
 			// SQL文を準備する
-			String sql = "DELETE FROM Notice WHERE id=?";
+			String sql = "DELETE FROM notice WHERE id=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
