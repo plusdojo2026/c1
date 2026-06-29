@@ -21,14 +21,14 @@ public class UserDao {
 				Class.forName("com.mysql.cj.jdbc.Driver");
 
 				// データベースに接続する
-				conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mamoral?"
-						+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-						"root", "password");
+//				conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mamoral?"
+//						+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+//						"root", "password");
 				
 //				アップロードの際にコメントアウトを外す
-//				conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/c1?"
-//						+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-//						"c1", "c3aXB3a6xd7ursUv");
+				conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/c1?"
+						+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+						"c1", "c3aXB3a6xd7ursUv");
 				
 				// SELECT文を準備する
 				String sql = "SELECT count(*) FROM user WHERE user_id=? AND password=?";
@@ -72,15 +72,15 @@ public class UserDao {
 		    try {
 		        Class.forName("com.mysql.cj.jdbc.Driver");
 
-		        conn = DriverManager.getConnection(
-		            "jdbc:mysql://localhost:3306/mamoral?"
-		            + "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9",
-		            "root", "password");
+//		        conn = DriverManager.getConnection(
+//		            "jdbc:mysql://localhost:3306/mamoral?"
+//		            + "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9",
+//		            "root", "password");
 		        
 //				アップロードの際にコメントアウトを外す
-//				conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/c1?"
-//						+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-//						"c1", "c3aXB3a6xd7ursUv");
+				conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/c1?"
+						+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+						"c1", "c3aXB3a6xd7ursUv");
 
 		        String sql = "SELECT user_id, user_name, authority_id FROM user WHERE user_id=? AND password=?";
 		        PreparedStatement pStmt = conn.prepareStatement(sql);
